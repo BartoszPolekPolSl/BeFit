@@ -5,6 +5,8 @@ VisualStudioVersion = 16.0.31019.35
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeFit", "BeFit.csproj", "{726694F0-2BA3-47FA-BB66-EA1E745F554F}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "BeFit.Tests", "..\BeFit.Tests\BeFit.Tests.csproj", "{C8BE2688-07D1-4051-9514-4E93BA970A50}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -15,6 +17,10 @@ Global
 		{726694F0-2BA3-47FA-BB66-EA1E745F554F}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{726694F0-2BA3-47FA-BB66-EA1E745F554F}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{726694F0-2BA3-47FA-BB66-EA1E745F554F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C8BE2688-07D1-4051-9514-4E93BA970A50}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C8BE2688-07D1-4051-9514-4E93BA970A50}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C8BE2688-07D1-4051-9514-4E93BA970A50}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C8BE2688-07D1-4051-9514-4E93BA970A50}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
