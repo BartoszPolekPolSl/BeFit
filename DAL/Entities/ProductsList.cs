@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BeFit.Model
+namespace BeFit.DAL.Entities
 {
     class ProductsList
     {

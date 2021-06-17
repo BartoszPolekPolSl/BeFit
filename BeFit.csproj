@@ -87,6 +87,8 @@
     <Compile Include="DAL\Entities\Product.cs" />
     <Compile Include="DAL\Entities\ProductsList.cs" />
     <Compile Include="DAL\Entities\User.cs" />
+    <Compile Include="DAL\Repositories\ProductsRepository.cs" />
+    <Compile Include="Model\Model.cs" />
     <Compile Include="ViewModel\BaseClass\RelayCommand.cs" />
     <Compile Include="ViewModel\BaseClass\ViewModel.cs" />
     <Compile Include="ViewModel\BeFitViewModel.cs" />
@@ -122,9 +124,6 @@
   <ItemGroup>
     <None Include="App.config" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DAL\Repositories\" />
-    <Folder Include="Model\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
