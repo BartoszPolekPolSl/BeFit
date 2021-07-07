@@ -4,9 +4,19 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeFit"
+        xmlns:vm="clr-namespace:BeFit.ViewModel"
+        xmlns:view="clr-namespace:BeFit.View"
         mc:Ignorable="d"
-        Title="MainWindow" Height="450" Width="800">
+        Title="BeFit" Height="450" Width="800">
+        <Window.DataContext>
+            <vm:LoginViewModel/>
+        </Window.DataContext>
     <Grid>
-        
+
+        <view:LoginControl Login="{Binding Login}"
+                           LoginArg="{Binding LoginArg, Mode=TwoWay}"
+                           PasswordArg="{Binding PasswordArg, Mode=TwoWay}"
+                           />
+
     </Grid>
 </Window>
