@@ -7,9 +7,11 @@ using System.Threading.Tasks;
 
 namespace BeFit.DAL.Entities
 {
+
     class User
     {
-        public int Id { get;}
+
+        public int? Id { get;}
         public string UserName { get; set; }
         public string Password { get; set; }
         public string Sex { get; set; }
@@ -19,15 +21,28 @@ namespace BeFit.DAL.Entities
         public string Activity { get; set; }
         public string Target { get; set; }
 
+        public User(string username, string password, string sex, double weight, int height, int age, string activity, string target)
+        {
+            Id = null;
+            UserName = username;
+            Password = password;
+            Sex = sex;
+            Weight = weight;
+            Height = height;
+            Age = age;
+            Activity = activity;
+            Target = target;
+        }
+
         public User(MySqlDataReader reader)
         {
-            Id = sbyte.Parse(reader["id"].ToString());
+            Id = int.Parse(reader["id"].ToString());
             UserName = reader["username"].ToString();
             Password = reader["password"].ToString();
             Sex = reader["sex"].ToString();
             Weight = double.Parse(reader["weight"].ToString());
             Height = sbyte.Parse(reader["height"].ToString());
-            Age = sbyte.Parse(reader["age"].ToString());
+            Age = int.Parse(reader["age"].ToString());
             Activity = reader["activity"].ToString();
             Target = reader["Target"].ToString();
         }

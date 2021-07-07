@@ -9,35 +9,59 @@ namespace BeFit.DAL.Entities
 {
     public class Product
     {
-        int Id { get; }
-        int UserId { get; }
+        #region Properites
+
+        public int? Id { get; set; }
         public string Name { get; set; }
-        public double Weight { get; set; }
         public double Carbohydrates { get; set; }
         public double Proteins { get; set; }
         public double Fats { get; set; }
         public double Kcal { get; set; }
-        
+        #endregion Properties
+
+        #region Constructors
+        public Product()
+        {
+
+        }
+        public Product(Product product)
+        {
+            Id = product.Id;
+            Name = product.Name;
+            Carbohydrates = product.Carbohydrates;
+            Proteins = product.Proteins;
+            Fats = product.Fats;
+            Kcal = product.Kcal;
+        }
         public Product(MySqlDataReader reader)
         {            
-            Id = sbyte.Parse(reader["id"].ToString());
-            UserId = sbyte.Parse(reader["userid"].ToString());
+            Id = int.Parse(reader["id"].ToString());
             Name = reader["name"].ToString();
-            Weight = double.Parse(reader["weight"].ToString());
             Carbohydrates = double.Parse(reader["carbohydrates"].ToString());
             Proteins = double.Parse(reader["proteins"].ToString());
             Fats = double.Parse(reader["fats"].ToString());
             Kcal = double.Parse(reader["kcal"].ToString());
         }
 
-        public Product(string name, double weight, double fats, double carbohydrates, double proteins) 
+        public Product( string name, double fats, double carbohydrates, double proteins, double kcal) 
         {
+            Id = null;
             Name = name;
-            Weight = weight;
             Carbohydrates = carbohydrates;
             Proteins = proteins;
             Fats = fats;
-            Kcal= Math.Round((Weight / 100) * Carbohydrates * 4 + (Weight / 100) * Fats * 9 + (Weight / 100) * Proteins * 4);
+            Kcal = kcal;
+            
         }
+        #endregion Constructors
+
+        #region Methods
+        virtual public string ToInsert()
+        {
+            return $"('NULL', '{Name}', '{Carbohydrates}','{Proteins}','{Fats}','{Kcal}')";
+        }
+
+
+        #endregion Methods
     }
 }

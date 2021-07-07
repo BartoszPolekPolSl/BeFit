@@ -84,9 +84,12 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Include="DAL\DBConnection.cs" />
+    <Compile Include="DAL\Entities\EatenProduct.cs" />
     <Compile Include="DAL\Entities\Product.cs" />
-    <Compile Include="DAL\Entities\ProductsList.cs" />
     <Compile Include="DAL\Entities\User.cs" />
+    <Compile Include="Model\UserInfo\UserInfo.cs" />
+    <Compile Include="DAL\Repositories\EatenProductsRepository.cs" />
+    <Compile Include="DAL\Repositories\FavoriteProductsRepository.cs" />
     <Compile Include="DAL\Repositories\ProductsRepository.cs" />
     <Compile Include="Model\Model.cs" />
     <Compile Include="ViewModel\BaseClass\RelayCommand.cs" />

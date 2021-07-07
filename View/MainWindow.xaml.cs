@@ -22,6 +22,7 @@ namespace BeFit
     {
         public MainWindow()
         {
+
             InitializeComponent();
         }
     }
