@@ -33,7 +33,7 @@ namespace BeFit.DAL
 
                             }
 
-                            MessageBox.Show("Zalogowales sie skurwielu.");
+                            MessageBox.Show("Zostales zalogowany.");
 
                         }
                         else
