@@ -25,7 +25,7 @@ namespace BeFit.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("PDPk3lfP4P")]
+        [global::System.Configuration.DefaultSettingValueAttribute("admin")]
         public string userID {
             get {
                 return ((string)(this["userID"]));
@@ -34,7 +34,7 @@ namespace BeFit.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("remotemysql.com")]
+        [global::System.Configuration.DefaultSettingValueAttribute("befit.cmnurp58iv8g.us-east-2.rds.amazonaws.com")]
         public string server {
             get {
                 return ((string)(this["server"]));
@@ -43,7 +43,7 @@ namespace BeFit.Properties {
         
         [global::System.Configuration.ApplicationScopedSettingAttribute()]
         [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-        [global::System.Configuration.DefaultSettingValueAttribute("PDPk3lfP4P")]
+        [global::System.Configuration.DefaultSettingValueAttribute("befit")]
         public string database {
             get {
                 return ((string)(this["database"]));
