@@ -24,8 +24,14 @@ namespace BeFit.DAL.Entities
             EatenKcal = GetEatenMacro(Kcal);
         }
 
-        public EatenProduct(MySqlDataReader reader):base(reader)
+        public EatenProduct(MySqlDataReader reader)
         {
+            Id = int.Parse(reader["id_eatenproduct"].ToString());
+            Name = reader["name"].ToString();
+            Carbohydrates = double.Parse(reader["carbohydrates"].ToString());
+            Proteins = double.Parse(reader["proteins"].ToString());
+            Fats = double.Parse(reader["fats"].ToString());
+            Kcal = double.Parse(reader["kcal"].ToString());
             Weight = double.Parse(reader["weight"].ToString());
             Carbohydrates = double.Parse(reader["carbohydrates"].ToString())*(Weight/100);
             Proteins = double.Parse(reader["proteins"].ToString()) * (Weight / 100);
@@ -50,5 +56,9 @@ namespace BeFit.DAL.Entities
         }
 
         #endregion Methods
+        public override string ToString()
+        {
+            return $"Nazwa:{Name},Waga:{Weight},Tłuszcze:{Fats},{Carbohydrates},{Proteins},{Kcal},{EatenKcal}";
+        }
     }
 }

@@ -7,8 +7,22 @@ using System.Windows.Input;
 
 namespace BeFit.ViewModel
 {
-    class BeFitViewModel
+    using BaseClass;
+    using DAL.Entities;
+    using Model;
+    using System.Collections.ObjectModel;
+
+    class BeFitViewModel : ViewModel
     {
+        private Model model;
+        public User user { get; set; }
+        public ObservableCollection<EatenProduct> EatenProducts { get; set; }
+        public BeFitViewModel(User user)
+        {
+            this.user = user;
+            this.model = new Model(user);
+            EatenProducts = model.EatenProducts;
+        }
     }
 
 

@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 namespace BeFit.DAL.Entities
 {
 
-    class User
+    public class User
     {
 
         public int? Id { get;}
@@ -36,12 +36,12 @@ namespace BeFit.DAL.Entities
 
         public User(MySqlDataReader reader)
         {
-            Id = int.Parse(reader["id"].ToString());
+            Id = int.Parse(reader["id_user"].ToString());
             UserName = reader["username"].ToString();
             Password = reader["password"].ToString();
             Sex = reader["sex"].ToString();
             Weight = double.Parse(reader["weight"].ToString());
-            Height = sbyte.Parse(reader["height"].ToString());
+            Height = int.Parse(reader["height"].ToString());
             Age = int.Parse(reader["age"].ToString());
             Activity = reader["activity"].ToString();
             Target = reader["Target"].ToString();

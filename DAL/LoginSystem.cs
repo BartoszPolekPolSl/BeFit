@@ -8,6 +8,7 @@ using System.Windows;
 
 namespace BeFit.DAL
 {
+    using DAL.Entities;
     static class LoginSystem
     {
 
@@ -17,7 +18,7 @@ namespace BeFit.DAL
             using (var connection = DBConnection.Instance.Connection)
             {
 
-                string LOGIN_USER = $"select * from users where username = '{login}' and password = '{password}' ";
+                string LOGIN_USER = $"select u.id_user, u.username, u.password,i.sex,i.weight,i.height,i.age,i.activity,i.target from users u join userinfo i on u.id_user = i.id_user where  u.username='{login}' and u.password='{password}';";
                 MySqlCommand command = new MySqlCommand(LOGIN_USER, connection);
                 {
                     try
@@ -26,41 +27,24 @@ namespace BeFit.DAL
 
                         var dataReader = command.ExecuteReader();
                         if (dataReader.HasRows)
-                        {
-                            while (dataReader.Read())
-                            {
-
-
-                            }
-
+                        {                          
+                            dataReader.Read();
+                            App.BeFitWindow(new User(dataReader));
+                            
                             MessageBox.Show("Zostales zalogowany.");
-
                         }
                         else
                         {
                             MessageBox.Show("Nazwa uzytkownika bądź hasło są nieprawidłowe.");
 
                         }
-                    }
-                    catch (MySqlException)
-                    {
-                        MessageBox.Show("Brak połączenia z serwerem.");
-                    }
-                    connection.Close();
                 }
-            }
-        }
-
-        public static void register(string login, string password)
-        {
-            using (var connection = DBConnection.Instance.Connection)
-            {
-                string REGISTER_USER = $"insert into users (username, password) VALUES ('{login}', '{password}')";
-                MySqlCommand command = new MySqlCommand(REGISTER_USER, connection);
-                connection.Open();
-                var dataReader = command.ExecuteNonQuery();
-
+                    catch (MySqlException e)
+                {
+                    MessageBox.Show(e.ToString());
+                }
                 connection.Close();
+            }
             }
         }
     }

@@ -11,7 +11,18 @@ namespace BeFit
     /// <summary>
     /// Logika interakcji dla klasy App.xaml
     /// </summary>
+    using DAL.Entities;
     public partial class App : Application
     {
+        
+        public static void BeFitWindow(User user)
+        {
+            var loginregisterwindow = Current.MainWindow;
+            var befitwindow = new View.BeFitWindow(user);
+            befitwindow.Show();
+            Current.MainWindow = befitwindow;
+            loginregisterwindow.Close();
+
+        }
     }
 }

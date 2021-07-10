@@ -35,7 +35,7 @@ namespace BeFit.DAL.Entities
         }
         public Product(MySqlDataReader reader)
         {            
-            Id = int.Parse(reader["id"].ToString());
+            Id = int.Parse(reader["id_product"].ToString());
             Name = reader["name"].ToString();
             Carbohydrates = double.Parse(reader["carbohydrates"].ToString());
             Proteins = double.Parse(reader["proteins"].ToString());

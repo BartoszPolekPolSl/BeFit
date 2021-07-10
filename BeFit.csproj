@@ -96,17 +96,28 @@
       <SubType>Designer</SubType>
     </ApplicationDefinition>
     <Compile Include="DAL\LoginSystem.cs" />
-    <Compile Include="View\LoginControl.xaml.cs">
-      <DependentUpon>LoginControl.xaml</DependentUpon>
+    <Compile Include="DAL\RegisterSystem.cs" />
+    <Compile Include="ViewModel\MainLoginRegisterViewModel.cs" />
+    <Compile Include="ViewModel\MainViewModel.cs" />
+    <Compile Include="ViewModel\RegisterViewModel.cs" />
+    <Compile Include="View\BeFitWindow.xaml.cs">
+      <DependentUpon>BeFitWindow.xaml</DependentUpon>
     </Compile>
-    <Compile Include="View\RegisterControl.xaml.cs">
-      <DependentUpon>RegisterControl.xaml</DependentUpon>
+    <Compile Include="View\LoginView.xaml.cs">
+      <DependentUpon>LoginView.xaml</DependentUpon>
     </Compile>
-    <Page Include="View\LoginControl.xaml">
+    <Compile Include="View\RegisterView.xaml.cs">
+      <DependentUpon>RegisterView.xaml</DependentUpon>
+    </Compile>
+    <Page Include="View\BeFitWindow.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>
-    <Page Include="View\MainWindow.xaml">
+    <Page Include="View\LoginView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="View\MainLoginRegisterWindow.xaml">
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </Page>
@@ -127,11 +138,11 @@
     <Compile Include="ViewModel\BaseClass\ViewModel.cs" />
     <Compile Include="ViewModel\BeFitViewModel.cs" />
     <Compile Include="ViewModel\LoginViewModel.cs" />
-    <Compile Include="View\MainWindow.xaml.cs">
-      <DependentUpon>MainWindow.xaml</DependentUpon>
+    <Compile Include="View\MainLoginRegisterWindow.xaml.cs">
+      <DependentUpon>MainLoginRegisterWindow.xaml</DependentUpon>
       <SubType>Code</SubType>
     </Compile>
-    <Page Include="View\RegisterControl.xaml">
+    <Page Include="View\RegisterView.xaml">
       <SubType>Designer</SubType>
       <Generator>MSBuild:Compile</Generator>
     </Page>

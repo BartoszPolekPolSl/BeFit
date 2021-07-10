@@ -22,7 +22,7 @@ namespace BeFit.DAL.Repositories
             List<EatenProduct> products = new List<EatenProduct>();
             using (var connection = DBConnection.Instance.Connection)
             {
-                string ALL_PRODUCTS = $"SELECT p.name, p.carbohydrates, p.proteins, p.fats, e.weight, e.kcal FROM products p JOIN eaten_products e ON p.id_product=e.id_product WHERE e.id_user={user.Id} AND DATE(date)=DATE(CURRENT_DATE()) ORDER BY e.date ASC";
+                string ALL_PRODUCTS = $"SELECT e.id_eatenproduct, p.name, p.carbohydrates, p.proteins, p.fats, e.weight, e.kcal FROM products p JOIN eaten_products e ON p.id_product=e.id_product WHERE e.id_user={user.Id} AND DATE(date)=DATE(CURRENT_DATE()) ORDER BY e.date ASC";
 
                 MySqlCommand command = new MySqlCommand(ALL_PRODUCTS, connection);
                 connection.Open();

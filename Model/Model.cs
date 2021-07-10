@@ -12,7 +12,7 @@ namespace BeFit.Model
     class Model
     {
         public ObservableCollection<EatenProduct> EatenProducts { get; set; } = new ObservableCollection<EatenProduct>();
-        public ObservableCollection<Product> FavoriteProducts { get; set; } = new ObservableCollection<Product>();
+        //public ObservableCollection<Product> FavoriteProducts { get; set; } = new ObservableCollection<Product>();
         private User user=null;
         public Model(User user)
         {
@@ -22,11 +22,11 @@ namespace BeFit.Model
             {
                 EatenProducts.Add(o);
             }
-            var favoriteproducts = FavoriteProductsRepository.GetAllUserFavoriteProducts(user);
-            foreach (var o in favoriteproducts)
-            {
-                FavoriteProducts.Add(o);
-            }
+            //var favoriteproducts = FavoriteProductsRepository.GetAllUserFavoriteProducts(user);
+            //foreach (var o in favoriteproducts)
+            //{
+            //    FavoriteProducts.Add(o);
+            //}
         }
 
         public bool IfEatenProductIsInDB(Product product)
@@ -40,17 +40,17 @@ namespace BeFit.Model
                 return false;
             }
         }
-        public bool IfFavoriteProductIsInDB(EatenProduct product)
-        {
-            if (FavoriteProducts.Contains(product))
-            {
-                return true;
-            }
-            else
-            {
-                return false;
-            }
-        }
+        //public bool IfFavoriteProductIsInDB(EatenProduct product)
+        //{
+        //    if (FavoriteProducts.Contains(product))
+        //    {
+        //        return true;
+        //    }
+        //    else
+        //    {
+        //        return false;
+        //    }
+        //}
 
         
     }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace BeFit.DAL.Entities.UserInfo
+namespace BeFit.Model.UserInfo
 {
     enum Sex
     {
