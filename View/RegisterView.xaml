@@ -7,6 +7,9 @@
              xmlns:local="clr-namespace:BeFit.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <vm:RegisterViewModel/>
+    </UserControl.DataContext>
     <Grid>
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
@@ -24,52 +27,33 @@
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
             <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
-            <RowDefinition Height="1*"/>
+
+
 
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="textBoxLogin" Grid.Column="1"  Text="{Binding Path=LoginArg,
-                RelativeSource={RelativeSource AncestorType={x:Type UserControl}},
-                Mode=TwoWay
-                }" Margin="0,2,0,0"
+        <TextBox x:Name="textBoxLogin" Grid.Column="1" Margin="0,2,0,0"
                  />
 
-        <TextBox x:Name="textBoxPassword" Grid.Column="1" Text="{Binding Path=PasswordArg,
-                RelativeSource={RelativeSource AncestorType={x:Type UserControl}},
-                Mode=TwoWay
-                }" Margin="0,35,0,3" Grid.RowSpan="2" />
+        <TextBox x:Name="textBoxPassword" Grid.Column="1" Margin="0,35,0,3" Grid.RowSpan="2" />
 
         <TextBlock Text="Login" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,-2,0,4"/>
         <TextBlock Grid.Row="1" Text="Haslo" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,2"/>
 
-        <Button Grid.Row="9" Grid.Column="1" Content="Register" Command="{Binding Path=Register, RelativeSource={RelativeSource AncestorType={x:Type UserControl}} }"/>
+        <Button x:Name="RegisterButton" Grid.Row="8" Grid.Column="1" Content="Register"/>
+        <Button Grid.Row="10" Grid.Column="1" Content="Powrót do logowania" Click="Button_Click"/>
         <TextBlock Grid.Row="1" Text="Płeć" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,36,0,5" Grid.RowSpan="2"/>
-        <StackPanel Grid.Row="2" Grid.Column="1">
-            <RadioButton Grid.Column="1" Grid.Row="5" GroupName="sex" Tag="male"  Checked="WhichSexChecked">
-                <TextBlock Text="Male"/>
-            </RadioButton>
-            <RadioButton Grid.Column="1" Grid.Row="5" GroupName="sex" Tag="female" Checked="WhichSexChecked">
-                <TextBlock Text="Female"/>
-            </RadioButton>
-        </StackPanel>
-        <TextBox x:Name="textBoxWeight" Grid.Row="3" Grid.Column="1" Text="{Binding Path=WeightArg,
-                RelativeSource={RelativeSource AncestorType={x:Type UserControl}},
-                Mode=TwoWay}" Margin="0,0,0,1" />
+        <ComboBox Grid.Row="2" Grid.Column="1" x:Name="comboBoxSex" ItemsSource="{Binding SexSource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+        <TextBox x:Name="textBoxWeight" Grid.Row="3" Grid.Column="1" Margin="0,0,0,1" />
         <TextBlock Grid.Row="3" Text="Waga" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,3"/>
         <TextBlock Grid.Row="4" Text="Wzrost" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,3,0,0"/>
-        <TextBox x:Name="textBoxHeight" Grid.Row="4" Grid.Column="1" Text="{Binding Path=HeightArg,
-                RelativeSource={RelativeSource AncestorType={x:Type UserControl}},
-                Mode=TwoWay}" Margin="0,0,0,1" />
+        <TextBox x:Name="textBoxHeight" Grid.Row="4" Grid.Column="1" Margin="0,0,0,1" />
         <TextBlock Grid.Row="5" Text="Wiek" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,3"/>
-        <TextBox x:Name="textBoxAge" Grid.Row="5" Grid.Column="1" Text="{Binding Path=AgeArg,
-                RelativeSource={RelativeSource AncestorType={x:Type UserControl}},
-                Mode=TwoWay}" Margin="0,0,0,1" />
+        <TextBox x:Name="textBoxAge" Grid.Row="5" Grid.Column="1"  Margin="0,0,0,1" />
         <TextBlock Grid.Row="6" Text="Aktywność" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,2,0,0"/>
-        <ComboBox Grid.Row="6" Grid.Column="1" x:Name="comboBoxActivity" ItemsSource="{Binding Path=ActivtySource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" SelectionChanged="WhichActivityChecked"  Margin="0,2,0,35" Grid.RowSpan="2"   />
+        <ComboBox Grid.Row="6" Grid.Column="1" x:Name="comboBoxActivity" ItemsSource="{Binding Path=ActivtySource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" Margin="0,2,0,35" Grid.RowSpan="2"   />
         <TextBlock Grid.Row="7" Text="Cel" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,2"/>
-        <TextBlock Grid.Row="6" Text="Aktywność" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,2.208,0,36.791" Grid.RowSpan="2"/>
-        <ComboBox Grid.Row="7" Grid.Column="1" x:Name="comboBoxTarget" ItemsSource="{Binding TargetSource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" SelectionChanged="WhichTargetChecked"   />
+        <ComboBox Grid.Row="7" Grid.Column="1" x:Name="comboBoxTarget" ItemsSource="{Binding TargetSource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
 
 
 

@@ -12,7 +12,7 @@ namespace BeFit.ViewModel
     using BeFit.DAL;
     class RegisterViewModel : ViewModel
     {
-
+        // TODO: Data input control
 
         public string LoginArg { get; set; }
         public string PasswordArg { get; set; }
@@ -24,11 +24,15 @@ namespace BeFit.ViewModel
         public string TargetArg { get; set; }
 
         private ICommand _register;
-        public ICommand Register => _register ?? (_register = new RelayCommand((p) => { RegisterSystem.register(LoginArg,PasswordArg,SexArg,WeightArg,HeightArg,AgeArg,ActivityArg,TargetArg); }, p => true));
+        public ICommand Register => _register ?? (_register = new RelayCommand((p) => { test(); }, p => true));
 
         private void RegisterShowMB()
         {
             MessageBox.Show("Pomyślnie zarejestrowano.");
         }
+        private void test()
+        {
+            RegisterSystem.register(LoginArg, PasswordArg, SexArg, WeightArg, HeightArg, AgeArg, ActivityArg, TargetArg);
+        } 
     }
 }

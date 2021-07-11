@@ -16,23 +16,20 @@ namespace BeFit.DAL
             {
                 try
                 {
-                    string CHECK_USERNAME = $"SELECT username FROM users WHERE username=@username";
-                    MySqlCommand command = new MySqlCommand(CHECK_USERNAME, connection);
-                    command.CommandText = CHECK_USERNAME;
-                    command.Parameters.AddWithValue("@username",login);
-                    connection.Open();
-                    var dataReader = command.ExecuteReader();
-                    if (dataReader.HasRows)
+                   
+                    if (IsUsernameAlreadyExist(login))
                     {
                         MessageBox.Show("Nazwa użytkownika jest już zajęta");
+                        connection.Close();
                     }
                     else
-                    {
+                    {                      
                         string REGISTER_USER = $"INSERT INTO users (username, password) VALUES (@login, @password)";
-                        command = new MySqlCommand(REGISTER_USER, connection);
+                        var command = new MySqlCommand(REGISTER_USER, connection);
                         command.CommandText = REGISTER_USER;
                         command.Parameters.AddWithValue("@login", login);
                         command.Parameters.AddWithValue("@password", password);
+                        connection.Open();
                         var dataReaderNoQuery = command.ExecuteNonQuery();
                         int userid = (int)command.LastInsertedId;
                         string ADD_USERINFO = $"INSERT INTO userinfo (id_user, sex, weight, height, age, activity, target) VALUES(@userid, @sex, @weight, @height, @age, @activity, @target)";
@@ -58,6 +55,26 @@ namespace BeFit.DAL
 
                 MessageBox.Show("Pomyślnie zarejestrowano.");
 
+            }
+        }
+        private static bool IsUsernameAlreadyExist(string username)
+        {
+            using (var connection = DBConnection.Instance.Connection)
+            {
+                string CHECK_USERNAME = $"SELECT username FROM users WHERE username=@username";
+                MySqlCommand command = new MySqlCommand(CHECK_USERNAME, connection);
+                command.CommandText = CHECK_USERNAME;
+                command.Parameters.AddWithValue("@username", username);
+                connection.Open();
+                var dataReader = command.ExecuteReader();
+                if (dataReader.HasRows)
+                {
+                    return true;
+                }
+                else
+                {
+                    return false;
+                }
             }
         }
     }

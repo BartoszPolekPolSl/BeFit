@@ -7,25 +7,41 @@ using System.Threading.Tasks;
 namespace BeFit.ViewModel
 {
     using BaseClass;
+    using BeFit.View;
+    using System.Windows.Input;
+
     class MainLoginRegisterViewModel : ViewModel
     {
         private object currentView;
-
         public object CurrentView
         {
             get { return currentView; }
-            set { currentView = value;
-                OnPropertyChange();
+            set
+            {
+                currentView = value;
+                OnPropertyChange(nameof(CurrentView));
             }
         }
-
-
-        public LoginViewModel LoginVM { get; set; }
+        public RegisterView RegisterV { get; set; }
+        public LoginView LoginV { get; set; }
 
         public MainLoginRegisterViewModel()
+        {        
+            LoginV = new LoginView();
+            LoginV.changeToRegisterView += changeToRegisterView;
+            RegisterV = new RegisterView();
+            RegisterV.changeToLoginView += changeToLoginView;
+            CurrentView = LoginV;
+
+        }
+        private void changeToRegisterView()
         {
-            LoginVM = new LoginViewModel();
-            CurrentView = LoginVM;
+            CurrentView = RegisterV;
+        }
+        private void changeToLoginView()
+        {
+            CurrentView = LoginV;
         }
     }
+        
 }

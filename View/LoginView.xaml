@@ -9,6 +9,9 @@
              xmlns:view="clr-namespace:BeFit.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
+    <UserControl.DataContext>
+        <vm:LoginViewModel />
+    </UserControl.DataContext>
     <Grid>
 
         <Grid.ColumnDefinitions>
@@ -26,19 +29,16 @@
             <RowDefinition Height="1*"/>
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="textBoxLogin" Grid.Row="2" Grid.Column="1"  Text="{Binding Path=LoginArg,
-                RelativeSource={RelativeSource AncestorType={x:Type UserControl}}
-                }"
+        <TextBox x:Name="textBoxLogin" Grid.Row="2" Grid.Column="1"  
                  />
 
-        <TextBox x:Name="textBoxPassword" Grid.Row="4" Grid.Column="1" Text="{Binding Path=PasswordArg,
-                RelativeSource={RelativeSource AncestorType={x:Type UserControl}}
-                }" />
+        <TextBox x:Name="textBoxPassword" Grid.Row="4" Grid.Column="1" />
 
         <TextBlock Grid.Row="1" Grid.Column="1" Text="Login" FontSize="26" TextAlignment="Center" VerticalAlignment="Center"/>
         <TextBlock Grid.Row="3" Grid.Column="1" Text="Haslo" FontSize="26" TextAlignment="Center" VerticalAlignment="Center"/>
 
-        <Button x:Name="LoginButton" Grid.Row="5" Grid.Column="1" Content="Login" Command="{ Binding Path=Login, RelativeSource={RelativeSource AncestorType={x:Type UserControl}} }"  />
+        <Button x:Name="LoginButton" Grid.Row="5" Grid.Column="1" Content="Login"/>
+        <Button x:Name="RegisterButton" Grid.Row="6" Grid.Column="1" Content="Register" Click="RegisterButton_Click"   />
 
     </Grid>
 </UserControl>

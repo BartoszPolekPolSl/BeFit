@@ -97,6 +97,9 @@
     </ApplicationDefinition>
     <Compile Include="DAL\LoginSystem.cs" />
     <Compile Include="DAL\RegisterSystem.cs" />
+    <Compile Include="Model\Activity.cs" />
+    <Compile Include="Model\Sex.cs" />
+    <Compile Include="Model\Target.cs" />
     <Compile Include="ViewModel\MainLoginRegisterViewModel.cs" />
     <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\RegisterViewModel.cs" />
@@ -129,7 +132,6 @@
     <Compile Include="DAL\Entities\EatenProduct.cs" />
     <Compile Include="DAL\Entities\Product.cs" />
     <Compile Include="DAL\Entities\User.cs" />
-    <Compile Include="Model\UserInfo\UserInfo.cs" />
     <Compile Include="DAL\Repositories\EatenProductsRepository.cs" />
     <Compile Include="DAL\Repositories\FavoriteProductsRepository.cs" />
     <Compile Include="DAL\Repositories\ProductsRepository.cs" />

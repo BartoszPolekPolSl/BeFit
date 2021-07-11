@@ -6,10 +6,6 @@
              xmlns:view="clr-namespace:BeFit.View"
              StartupUri="View/MainLoginRegisterWindow.xaml">
     <Application.Resources>
-        <ResourceDictionary>
-            <DataTemplate DataType="{x:Type viewmodel:LoginViewModel}">
-                <view:LoginView/>
-            </DataTemplate>
-        </ResourceDictionary>
+
     </Application.Resources>
 </Application>

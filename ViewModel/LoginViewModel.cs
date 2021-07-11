@@ -17,14 +17,19 @@ namespace BeFit.ViewModel
 
     class LoginViewModel : ViewModel
     {
-        
+        // TODO: Data input control
 
         public string LoginArg { get; set; }
+ 
         public string PasswordArg { get; set; }
-
-
+ 
         private ICommand _login;
-        public ICommand Login => _login ?? (_login = new RelayCommand((p) => { LoginSystem.check(LoginArg, PasswordArg); }, p => true));
+        public ICommand Login => _login ?? (_login = new RelayCommand((p) => { test(); }, p => true));
+
+        private void test()
+        {
+            LoginSystem.check(LoginArg, PasswordArg);
+        }
 
         
 

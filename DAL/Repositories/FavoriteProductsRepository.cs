@@ -10,6 +10,7 @@ namespace BeFit.DAL.Repositories
     using MySqlConnector;
     static class FavoriteProductsRepository
     {
+        // TODO: Change to parameterized query
         #region Questions
         private const string ADD_PRODUCT = "INSERT INTO 'favorite_products'('id_favoriteproducts', 'id_product', 'id_user') VALUES ";
         private const string DELETE_PRODUCT = "DELETE FROM 'favorite_products' WHERE id_favoriteproducts=";

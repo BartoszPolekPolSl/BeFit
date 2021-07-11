@@ -9,26 +9,16 @@
         mc:Ignorable="d"
         Title="BeFit" Height="450" Width="800">
         <Window.DataContext>
-            <!--<vm:MainViewModel />-->
-            <vm:RegisterViewModel/>
+            <vm:MainLoginRegisterViewModel />
         </Window.DataContext>
- 
-    <Grid>
-        <!--<ContentControl Margin="50"    Content="{Binding MainLoginRegisterVM.CurrentView}" >
-            
-            
-        </ContentControl>-->
 
-        <view:RegisterView LoginArg="{Binding LoginArg, Mode=TwoWay}"
-                           PasswordArg="{Binding PasswordArg, Mode=TwoWay}"
-                           SexArg="{Binding SexArg, Mode=TwoWay}"
-                           WeightArg="{Binding WeightArg, Mode=TwoWay}"
-                           HeightArg="{Binding HeightArg, Mode=TwoWay}"
-                           AgeArg="{Binding AgeArg, Mode=TwoWay}"
-                           ActivityArg="{Binding ActivityArg, Mode=TwoWay}"
-                           TargetArg="{Binding TargetArg, Mode=TwoWay}"
-                           Register="{Binding Register}"
-                           />
+    <Grid>
+        <ContentControl Margin="50"    Content="{Binding CurrentView, Mode=TwoWay}" >
+
+
+        </ContentControl>
+
+
 
 
 

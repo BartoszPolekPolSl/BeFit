@@ -11,6 +11,7 @@ namespace BeFit.DAL.Repositories
     using ViewModel;
     static class EatenProductsRepository
     {
+        // TODO: Change to parameterized query
         #region Questions
         private const string ADD_PRODUCT = "INSERT INTO 'eaten_products'('id_eatenproduct', 'id_user', 'id_product', 'weight','kcal','date') VALUES ";
         private const string DELETE_PRODUCT = "DELETE FROM 'eaten_products' WHERE id=";
