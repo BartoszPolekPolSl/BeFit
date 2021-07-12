@@ -1,0 +1,91 @@
+﻿<UserControl x:Class="BeFit.View.SettingsView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BeFit.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="450" d:DesignWidth="800">
+    <Grid>
+        <Border Width="650"
+                Height="400"
+                CornerRadius="10"
+                Grid.Column="2">
+
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                    <GradientStop Color="#F0F5FB" Offset="0.0"/>
+                    <GradientStop Color="WhiteSmoke" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border.Clip>
+                <RectangleGeometry RadiusX="20" RadiusY="20" Rect="0,0,650,400"/>
+            </Border.Clip>
+
+        </Border>
+        <TextBlock Text="Ustawienia" TextAlignment="Center" Margin="323,25,307,395" FontFamily="Segoe UI Semibold" FontSize="18"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="73*"/>
+                <ColumnDefinition Width="52*"/>
+                <ColumnDefinition Width="140*"/>
+                <ColumnDefinition Width="192*"/>
+                <ColumnDefinition Width="135*"/>
+                <ColumnDefinition Width="135*"/>
+                <ColumnDefinition Width="73*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="0.5*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="2"  Grid.Column="1" TextAlignment="Center" Text="Waga" FontFamily="Segoe UI Semibold" Margin="0,2,0,0" Grid.ColumnSpan="2" />
+            <TextBlock Grid.Row="4" Grid.Column="1" TextAlignment="Center" Text="Wzrost" FontFamily="Segoe UI Semibold" Margin="0,2,0,0" Grid.ColumnSpan="2" />
+            <TextBlock Grid.Row="6" Grid.Column="1" TextAlignment="Center" Text="Wiek" FontFamily="Segoe UI Semibold" Margin="0,2,0,0" Grid.ColumnSpan="2" />
+            <TextBlock Grid.Row="8" Grid.Column="1" TextAlignment="Center" Text="Płeć" FontFamily="Segoe UI Semibold" Margin="0,2,0,0" Grid.ColumnSpan="2" />
+            <TextBlock Grid.Row="2" Grid.Column="3" TextAlignment="Center" Text="Aktywność" FontFamily="Segoe UI Semibold" Margin="0,2,0,0" />
+
+            <TextBox Grid.Row="3" Grid.Column="1" Margin="4" Grid.ColumnSpan="2" />
+            <TextBox Grid.Row="5" Grid.Column="1" Margin="4" Grid.ColumnSpan="2" />
+            <TextBox Grid.Row="7" Grid.Column="1" Margin="4" Grid.ColumnSpan="2" />
+            <TextBox Grid.Row="9" Grid.Column="1" Margin="4" Grid.ColumnSpan="2" />
+            <ComboBox Grid.Row="3" Grid.Column="3" Margin="4" />
+
+            <Button Content="Zmień" FontFamily="SegoeUI" FontSize="10" Grid.Row="9" Grid.Column="4" Margin="4"/>
+
+            <RadioButton Content="lose" 
+                             Foreground="Black" 
+                             FontSize="14" 
+                             HorizontalAlignment="Center"
+                             Grid.Column="5"
+                             Grid.Row="2"
+                             Style="{StaticResource EatingTableTheme}" Width="131" Margin="4,0,0,0" />
+            <RadioButton Content="keep" 
+                             Height="50" 
+                             Foreground="Black" 
+                             FontSize="14" 
+                             HorizontalAlignment="Center"
+                             Grid.Column="5"
+                             Grid.Row="3"
+                             Style="{StaticResource EatingTableTheme}" Width="135" Margin="0,0,0,33" Grid.RowSpan="2" />
+            <RadioButton Content="gain" 
+                             Foreground="Black" 
+                             FontSize="14" 
+                             HorizontalAlignment="Center"
+                             Grid.Column="5"
+                             Grid.Row="4"
+                             Style="{StaticResource EatingTableTheme}" Width="135" />
+        </Grid>
+    </Grid>
+</UserControl>

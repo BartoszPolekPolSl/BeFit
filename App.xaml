@@ -7,5 +7,13 @@
              StartupUri="View/MainLoginRegisterWindow.xaml">
     <Application.Resources>
 
+        <ResourceDictionary>
+            <ResourceDictionary.MergedDictionaries>
+                <ResourceDictionary Source="/Recources/Theme/MenuButtonTheme.xaml"/>
+                <ResourceDictionary Source="/Recources/Theme/EatingTableTheme.xaml"/>
+            </ResourceDictionary.MergedDictionaries>
+        </ResourceDictionary>
+        
+        
     </Application.Resources>
 </Application>

@@ -1,0 +1,131 @@
+﻿<UserControl x:Class="BeFit.View.AddProductView"
+             xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+             xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+             xmlns:local="clr-namespace:BeFit.View"
+             mc:Ignorable="d" 
+             d:DesignHeight="700" d:DesignWidth="460">
+    <Grid>
+        <Border Width="450"
+                Height="300"
+                CornerRadius="10" Margin="0,0,10,400">
+
+
+            <Border.Background>
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                    <GradientStop Color="#F0F5FB" Offset="0.0"/>
+                    <GradientStop Color="WhiteSmoke" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border.Clip>
+                <RectangleGeometry RadiusX="20" RadiusY="20" Rect="0,0,450,300"/>
+            </Border.Clip>
+
+        </Border>
+        <TextBlock Text="Dodaj swój produkt" TextAlignment="Center" Margin="20,10,0,660" FontFamily="Segoe UI Semibold" FontSize="18"/>
+        <Grid>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="0.2*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="1*"/>
+                <ColumnDefinition Width="0.7*"/>
+                <ColumnDefinition Width="0.7*"/>
+                <ColumnDefinition Width="0.2*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="0.7*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="1*"/>
+                <RowDefinition Height="16*"/>
+            </Grid.RowDefinitions>
+
+            <TextBlock Grid.Row="2"  Grid.Column="1" TextAlignment="Center" Text="Nazwa" FontFamily="Segoe UI Semibold" Margin="0,2,0,0" />
+            <TextBlock Grid.Row="4" Grid.Column="1" TextAlignment="Center" Text="Białko" FontFamily="Segoe UI Semibold" Margin="0,2,0,0" />
+            <TextBlock Grid.Row="6" Grid.Column="1" TextAlignment="Center" Text="Tłuszcz" FontFamily="Segoe UI Semibold" Margin="0,2,0,0" />
+            <TextBlock Grid.Row="8" Grid.Column="1" TextAlignment="Center" Text="Węglowodany" FontFamily="Segoe UI Semibold" Margin="0,2,0,0" />
+
+            <TextBlock Grid.Row="6" Grid.Column="3" TextAlignment="Center" Text="Kcal" FontFamily="Segoe UI Semibold" Margin="0,2,0,0" />
+            <TextBlock Grid.Row="6" Grid.Column="4" TextAlignment="Center" Text="Gram" FontFamily="Segoe UI Semibold" Margin="0,2,0,0" />
+
+            <TextBox Grid.Row="3" Grid.Column="1" Margin="4" />
+            <TextBox Grid.Row="5" Grid.Column="1" Margin="4" />
+            <TextBox Grid.Row="7" Grid.Column="1" Margin="4" />
+            <TextBox Grid.Row="9" Grid.Column="1" Margin="4" />
+
+            <TextBox Grid.Row="7" Grid.Column="3" Margin="4" />
+            <TextBox Grid.Row="7" Grid.Column="4" Margin="4" />
+
+            <Button Content="Dodaj" FontFamily="SegoeUI" FontSize="10" Grid.Row="9" Grid.Column="3" Margin="4"/>
+            <Button Content="Edytuj" FontFamily="SegoeUI" FontSize="10" Grid.Row="9" Grid.Column="4" Margin="4"/>
+
+        </Grid>
+        <Grid>
+
+
+
+            <Border Width="450"
+                Height="300"
+                CornerRadius="10" Margin="0,390,10,10">
+
+
+                <Border.Background>
+                    <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                        <GradientStop Color="#F0F5FB" Offset="0.0"/>
+                        <GradientStop Color="WhiteSmoke" Offset="1"/>
+                    </LinearGradientBrush>
+                </Border.Background>
+                <Border.Clip>
+                    <RectangleGeometry RadiusX="20" RadiusY="20" Rect="0,0,450,300"/>
+                </Border.Clip>
+
+            </Border>
+
+            <Grid>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="2*"/>
+                    <ColumnDefinition Width="0.7*"/>
+                </Grid.ColumnDefinitions>
+
+                <ListBox Grid.Column="0" Margin="26,426,25,38" />
+
+
+
+            </Grid>
+
+            <Grid>
+                <Grid.RowDefinitions>
+
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="1*"/>
+                    <RowDefinition Height="0.5*"/>
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="5*"/>
+                    <ColumnDefinition Width="2.3*"/>
+                </Grid.ColumnDefinitions>
+
+                <Button Content="Dodaj" Margin="35,10" Grid.Row="7" Grid.Column="1"/>
+                <Button Content="Usuń" Margin="35,10,35,10" Grid.Row="8" Grid.Column="1"/>
+
+            </Grid>
+
+        </Grid>
+    </Grid>
+</UserControl>

@@ -6,9 +6,109 @@
         xmlns:local="clr-namespace:BeFit.View"
         xmlns:vm="clr-namespace:BeFit.ViewModel"
         mc:Ignorable="d"
-        Title="BeFit" Height="450" Width="800">
+        Title="BeFit" Width="1280" Height="800"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        >
+
 
     <Grid>
-        <ListBox Margin="50" ItemsSource="{Binding EatenProducts}" ></ListBox>
+        <!-- <ListBox Margin="50" ItemsSource="{Binding EatenProducts}" ></ListBox> -->
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="1*"/>
+            <ColumnDefinition Width="4*" />
+            <ColumnDefinition Width="1.5*"/>
+        </Grid.ColumnDefinitions>
+
+        <Grid>
+
+            <StackPanel Orientation="Vertical" Margin="0,60,0,0">
+
+                <TextBlock Text="BeFit" Foreground="Black" Margin="65,0,0,200" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="26" FontFamily="Segoe UI Semibold">
+                    <TextBlock.Effect>
+                        <DropShadowEffect
+                            ShadowDepth="1.2"
+                            Direction="320"
+                            Color="Black"
+                            Opacity="0.2"
+                            BlurRadius="4"/>
+                    </TextBlock.Effect>
+                </TextBlock>
+
+                <RadioButton Content="Dodaj" 
+                             Height="50" 
+                             Foreground="Black" 
+                             FontSize="14" 
+                             HorizontalAlignment="Center"
+                             
+                             Style="{StaticResource MenuButtonTheme}" Width="200" Margin="0,0,-4,0" />
+
+                <RadioButton Content="Ustawienia" 
+                             Height="50" 
+                             Foreground="Black" 
+                             FontSize="14" 
+                             HorizontalAlignment="Center"
+                             Style="{StaticResource MenuButtonTheme}" Width="200" Margin="0,0,-4,0" />
+
+                <RadioButton Content="Wyloguj" 
+                             Height="50" 
+                             Foreground="Black" 
+                             FontSize="14" 
+                             HorizontalAlignment="Center"
+                             Style="{StaticResource MenuButtonTheme}" Width="200" Margin="0,0,-4,0" />
+
+                <TextBlock Text="Patryk Jastrzębski" Margin="0, 220, 0, 0" TextAlignment="Center" FontFamily="Segoe UI Semibold" FontSize="17"/>
+                <TextBlock Text="Mężczyzna" Margin="30,0,0,0" TextAlignment="Left" FontFamily="Segoe UI Symbol"/>
+            </StackPanel>
+
+        </Grid>
+        <Rectangle Grid.Column="1">
+            <Rectangle.Fill>
+                <SolidColorBrush Color="#E6F0FF"></SolidColorBrush>
+            </Rectangle.Fill>
+        </Rectangle>
+
+        <TextBlock Grid.Column="2" Text="Dzisiaj 12.07.21" FontFamily="Segoe UI Semibold" FontSize="26" TextAlignment="Center" Margin="0,20,0,0"/>
+        <Border Width="275"
+                Height="315"
+                CornerRadius="10"
+                Grid.Column="2" Margin="0,0,0,315">
+
+
+            <Border.Background>
+
+                <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
+                    <GradientStop Color="#F0F5FB" Offset="0.0"/>
+                    <GradientStop Color="AliceBlue" Offset="1"/>
+                </LinearGradientBrush>
+            </Border.Background>
+            <Border.Clip>
+                <RectangleGeometry RadiusX="10" RadiusY="10" Rect="0,0,400,315"/>
+            </Border.Clip>
+        </Border>
+
+        <ListBox Grid.Column="2"  Margin="20,80,20,400" ItemsSource="{Binding EatenProducts}" >
+
+        </ListBox>
+
+        <TextBlock Text="Zjedzone kalorie" Grid.Column="2" Margin="0,390,0,360" TextAlignment="Center" />
+        <TextBlock Text="Binding kalorii" Grid.Column="2" Margin="0,411,0,339" TextAlignment="Center" />
+        
+        
+        <TextBlock Text="Białko" Grid.Column="2" Margin="0,451,0,299" TextAlignment="Center" />
+        <TextBlock Text="Binding Bialka" Grid.Column="2" Margin="0,472,0,278" TextAlignment="Center" />
+        
+        <TextBlock Text="Tłuszcz" Grid.Column="2" Margin="0,511,0,239" TextAlignment="Center" />
+        <TextBlock Text="Binding Tłuszczy" Grid.Column="2" Margin="0,532,0,218" TextAlignment="Center" />
+        
+        <TextBlock Text="Węglowodany" Grid.Column="2" Margin="0,576,0,174" TextAlignment="Center" />
+        <TextBlock Text="Binging węglowodanów" Grid.Column="2" Margin="0,597,0,153" TextAlignment="Center" />
+
+
+
+        <local:AddProductView Grid.Column="1" Margin="151,20,156,51" />
+
+
+
     </Grid>
 </Window>
