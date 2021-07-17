@@ -24,16 +24,7 @@ namespace BeFit.ViewModel
         public string PasswordArg { get; set; }
  
         private ICommand _login;
-        public ICommand Login => _login ?? (_login = new RelayCommand((p) => { test(); }, p => true));
-
-        private void test()
-        {
-            LoginSystem.check(LoginArg, PasswordArg);
-        }
-
-        
-
-
+        public ICommand Login => _login ?? (_login = new RelayCommand((p) => { LoginSystem.Login(LoginArg, PasswordArg); }, p => true));
 
     }
 

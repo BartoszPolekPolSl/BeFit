@@ -24,15 +24,12 @@ namespace BeFit.ViewModel
         public string TargetArg { get; set; }
 
         private ICommand _register;
-        public ICommand Register => _register ?? (_register = new RelayCommand((p) => { test(); }, p => true));
+        public ICommand Register => _register ?? (_register = new RelayCommand((p) => { RegisterSystem.register(LoginArg, PasswordArg, SexArg, WeightArg, HeightArg, AgeArg, ActivityArg, TargetArg); ; }, p => true));
 
         private void RegisterShowMB()
         {
             MessageBox.Show("Pomyślnie zarejestrowano.");
         }
-        private void test()
-        {
-            RegisterSystem.register(LoginArg, PasswordArg, SexArg, WeightArg, HeightArg, AgeArg, ActivityArg, TargetArg);
-        } 
+       
     }
 }

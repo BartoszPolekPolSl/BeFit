@@ -10,44 +10,56 @@ namespace BeFit.DAL.Entities
     using Repositories;
     public class EatenProduct : Product
     {
+        public int? IdEatenProduct { get; set; }
         public double Weight { get; set; }
+        public double EatenProteins { get; set; }
+        public double EatenCarbohydrates { get; set; }
+        public double EatenFats { get; set; }
         public double EatenKcal { get; set; }
 
-        public EatenProduct(Product product, double weight)
+        public EatenProduct()
         {
-            Name = product.Name;
+        }
+
+        public EatenProduct(Product product, double weight):base(product)
+        {
             Weight = weight;
-            Fats = GetEatenMacro(product.Fats);
-            Carbohydrates = GetEatenMacro(product.Carbohydrates); 
-            Proteins = GetEatenMacro(product.Proteins);
-            Kcal = product.Kcal;
+            EatenFats = GetEatenMacro(product.Fats);
+            EatenCarbohydrates = GetEatenMacro(product.Carbohydrates);
+            EatenProteins = GetEatenMacro(product.Proteins);
+            EatenKcal = GetEatenMacro(product.Kcal);
+        }
+
+        public EatenProduct(MySqlDataReader reader):base(reader)
+        {
+            IdEatenProduct = int.Parse(reader["id_eatenproduct"].ToString());
+            EatenKcal = double.Parse(reader["kcal"].ToString());
+            Weight = double.Parse(reader["weight"].ToString());
+            EatenCarbohydrates = GetEatenMacro(double.Parse(reader["carbohydrates"].ToString()));
+            EatenProteins = GetEatenMacro(double.Parse(reader["proteins"].ToString()));
+            EatenFats = GetEatenMacro(double.Parse(reader["fats"].ToString()));
             EatenKcal = GetEatenMacro(Kcal);
         }
 
-        public EatenProduct(MySqlDataReader reader)
+        public EatenProduct(EatenProduct eatenproduct)
         {
-            Id = int.Parse(reader["id_eatenproduct"].ToString());
-            Name = reader["name"].ToString();
-            Carbohydrates = double.Parse(reader["carbohydrates"].ToString());
-            Proteins = double.Parse(reader["proteins"].ToString());
-            Fats = double.Parse(reader["fats"].ToString());
-            Kcal = double.Parse(reader["kcal"].ToString());
-            Weight = double.Parse(reader["weight"].ToString());
-            Carbohydrates = double.Parse(reader["carbohydrates"].ToString())*(Weight/100);
-            Proteins = double.Parse(reader["proteins"].ToString()) * (Weight / 100);
-            Fats = double.Parse(reader["fats"].ToString()) * (Weight / 100);
-            EatenKcal = double.Parse(reader["kcal"].ToString());
+            IdProduct = eatenproduct.IdProduct;
+            Name = eatenproduct.Name;
+            Carbohydrates = eatenproduct.Carbohydrates;
+            Proteins = eatenproduct.Proteins;
+            Fats = eatenproduct.Fats;
+            Kcal = eatenproduct.Kcal;
+            IdEatenProduct = eatenproduct.IdEatenProduct;
+            Weight = eatenproduct.Weight;
+            EatenProteins = eatenproduct.EatenProteins;
+            EatenFats = eatenproduct.EatenFats;
+            EatenCarbohydrates = eatenproduct.EatenCarbohydrates;
+            EatenKcal = eatenproduct.EatenKcal;
         }
-
-
         #region Methods
         private double GetEatenMacro(double macro)
         {
-            return macro*(Weight / 100);
-        }
-        override public string ToInsert()
-        {
-            return $"'{Id}', '{Weight}', '{EatenKcal}', current_timestamp()";
+            return Math.Round( macro*(Weight / 100),2);
         }
 
         public string ToInsertFavourite()
@@ -55,10 +67,10 @@ namespace BeFit.DAL.Entities
             return $"('{Name}','0','{Carbohydrates}','{Proteins}','{Fats}','{Kcal}')";
         }
 
-        #endregion Methods
         public override string ToString()
         {
-            return $"Nazwa:{Name},Waga:{Weight},Tłuszcze:{Fats},{Carbohydrates},{Proteins},{Kcal},{EatenKcal}";
+            return $"Nazwa:{Name},Waga:{Weight},Tłuszcze:{EatenFats},Węglowodany:{EatenCarbohydrates},Białko:{EatenProteins},KCAL:{EatenKcal}";
         }
+        #endregion Methods
     }
 }

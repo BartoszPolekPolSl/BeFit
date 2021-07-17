@@ -4,6 +4,7 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:BeFit.View"
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
         xmlns:vm="clr-namespace:BeFit.ViewModel"
         mc:Ignorable="d"
         Title="BeFit" Width="1280" Height="800"
@@ -11,9 +12,8 @@
         ResizeMode="NoResize"
         >
 
-
     <Grid>
-        <!-- <ListBox Margin="50" ItemsSource="{Binding EatenProducts}" ></ListBox> -->
+         <!--<ListBox Margin="50" ItemsSource="{Binding EatenProducts}" ></ListBox>--> 
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="4*" />
@@ -68,7 +68,7 @@
             </Rectangle.Fill>
         </Rectangle>
 
-        <TextBlock Grid.Column="2" Text="Dzisiaj 12.07.21" FontFamily="Segoe UI Semibold" FontSize="26" TextAlignment="Center" Margin="0,20,0,0"/>
+        <TextBlock x:Name="txtBlockDate" Grid.Column="2" Text="{Binding CurrentDate}"  FontFamily="Segoe UI Semibold" FontSize="26" TextAlignment="Center" Margin="0,20,0,0"/>
         <Border Width="275"
                 Height="315"
                 CornerRadius="10"
@@ -87,12 +87,16 @@
             </Border.Clip>
         </Border>
 
-        <ListBox Grid.Column="2"  Margin="20,80,20,400" ItemsSource="{Binding EatenProducts}" >
-
+        <ListBox x:Name="listboxEatenProducts" Grid.Column="2"  Margin="20,80,20,400" ItemsSource="{Binding EatenProducts}">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="SelectionChanged">
+                    <i:InvokeCommandAction Command="{Binding Change}" CommandParameter="{Binding ElementName=listboxEatenProducts, Path=SelectedItem}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
         </ListBox>
 
         <TextBlock Text="Zjedzone kalorie" Grid.Column="2" Margin="0,390,0,360" TextAlignment="Center" />
-        <TextBlock Text="Binding kalorii" Grid.Column="2" Margin="0,411,0,339" TextAlignment="Center" />
+        <TextBlock Text="{Binding EatenKcal}" Grid.Column="2" Margin="0,425,0,325" TextAlignment="Center" />
         
         
         <TextBlock Text="Białko" Grid.Column="2" Margin="0,451,0,299" TextAlignment="Center" />
@@ -106,7 +110,7 @@
 
 
 
-        <local:AddProductView Grid.Column="1" Margin="151,20,156,51" />
+        <ContentControl Grid.Column="1" Content="{Binding CurrentView}" Margin="151,20,156,51"/>
 
 
 

@@ -47,12 +47,12 @@ namespace BeFit.DAL.Repositories
             bool state = false;
             using (var connection = DBConnection.Instance.Connection)
             {
-                ProductsRepository.AddProductDB(product);
-                MySqlCommand command = new MySqlCommand($"{ADD_PRODUCT} ('null', '{product.Id}', '{user.Id}')", connection);
+                ProductsRepository.AddProductDB(ref product);
+                MySqlCommand command = new MySqlCommand($"{ADD_PRODUCT} ('null', '{product.IdProduct}', '{user.Id}')", connection);
                 connection.Open();
                 var id = command.ExecuteNonQuery();
                 state = true;
-                product.Id = (int)command.LastInsertedId;
+                product.IdProduct = (int)command.LastInsertedId;
                 connection.Close();
             }
             return state;
@@ -63,7 +63,7 @@ namespace BeFit.DAL.Repositories
             bool state = false;
             using (var connection = DBConnection.Instance.Connection)
             {
-                MySqlCommand command = new MySqlCommand($"{DELETE_PRODUCT} '{product.Id}'", connection);
+                MySqlCommand command = new MySqlCommand($"{DELETE_PRODUCT} '{product.IdProduct}'", connection);
                 connection.Open();
                 var id = command.ExecuteNonQuery();
                 state = true;

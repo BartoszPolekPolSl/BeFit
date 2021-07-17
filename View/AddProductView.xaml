@@ -4,8 +4,10 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:local="clr-namespace:BeFit.View"
+             xmlns:vm="clr-namespace:BeFit.ViewModel"
              mc:Ignorable="d" 
              d:DesignHeight="700" d:DesignWidth="460">
+
     <Grid>
         <Border Width="450"
                 Height="300"
@@ -57,16 +59,16 @@
             <TextBlock Grid.Row="6" Grid.Column="3" TextAlignment="Center" Text="Kcal" FontFamily="Segoe UI Semibold" Margin="0,2,0,0" />
             <TextBlock Grid.Row="6" Grid.Column="4" TextAlignment="Center" Text="Gram" FontFamily="Segoe UI Semibold" Margin="0,2,0,0" />
 
-            <TextBox Grid.Row="3" Grid.Column="1" Margin="4" />
-            <TextBox Grid.Row="5" Grid.Column="1" Margin="4" />
-            <TextBox Grid.Row="7" Grid.Column="1" Margin="4" />
-            <TextBox Grid.Row="9" Grid.Column="1" Margin="4" />
+            <TextBox x:Name="txtBoxName" Grid.Row="3" Grid.Column="1" Margin="4" />
+            <TextBox x:Name="txtBoxProteins" Grid.Row="5" Grid.Column="1" Margin="4" />
+            <TextBox x:Name="txtBoxFats" Grid.Row="7" Grid.Column="1" Margin="4" />
+            <TextBox x:Name="txtBoxCarbohydrates" Grid.Row="9" Grid.Column="1" Margin="4" />
 
-            <TextBox Grid.Row="7" Grid.Column="3" Margin="4" />
-            <TextBox Grid.Row="7" Grid.Column="4" Margin="4" />
+            <TextBox x:Name="txtBoxKcal" Grid.Row="7" Grid.Column="3" Margin="4" />
+            <TextBox x:Name="txtBoxWeight" Grid.Row="7" Grid.Column="4" Margin="4" />
 
-            <Button Content="Dodaj" FontFamily="SegoeUI" FontSize="10" Grid.Row="9" Grid.Column="3" Margin="4"/>
-            <Button Content="Edytuj" FontFamily="SegoeUI" FontSize="10" Grid.Row="9" Grid.Column="4" Margin="4"/>
+            <Button x:Name="btnAddEatenProduct" Content="Dodaj" FontFamily="SegoeUI" FontSize="10" Grid.Row="9" Grid.Column="3" Margin="4"/>
+            <Button x:Name="btnEdit" Content="Edytuj" FontFamily="SegoeUI" FontSize="10" Grid.Row="9" Grid.Column="4" Margin="4"/>
 
         </Grid>
         <Grid>
@@ -123,6 +125,7 @@
 
                 <Button Content="Dodaj" Margin="35,10" Grid.Row="7" Grid.Column="1"/>
                 <Button Content="Usuń" Margin="35,10,35,10" Grid.Row="8" Grid.Column="1"/>
+                <Button x:Name="btnRemoveEatenProduct" Content="Usuń" FontFamily="SegoeUI" FontSize="10" Margin="270,21,113,34" Grid.ColumnSpan="2" Grid.Row="3"/>
 
             </Grid>
 

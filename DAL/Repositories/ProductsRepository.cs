@@ -11,32 +11,45 @@ namespace BeFit.DAL.Repositories
     static class ProductsRepository
     {
         // TODO: Change to parameterized query
-        #region Questions
-        private const string ADD_PRODUCT = "INSERT INTO 'products'('id_product', 'name', 'carbohydrates','proteins','fats','kcal') VALUES ";
-        private const string DELETE_PRODUCT = "DELETE FROM 'products' WHERE id_product=";
+        #region Queries
+        private const string DELETE_PRODUCT = "DELETE FROM products WHERE id_product=@idproduct";
+        private const string ADD_PRODUCT = "INSERT INTO products (name, carbohydrates, proteins, fats, kcal) VALUES( @name, @carbohydrates, @proteins, @fats, @kcal)";
+        private const string EDIT_PRODUCT = "UPDATE products SET name=@name, carbohydrates=@carbohydrates, proteins=@proteins, fats=@fats, kcal=@kcal WHERE id_product=@idproduct";
+        private const string GET_PRODUCT = "SELECT * FROM products WHERE name=@name AND carbohydrates=@carbohydrates AND proteins=@proteins AND fats=@fats AND kcal=@kcal";
         #endregion
 
         #region CRUD methods
-        public static bool AddProductDB(Product product)
+        public static bool AddProductDB(ref Product product)
         {
             bool state = false;
             using (var connection = DBConnection.Instance.Connection)
             {
-                MySqlCommand command = new MySqlCommand($"{ADD_PRODUCT} {product.ToInsert()}", connection);
-                connection.Open();
-                var id = command.ExecuteNonQuery();
-                state = true;
-                product.Id = (int)command.LastInsertedId;
-                connection.Close();
+                if (!ifProductAlreadyExist(ref product))
+                {                 
+                    MySqlCommand command = new MySqlCommand(ADD_PRODUCT, connection);
+                    command.CommandText = ADD_PRODUCT;
+                    command.Parameters.AddWithValue("@name", product.Name);
+                    command.Parameters.AddWithValue("@carbohydrates", product.Carbohydrates);
+                    command.Parameters.AddWithValue("@proteins", product.Proteins);
+                    command.Parameters.AddWithValue("@fats", product.Fats);
+                    command.Parameters.AddWithValue("@kcal", product.Kcal);
+                    connection.Open();
+                    var id = command.ExecuteNonQuery();
+                    state = true;
+                    product.IdProduct = (int)command.LastInsertedId;
+                    connection.Close();
+                }   
             }
             return state;
         }
-        public static bool DeleteProductDB(Product product)
+        public static bool RemoveProductDB(Product product)
         {
             bool state = false;
             using (var connection = DBConnection.Instance.Connection)
             {
-                MySqlCommand command = new MySqlCommand($"{DELETE_PRODUCT} '{product.Id}'", connection);
+                MySqlCommand command = new MySqlCommand(DELETE_PRODUCT, connection);
+                command.CommandText = DELETE_PRODUCT;
+                command.Parameters.AddWithValue("@idproduct", product.IdProduct);
                 connection.Open();
                 var id = command.ExecuteNonQuery();
                 state = true;
@@ -48,11 +61,15 @@ namespace BeFit.DAL.Repositories
         {
             bool state = false;
             using (var connection = DBConnection.Instance.Connection)
-            {
-                string EDIT_PRODUCT = $"UPDATE products SET name='{product.Name}', " +
-                    $"carbohydrates={product.Carbohydrates}, proteins='{product.Proteins}', fats='{product.Fats}', kcal='{product.Kcal}' WHERE id={product.Id}";
-
+            {            
                 MySqlCommand command = new MySqlCommand(EDIT_PRODUCT, connection);
+                command.CommandText = EDIT_PRODUCT;
+                command.Parameters.AddWithValue("@name", product.Name);
+                command.Parameters.AddWithValue("@carbohydrates", product.Carbohydrates);
+                command.Parameters.AddWithValue("@proteins", product.Proteins);
+                command.Parameters.AddWithValue("@fats", product.Fats);
+                command.Parameters.AddWithValue("@kcal", product.Kcal);
+                command.Parameters.AddWithValue("@idproduct", product.IdProduct);
                 connection.Open();
                 var n = command.ExecuteNonQuery();
                 if (n == 1) state = true;
@@ -62,6 +79,32 @@ namespace BeFit.DAL.Repositories
             return state;
         }
 
+        private static bool ifProductAlreadyExist(ref Product product)
+        {
+            
+            using (var connection = DBConnection.Instance.Connection)
+            {           
+                MySqlCommand command = new MySqlCommand(GET_PRODUCT, connection);
+                command.CommandText = GET_PRODUCT;
+                command.Parameters.AddWithValue("@name", product.Name);
+                command.Parameters.AddWithValue("@carbohydrates", product.Carbohydrates);
+                command.Parameters.AddWithValue("@proteins", product.Proteins);
+                command.Parameters.AddWithValue("@fats", product.Fats);
+                command.Parameters.AddWithValue("@kcal", product.Kcal);
+                connection.Open();
+                var reader = command.ExecuteReader();
+                if (reader.HasRows)
+                {
+                    reader.Read();
+                    product = new Product(reader);
+                    return true;
+                }
+                else
+                {
+                    return false;
+                } 
+            }
+        }
         #endregion
     }
 }

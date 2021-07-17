@@ -11,7 +11,7 @@ namespace BeFit.DAL.Entities
     {
         #region Properites
 
-        public int? Id { get; set; }
+        public int? IdProduct { get; set; }
         public string Name { get; set; }
         public double Carbohydrates { get; set; }
         public double Proteins { get; set; }
@@ -26,7 +26,7 @@ namespace BeFit.DAL.Entities
         }
         public Product(Product product)
         {
-            Id = product.Id;
+            IdProduct = product.IdProduct;
             Name = product.Name;
             Carbohydrates = product.Carbohydrates;
             Proteins = product.Proteins;
@@ -35,7 +35,7 @@ namespace BeFit.DAL.Entities
         }
         public Product(MySqlDataReader reader)
         {            
-            Id = int.Parse(reader["id_product"].ToString());
+            IdProduct = int.Parse(reader["id_product"].ToString());
             Name = reader["name"].ToString();
             Carbohydrates = double.Parse(reader["carbohydrates"].ToString());
             Proteins = double.Parse(reader["proteins"].ToString());
@@ -45,7 +45,7 @@ namespace BeFit.DAL.Entities
 
         public Product( string name, double fats, double carbohydrates, double proteins, double kcal) 
         {
-            Id = null;
+            IdProduct = null;
             Name = name;
             Carbohydrates = carbohydrates;
             Proteins = proteins;
@@ -55,13 +55,5 @@ namespace BeFit.DAL.Entities
         }
         #endregion Constructors
 
-        #region Methods
-        virtual public string ToInsert()
-        {
-            return $"('NULL', '{Name}', '{Carbohydrates}','{Proteins}','{Fats}','{Kcal}')";
-        }
-
-
-        #endregion Methods
     }
 }

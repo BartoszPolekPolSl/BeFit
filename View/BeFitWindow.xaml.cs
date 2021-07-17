@@ -17,16 +17,16 @@ namespace BeFit.View
     /// <summary>
     /// Logika interakcji dla klasy BeFit.xaml
     /// </summary>
-    using DAL.Entities;
     using ViewModel;
+    using Model;
     public partial class BeFitWindow : Window
     {
         private BeFitViewModel BeFitVM;
-        public BeFitWindow(User user)
+        public BeFitWindow(Model model)
         {
-            BeFitVM = new BeFitViewModel(user);
+            BeFitVM = new BeFitViewModel(model);
             InitializeComponent();
-            DataContext = BeFitVM;          
+            DataContext = BeFitVM;
         }
     }
 }
