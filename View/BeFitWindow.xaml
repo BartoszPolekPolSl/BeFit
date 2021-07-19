@@ -35,7 +35,7 @@
                     </TextBlock.Effect>
                 </TextBlock>
 
-                <RadioButton Content="Dodaj" 
+                <RadioButton Content="Kalkulator" 
                              Height="50" 
                              Foreground="Black" 
                              FontSize="14" 
@@ -57,8 +57,8 @@
                              HorizontalAlignment="Center"
                              Style="{StaticResource MenuButtonTheme}" Width="200" Margin="0,0,-4,0" />
 
-                <TextBlock Text="Patryk Jastrzębski" Margin="0, 220, 0, 0" TextAlignment="Center" FontFamily="Segoe UI Semibold" FontSize="17"/>
-                <TextBlock Text="Mężczyzna" Margin="30,0,0,0" TextAlignment="Left" FontFamily="Segoe UI Symbol"/>
+                <TextBlock Text="{Binding Username}" Margin="0, 220, 0, 0" TextAlignment="Center" FontFamily="Segoe UI Semibold" FontSize="17"/>
+                <TextBlock Text="{Binding UserSex}" Margin="30,0,0,0" TextAlignment="Left" FontFamily="Segoe UI Symbol"/>
             </StackPanel>
 
         </Grid>
@@ -90,7 +90,7 @@
         <ListBox x:Name="listboxEatenProducts" Grid.Column="2"  Margin="20,80,20,400" ItemsSource="{Binding EatenProducts}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">
-                    <i:InvokeCommandAction Command="{Binding Change}" CommandParameter="{Binding ElementName=listboxEatenProducts, Path=SelectedItem}"/>
+                    <i:InvokeCommandAction Command="{Binding ChangeEatenProduct}" CommandParameter="{Binding ElementName=listboxEatenProducts, Path=SelectedItem}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </ListBox>

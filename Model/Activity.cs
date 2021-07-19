@@ -6,10 +6,12 @@ using System.Threading.Tasks;
 
 namespace BeFit.Model
 {
-    enum Activity
+    public enum Activity
     {
+        lack,
         little,
         medium,
-        high
+        high,
+        professionally
     }
 }

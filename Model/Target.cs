@@ -8,8 +8,8 @@ namespace BeFit.Model
 {
     enum Target
     {
-        lose,
-        gain,
-        keep
+        lose=-200,
+        gain=200,
+        keep=0
     }
 }

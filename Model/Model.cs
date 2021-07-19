@@ -12,21 +12,13 @@ namespace BeFit.Model
     public class Model
     {
         public ObservableCollection<EatenProduct> EatenProducts { get; set; } = new ObservableCollection<EatenProduct>();
-        //public ObservableCollection<Product> FavoriteProducts { get; set; } = new ObservableCollection<Product>();
+        public ObservableCollection<Product> FavoriteProducts { get; set; } = new ObservableCollection<Product>();
         public User User=null;
         public Model(User user)
         {
             this.User = user;
-            var eatenproducts = EatenProductsRepository.GetAllUserEatenProducts(user);
-            foreach(var o in eatenproducts)
-            {
-                EatenProducts.Add(o);
-            }
-            //var favoriteproducts = FavoriteProductsRepository.GetAllUserFavoriteProducts(user);
-            //foreach (var o in favoriteproducts)
-            //{
-            //    FavoriteProducts.Add(o);
-            //}
+            UpdateEatenProductDB();
+            UpdateFavouriteProductDB();
         }
 
         public bool AddEatenProductDB(EatenProduct eatenproduct, User user)
@@ -43,12 +35,7 @@ namespace BeFit.Model
         {
             if (EatenProductsRepository.EditProductDB(eatenproduct))
             {
-                EatenProducts.Clear();
-                var eatenproducts = EatenProductsRepository.GetAllUserEatenProducts(User);
-                foreach (var o in eatenproducts)
-                {
-                    EatenProducts.Add(o);
-                }
+                UpdateEatenProductDB();
             }
             return false;
         }
@@ -63,16 +50,53 @@ namespace BeFit.Model
             return false;
         }
 
-        //public bool IfFavoriteProductIsInDB(EatenProduct product)
-        //{
-        //    if (FavoriteProducts.Contains(product))
-        //    {
-        //        return true;
-        //    }
-        //    else
-        //    {
-        //        return false;
-        //    }
-        //}
+        public bool AddFavoriteProductDB(Product product, User user)
+        {
+            if (FavoriteProductsRepository.AddProductDB(product, user))
+            {
+                FavoriteProducts.Add(product);
+                return true;
+            }
+            return false;
+        }
+
+        public bool RemoveFavoriteProductDB(Product product)
+        {
+            if (FavoriteProductsRepository.RemoveProductDB(product))
+            {
+                UpdateFavouriteProductDB();
+            }
+            return false;
+        }
+
+        public bool EditFavoriteProductDB(Product product)
+        {
+            if (FavoriteProductsRepository.EditProductDB(product))
+            {
+                UpdateFavouriteProductDB();
+            }
+            return false;
+        }
+
+        public void UpdateFavouriteProductDB()
+        {
+            FavoriteProducts.Clear();
+            var favoriteproducts = FavoriteProductsRepository.GetAllUserFavoriteProducts(User);
+            foreach (var o in favoriteproducts)
+            {
+                FavoriteProducts.Add(o);
+            }
+        }
+
+        public void UpdateEatenProductDB()
+        {
+            EatenProducts.Clear();
+            var eatenproducts = EatenProductsRepository.GetAllUserEatenProducts(User);
+            foreach (var o in eatenproducts)
+            {
+                EatenProducts.Add(o);
+            }
+        }
+
     }
 }

@@ -43,7 +43,7 @@
         <Button x:Name="RegisterButton" Grid.Row="8" Grid.Column="1" Content="Register"/>
         <Button Grid.Row="10" Grid.Column="1" Content="Powrót do logowania" Click="Button_Click"/>
         <TextBlock Grid.Row="1" Text="Płeć" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,36,0,5" Grid.RowSpan="2"/>
-        <ComboBox Grid.Row="2" Grid.Column="1" x:Name="comboBoxSex" ItemsSource="{Binding SexSource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}"/>
+        <ComboBox  Grid.Row="2" Grid.Column="1" x:Name="comboBoxSex"/>
         <TextBox x:Name="textBoxWeight" Grid.Row="3" Grid.Column="1" Margin="0,0,0,1" />
         <TextBlock Grid.Row="3" Text="Waga" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,3"/>
         <TextBlock Grid.Row="4" Text="Wzrost" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,3,0,0"/>
@@ -51,9 +51,9 @@
         <TextBlock Grid.Row="5" Text="Wiek" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,3"/>
         <TextBox x:Name="textBoxAge" Grid.Row="5" Grid.Column="1"  Margin="0,0,0,1" />
         <TextBlock Grid.Row="6" Text="Aktywność" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,2,0,0"/>
-        <ComboBox Grid.Row="6" Grid.Column="1" x:Name="comboBoxActivity" ItemsSource="{Binding Path=ActivtySource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" Margin="0,2,0,35" Grid.RowSpan="2"   />
+        <ComboBox Grid.Row="6" Grid.Column="1" x:Name="comboBoxActivity" Margin="0,2,0,35" Grid.RowSpan="2"   />
         <TextBlock Grid.Row="7" Text="Cel" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,2"/>
-        <ComboBox Grid.Row="7" Grid.Column="1" x:Name="comboBoxTarget" ItemsSource="{Binding TargetSource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" />
+        <ComboBox Grid.Row="7" Grid.Column="1" x:Name="comboBoxTarget"/>
 
 
 

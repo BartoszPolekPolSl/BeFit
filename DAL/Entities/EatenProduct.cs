@@ -29,6 +29,10 @@ namespace BeFit.DAL.Entities
             EatenProteins = GetEatenMacro(product.Proteins);
             EatenKcal = GetEatenMacro(product.Kcal);
         }
+        public EatenProduct(Product product) : base(product)
+        {
+
+        }
 
         public EatenProduct(MySqlDataReader reader):base(reader)
         {
@@ -60,11 +64,6 @@ namespace BeFit.DAL.Entities
         private double GetEatenMacro(double macro)
         {
             return Math.Round( macro*(Weight / 100),2);
-        }
-
-        public string ToInsertFavourite()
-        {
-            return $"('{Name}','0','{Carbohydrates}','{Proteins}','{Fats}','{Kcal}')";
         }
 
         public override string ToString()

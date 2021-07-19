@@ -55,5 +55,11 @@ namespace BeFit.DAL.Entities
         }
         #endregion Constructors
 
+        #region Methods
+        public override string ToString()
+        {
+            return $"Nazwa:{Name},Tłuszcze:{Fats},Węglowodany:{Carbohydrates},Białko:{Proteins},KCAL:{Kcal}";
+        }
+        #endregion
     }
 }

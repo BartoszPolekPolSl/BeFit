@@ -21,12 +21,19 @@ namespace BeFit.View
     using Model;
     public partial class BeFitWindow : Window
     {
+
         private BeFitViewModel BeFitVM;
         public BeFitWindow(Model model)
         {
             BeFitVM = new BeFitViewModel(model);
             InitializeComponent();
             DataContext = BeFitVM;
+            BeFitVM.UnselectEatenProductsIndex += unselectListBoxIndex;
+        }
+
+        private void unselectListBoxIndex()
+        {
+            listboxEatenProducts.SelectedIndex = -1;
         }
     }
 }

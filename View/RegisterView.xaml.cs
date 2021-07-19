@@ -31,15 +31,15 @@ namespace BeFit.View
             BindingOperations.SetBinding(textBoxAge, TextBox.TextProperty, new Binding() { Path = new PropertyPath(nameof(RegisterViewModel.AgeArg)), Source = DataContext });
             BindingOperations.SetBinding(textBoxHeight, TextBox.TextProperty, new Binding() { Path = new PropertyPath(nameof(RegisterViewModel.HeightArg)), Source = DataContext });
             BindingOperations.SetBinding(textBoxWeight, TextBox.TextProperty, new Binding() { Path = new PropertyPath(nameof(RegisterViewModel.WeightArg)), Source = DataContext });
+            BindingOperations.SetBinding(comboBoxTarget, ComboBox.ItemsSourceProperty, new Binding() { Path = new PropertyPath(nameof(RegisterViewModel.TargetSource)), Source = DataContext });
+            BindingOperations.SetBinding(comboBoxSex, ComboBox.ItemsSourceProperty, new Binding() { Path = new PropertyPath(nameof(RegisterViewModel.SexSource)), Source = DataContext });
+            BindingOperations.SetBinding(comboBoxActivity, ComboBox.ItemsSourceProperty, new Binding() { Path = new PropertyPath(nameof(RegisterViewModel.ActivtySource)), Source = DataContext });
             BindingOperations.SetBinding(comboBoxTarget, ComboBox.SelectedItemProperty, new Binding() { Path = new PropertyPath(nameof(RegisterViewModel.TargetArg)), Source = DataContext });
             BindingOperations.SetBinding(comboBoxActivity, ComboBox.SelectedItemProperty, new Binding() { Path = new PropertyPath(nameof(RegisterViewModel.ActivityArg)), Source = DataContext });
             BindingOperations.SetBinding(comboBoxSex, ComboBox.SelectedItemProperty, new Binding() { Path = new PropertyPath(nameof(RegisterViewModel.SexArg)), Source = DataContext });
             BindingOperations.SetBinding(RegisterButton, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(RegisterViewModel.Register)), Source = DataContext });
 
         }
-        public List<String> ActivtySource { get; set; } = new List<String> { Model.Activity.little.ToString(), Model.Activity.medium.ToString(), Model.Activity.high.ToString() };
-        public List<String> TargetSource { get; set; } = new List<String> { Model.Target.lose.ToString(), Model.Target.keep.ToString(), Model.Target.gain.ToString() };
-        public List<String> SexSource { get; set; } = new List<String> { Model.Sex.male.ToString(), Model.Sex.female.ToString(), };
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {

@@ -12,10 +12,17 @@ namespace BeFit.ViewModel
     using Model;
     using System.Collections.ObjectModel;
     using System.Media;
+    using System.Windows.Controls;
     using View;
 
     public class BeFitViewModel : ViewModel
     {
+        #region Delegates
+
+        public delegate void UnselectListBoxIndex();
+        public UnselectListBoxIndex UnselectEatenProductsIndex;
+        #endregion
+
         #region Private
         private Model model;
         private double eatenKcal;
@@ -26,14 +33,16 @@ namespace BeFit.ViewModel
 
         #region Constructors
         public BeFitViewModel(Model model)
-        {
-            currentEatenProduct = new EatenProduct();
-            AddProductView = new AddProductView(this);
+        {             
             this.model = model;
             User = model.User;            
             EatenProducts = model.EatenProducts;
+            FavoriteProducts = model.FavoriteProducts;
+            currentEatenProduct = new EatenProduct();
+            AddProductView = new AddProductView(this);
             CurrentView = AddProductView;
             CurrentDate = DateTime.Now.ToString();
+            Username = User.UserName;
             getEatenKcal();
             updateTime();
         }
@@ -46,6 +55,23 @@ namespace BeFit.ViewModel
 
         public ObservableCollection<EatenProduct> EatenProducts { get; set; }
 
+        public ObservableCollection<Product> FavoriteProducts { get; set; }
+
+        public string Username { get; set; }
+
+
+        public double UserTarget { get; set; }
+
+        public string UserSex
+        {
+            get
+            {
+                if (User.Sex == "male")
+                    return "Mężczyzna";
+                else
+                    return "Kobieta";
+            }
+        }
 
         public string CurrentDate
         {
@@ -136,26 +162,43 @@ namespace BeFit.ViewModel
                 OnPropertyChange(nameof(CurrentProductName));
             }
         }
+
+        
+
         #endregion
 
         #region Commands
 
-        private ICommand _add;
-        public ICommand Add => _add ?? (_add = new RelayCommand((p) => { addEatenProductDB(); }, p => true));
+        private ICommand _addEatenProduct;
+        public ICommand AddEatenProduct => _addEatenProduct ?? (_addEatenProduct = new RelayCommand((p) => { addEatenProduct(); }, p => true));
 
-        private ICommand _change;
-        public ICommand Change => _change ?? (_change = new RelayCommand((p) => { changeEatenProduct(p); }, p => true));
+        private ICommand _changeEatenProduct;
+        public ICommand ChangeEatenProduct => _changeEatenProduct ?? (_changeEatenProduct = new RelayCommand((p) => { changeEatenProduct(p); }, p => true));      
 
-        private ICommand _remove;
-        public ICommand Remove => _remove ?? (_remove = new RelayCommand((p) => { removeEatenProductDB(); }, p => true));
+        private ICommand _removeEatenProduct;
+        public ICommand RemoveEatenProduct => _removeEatenProduct ?? (_removeEatenProduct = new RelayCommand((p) => { removeEatenProduct(); }, p => true));
 
-        private ICommand _edit;
-        public ICommand Edit => _edit ?? (_edit = new RelayCommand((p) => { editEatenProductDB(); }, p => true));
+        private ICommand _editEatenProduct;
+        public ICommand EditEatenProduct => _editEatenProduct ?? (_editEatenProduct = new RelayCommand((p) => { editEatenProduct(); }, p => true));
+
+        private ICommand _addFavoriteProduct;
+        public ICommand AddFavoriteProduct => _addFavoriteProduct ?? (_addFavoriteProduct = new RelayCommand((p) => { addFavoriteProduct(); }, p => true));
+
+
+        private ICommand _changeFavoriteProduct;
+        public ICommand ChangeFavoriteProduct => _changeFavoriteProduct ?? (_changeFavoriteProduct = new RelayCommand((p) => { changeFavoriteProduct(p); }, p => true));
+
+        private ICommand _removeFavoriteProduct;
+        public ICommand RemoveFavoriteProduct => _removeFavoriteProduct ?? (_removeFavoriteProduct = new RelayCommand((p) => { removeFavoriteProduct(); }, p => true));
+
+        private ICommand _editFavoriteProduct;
+        public ICommand EditFavoriteProduct => _editFavoriteProduct ?? (_editFavoriteProduct = new RelayCommand((p) => { editFavoriteProduct(); }, p => true));
+
 
         #endregion
 
         #region Methods
-        private void addEatenProductDB()
+        private void addEatenProduct()
         {
             Product product = new Product(CurrentProductName, CurrentFats, CurrentCarbohydrates, CurrentProteins, CurrentKcal);
             EatenProduct eatenproduct = new EatenProduct(product, CurrentWeight);
@@ -165,20 +208,22 @@ namespace BeFit.ViewModel
             player.Load();
             player.Play();
         }
-
-        private void editEatenProductDB()
+        
+        private void editEatenProduct()
         {
             model.EditEatenProductDB(currentEatenProduct);
+            model.UpdateFavouriteProductDB();
             getEatenKcal();
         }
 
-        private void removeEatenProductDB()
+        private void removeEatenProduct()
         {
             model.RemoveEatenProductDB(currentEatenProduct);
         }
 
         private void changeEatenProduct(object parameter)
         {
+            AddProductView.listBoxFavoriteProducts.SelectedIndex = -1;
             if (parameter != null)
             {
                 EatenProduct eatenproduct = (EatenProduct)parameter;
@@ -189,8 +234,42 @@ namespace BeFit.ViewModel
             {
                 currentEatenProduct = new EatenProduct();
                 OnPropertyChange(nameof(CurrentCarbohydrates), nameof(CurrentFats), nameof(CurrentKcal), nameof(CurrentProteins), nameof(CurrentWeight), nameof(CurrentProductName));
-            }  
-        } 
+            }         
+        }
+
+        private void changeFavoriteProduct(object parameter)
+        {
+            UnselectEatenProductsIndex.Invoke();
+            if (parameter != null)
+            {
+                Product product = (Product)parameter;
+                currentEatenProduct = new EatenProduct(product);
+                OnPropertyChange(nameof(CurrentCarbohydrates), nameof(CurrentFats), nameof(CurrentKcal), nameof(CurrentProteins), nameof(CurrentWeight), nameof(CurrentProductName));
+            }
+            else
+            {
+                currentEatenProduct = new EatenProduct();
+                OnPropertyChange(nameof(CurrentCarbohydrates), nameof(CurrentFats), nameof(CurrentKcal), nameof(CurrentProteins), nameof(CurrentWeight), nameof(CurrentProductName));
+            }
+        }
+
+        private void addFavoriteProduct()
+        {
+            Product product = new Product(CurrentProductName, CurrentFats, CurrentCarbohydrates, CurrentProteins, CurrentKcal);
+            model.AddFavoriteProductDB(product, User);
+        }
+
+        private void removeFavoriteProduct()
+        {
+            model.RemoveFavoriteProductDB(currentEatenProduct);
+        }
+
+        private void editFavoriteProduct()
+        {
+            model.EditFavoriteProductDB(currentEatenProduct);
+            model.UpdateEatenProductDB();
+        }
+
 
         private void getEatenKcal()
         {
@@ -207,6 +286,58 @@ namespace BeFit.ViewModel
             CurrentDate = DateTime.Now.ToString("G");
             await Task.Delay(1000);
             updateTime();
+        }
+
+        private void getKcalTarget()
+        {
+            if (User.Sex == Sex.male.ToString())
+            {
+                UserTarget = (((9.99 * User.Weight) + (6.25 * User.Height) - (4.92 * User.Age) + 5) * getActivityDoubleValue(User.Activity)) + getTargetDoubleValue(User.Target);
+            }
+            else
+            {
+                UserTarget = (((9.99 * User.Weight) + (6.25 * User.Height) - (4.92 * User.Age) - 161) * getActivityDoubleValue(User.Activity)) + getTargetDoubleValue(User.Target);
+            }
+        }
+
+        private double getActivityDoubleValue(string activity)
+        {
+            if (activity == Activity.lack.ToString())
+            {
+                return 1.2;
+            }
+            else if(activity == Activity.little.ToString())
+            {
+                return 1.3;
+            }
+            else if (activity == Activity.medium.ToString())
+            {
+                return 1.5;
+            }
+            else if (activity == Activity.high.ToString())
+            {
+                return 1.7;
+            }
+            else
+            {
+                return 2;
+            }
+        }
+
+        private int getTargetDoubleValue(string target)
+        {
+            if (target == Target.keep.ToString())
+            {
+                return 0;
+            }
+            else if (target == Target.lose.ToString())
+            {
+                return -200;
+            }
+            else
+            {
+                return 200;
+            }
         }
         #endregion
     }
