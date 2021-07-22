@@ -12,7 +12,6 @@ namespace BeFit.DAL
     using Model;
     static class LoginSystem
     {
-        // TODO: Change to parameterized query
         public static void Login(string login, string password)
         {
 

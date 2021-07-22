@@ -40,23 +40,26 @@
                              Foreground="Black" 
                              FontSize="14" 
                              HorizontalAlignment="Center"
-                             
+                             GroupName="Menu"  
+                             IsChecked="true"
+                             Command="{Binding ChangeToAddProductView}"
                              Style="{StaticResource MenuButtonTheme}" Width="200" Margin="0,0,-4,0" />
-
                 <RadioButton Content="Ustawienia" 
                              Height="50" 
                              Foreground="Black" 
                              FontSize="14" 
                              HorizontalAlignment="Center"
+                             GroupName="Menu"
+                             Command="{Binding ChangeToSettingsView}"
                              Style="{StaticResource MenuButtonTheme}" Width="200" Margin="0,0,-4,0" />
-
                 <RadioButton Content="Wyloguj" 
                              Height="50" 
                              Foreground="Black" 
                              FontSize="14" 
                              HorizontalAlignment="Center"
+                             GroupName="Menu"
+                             Command="{Binding LogOut}"
                              Style="{StaticResource MenuButtonTheme}" Width="200" Margin="0,0,-4,0" />
-
                 <TextBlock Text="{Binding Username}" Margin="0, 220, 0, 0" TextAlignment="Center" FontFamily="Segoe UI Semibold" FontSize="17"/>
                 <TextBlock Text="{Binding UserSex}" Margin="30,0,0,0" TextAlignment="Left" FontFamily="Segoe UI Symbol"/>
             </StackPanel>
@@ -86,7 +89,6 @@
                 <RectangleGeometry RadiusX="10" RadiusY="10" Rect="0,0,400,315"/>
             </Border.Clip>
         </Border>
-
         <ListBox x:Name="listboxEatenProducts" Grid.Column="2"  Margin="20,80,20,400" ItemsSource="{Binding EatenProducts}">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="SelectionChanged">

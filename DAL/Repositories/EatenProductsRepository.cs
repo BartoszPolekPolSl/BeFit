@@ -11,7 +11,6 @@ namespace BeFit.DAL.Repositories
     using ViewModel;
     static class EatenProductsRepository
     {
-        // TODO: Change to parameterized query
         #region Queries
         private const string ALL_PRODUCTS = "SELECT e.id_eatenproduct, p.id_product, p.name, p.carbohydrates, p.proteins, p.fats, e.weight, p.kcal FROM products p JOIN eaten_products e ON p.id_product=e.id_product WHERE e.id_user=@iduser AND DATE(date)=DATE(NOW()) ORDER BY e.date ASC";
         private const string EDIT_PRODUCT = "UPDATE eaten_products SET weight=@weight WHERE id_eatenproduct=@idproduct";

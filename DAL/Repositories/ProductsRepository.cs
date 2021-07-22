@@ -10,7 +10,6 @@ namespace BeFit.DAL.Repositories
     using MySqlConnector;
     static class ProductsRepository
     {
-        // TODO: Change to parameterized query
         #region Queries
         private const string DELETE_PRODUCT = "DELETE FROM products WHERE id_product=@idproduct";
         private const string ADD_PRODUCT = "INSERT INTO products (name, carbohydrates, proteins, fats, kcal) VALUES( @name, @carbohydrates, @proteins, @fats, @kcal)";

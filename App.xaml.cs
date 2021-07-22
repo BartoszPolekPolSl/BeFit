@@ -24,6 +24,16 @@ namespace BeFit
             loginregisterwindow.Close();
 
         }
-        
+
+        public static void LogOut()
+        {
+            var oldwindow = Current.MainWindow;
+            var loginwindow = new View.MainLoginRegisterWindow(); ;
+            loginwindow.Show();
+            Current.MainWindow = loginwindow;
+            oldwindow.Close();
+
+        }
+
     }
 }

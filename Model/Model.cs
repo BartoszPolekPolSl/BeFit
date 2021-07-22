@@ -98,5 +98,15 @@ namespace BeFit.Model
             }
         }
 
+        public double getEatenKcal()
+        {
+            double sum = 0;
+            foreach (EatenProduct product in EatenProducts)
+            {
+                sum += product.EatenKcal;
+            }
+           return sum;
+        }
+
     }
 }

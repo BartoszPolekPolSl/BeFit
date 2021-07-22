@@ -12,13 +12,13 @@ namespace BeFit.ViewModel
     using Model;
     using System.Collections.ObjectModel;
     using System.Media;
+    using System.Windows;
     using System.Windows.Controls;
     using View;
 
     public class BeFitViewModel : ViewModel
     {
         #region Delegates
-
         public delegate void UnselectListBoxIndex();
         public UnselectListBoxIndex UnselectEatenProductsIndex;
         #endregion
@@ -39,11 +39,12 @@ namespace BeFit.ViewModel
             EatenProducts = model.EatenProducts;
             FavoriteProducts = model.FavoriteProducts;
             currentEatenProduct = new EatenProduct();
+            SettingsView = new SettingsView();
             AddProductView = new AddProductView(this);
             CurrentView = AddProductView;
             CurrentDate = DateTime.Now.ToString();
             Username = User.UserName;
-            getEatenKcal();
+            EatenKcal = model.getEatenKcal();
             updateTime();
         }
         #endregion
@@ -52,6 +53,8 @@ namespace BeFit.ViewModel
         public User User { get; set; }
 
         public AddProductView AddProductView { get; set; }
+
+        public SettingsView SettingsView { get; set; }
 
         public ObservableCollection<EatenProduct> EatenProducts { get; set; }
 
@@ -163,11 +166,19 @@ namespace BeFit.ViewModel
             }
         }
 
-        
+
 
         #endregion
 
         #region Commands
+        private ICommand _changeToAddProductView;
+        public ICommand ChangeToAddProductView => _changeToAddProductView ?? (_changeToAddProductView = new RelayCommand((p) => { CurrentView = AddProductView; }, p => true));
+
+        private ICommand _changeToSettingsView;
+        public ICommand ChangeToSettingsView => _changeToSettingsView ?? (_changeToSettingsView = new RelayCommand((p) => { CurrentView = SettingsView; }, p => true));
+
+        private ICommand _logOut;
+        public ICommand LogOut => _logOut ?? (_logOut = new RelayCommand((p) => { logOut(); }, p => true));
 
         private ICommand _addEatenProduct;
         public ICommand AddEatenProduct => _addEatenProduct ?? (_addEatenProduct = new RelayCommand((p) => { addEatenProduct(); }, p => true));
@@ -203,7 +214,7 @@ namespace BeFit.ViewModel
             Product product = new Product(CurrentProductName, CurrentFats, CurrentCarbohydrates, CurrentProteins, CurrentKcal);
             EatenProduct eatenproduct = new EatenProduct(product, CurrentWeight);
             model.AddEatenProductDB(eatenproduct, model.User);
-            getEatenKcal();
+            EatenKcal = model.getEatenKcal();
             SoundPlayer player = new SoundPlayer(BeFit.Properties.Resources.AddProduct);
             player.Load();
             player.Play();
@@ -213,7 +224,7 @@ namespace BeFit.ViewModel
         {
             model.EditEatenProductDB(currentEatenProduct);
             model.UpdateFavouriteProductDB();
-            getEatenKcal();
+            EatenKcal = model.getEatenKcal();
         }
 
         private void removeEatenProduct()
@@ -270,15 +281,13 @@ namespace BeFit.ViewModel
             model.UpdateEatenProductDB();
         }
 
-
-        private void getEatenKcal()
+        private void logOut()
         {
-            double sum=0;
-            foreach(EatenProduct product in model.EatenProducts)
+            var result=MessageBox.Show("Czy napewno chcesz się wylogować?", "Uwaga!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            if (result == MessageBoxResult.Yes)
             {
-                sum += product.EatenKcal;
+                App.LogOut();
             }
-            EatenKcal = sum;
         }
 
         private async void updateTime()
@@ -288,6 +297,7 @@ namespace BeFit.ViewModel
             updateTime();
         }
 
+        // TODO: move this code
         private void getKcalTarget()
         {
             if (User.Sex == Sex.male.ToString())
