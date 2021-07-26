@@ -18,11 +18,15 @@ namespace BeFit.View
     /// <summary>
     /// Logika interakcji dla klasy SettingsView.xaml
     /// </summary>
+    using DAL.Entities;
+    using ViewModel;
+ 
     public partial class SettingsView : UserControl
     {
-        public SettingsView()
+        public SettingsView(User user)
         {
             InitializeComponent();
+            DataContext = new SettingsViewModel(user);
         }
     }
 }

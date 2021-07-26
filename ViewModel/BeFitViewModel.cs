@@ -39,11 +39,10 @@ namespace BeFit.ViewModel
             EatenProducts = model.EatenProducts;
             FavoriteProducts = model.FavoriteProducts;
             currentEatenProduct = new EatenProduct();
-            SettingsView = new SettingsView();
             AddProductView = new AddProductView(this);
+            SettingsView = new SettingsView(User);
             CurrentView = AddProductView;
             CurrentDate = DateTime.Now.ToString();
-            Username = User.UserName;
             EatenKcal = model.getEatenKcal();
             updateTime();
         }
@@ -60,7 +59,7 @@ namespace BeFit.ViewModel
 
         public ObservableCollection<Product> FavoriteProducts { get; set; }
 
-        public string Username { get; set; }
+        public string Username { get { return User.UserName; } set { } }
 
 
         public double UserTarget { get; set; }

@@ -34,6 +34,19 @@ namespace BeFit.DAL.Entities
             Target = target;
         }
 
+        public User(int id, string username, string password, string sex, double weight, int height, int age, string activity, string target)
+        {
+            Id = id;
+            UserName = username;
+            Password = password;
+            Sex = sex;
+            Weight = weight;
+            Height = height;
+            Age = age;
+            Activity = activity;
+            Target = target;
+        }
+
         public User(MySqlDataReader reader)
         {
             Id = int.Parse(reader["id_user"].ToString());

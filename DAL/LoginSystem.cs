@@ -12,12 +12,13 @@ namespace BeFit.DAL
     using Model;
     static class LoginSystem
     {
+        private const string LOGIN_USER = "SELECT u.id_user, u.username, u.password,i.sex,i.weight,i.height,i.age,i.activity,i.target FROM users u JOIN userinfo i ON u.id_user = i.id_user WHERE BINARY u.username=@login AND BINARY u.password=@password;";
+
         public static void Login(string login, string password)
         {
 
             using (var connection = DBConnection.Instance.Connection)
-            {
-                string LOGIN_USER = $"SELECT u.id_user, u.username, u.password,i.sex,i.weight,i.height,i.age,i.activity,i.target FROM users u JOIN userinfo i ON u.id_user = i.id_user WHERE BINARY u.username=@login AND BINARY u.password=@password;";                             
+            {    
             try
             {
                     MySqlCommand command = new MySqlCommand(LOGIN_USER, connection);

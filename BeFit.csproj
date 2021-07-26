@@ -129,6 +129,7 @@
     </ApplicationDefinition>
     <Compile Include="DAL\LoginSystem.cs" />
     <Compile Include="DAL\RegisterSystem.cs" />
+    <Compile Include="DAL\UserInfoSystem.cs" />
     <Compile Include="Model\Activity.cs" />
     <Compile Include="Model\Sex.cs" />
     <Compile Include="Model\Target.cs" />

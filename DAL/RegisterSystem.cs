@@ -10,6 +10,11 @@ namespace BeFit.DAL
 {
     static class RegisterSystem
     {
+        private const string REGISTER_USER = "INSERT INTO users (username, password) VALUES (@login, @password)";
+        private const string ADD_USERINFO = "INSERT INTO userinfo (id_user, sex, weight, height, age, activity, target) VALUES(@userid, @sex, @weight, @height, @age, @activity, @target)";
+        private const string CHECK_USERNAME = "SELECT username FROM users WHERE username=@username";
+
+
         public static void register(string login, string password, string sex, double weight, int height, int age, string activity, string target)
         {
             using (var connection = DBConnection.Instance.Connection)
@@ -23,16 +28,14 @@ namespace BeFit.DAL
                         connection.Close();
                     }
                     else
-                    {                      
-                        string REGISTER_USER = $"INSERT INTO users (username, password) VALUES (@login, @password)";
+                    {                                             
                         var command = new MySqlCommand(REGISTER_USER, connection);
                         command.CommandText = REGISTER_USER;
                         command.Parameters.AddWithValue("@login", login);
                         command.Parameters.AddWithValue("@password", password);
                         connection.Open();
                         var dataReaderNoQuery = command.ExecuteNonQuery();
-                        int userid = (int)command.LastInsertedId;
-                        string ADD_USERINFO = $"INSERT INTO userinfo (id_user, sex, weight, height, age, activity, target) VALUES(@userid, @sex, @weight, @height, @age, @activity, @target)";
+                        int userid = (int)command.LastInsertedId;      
                         command = new MySqlCommand(ADD_USERINFO, connection);
                         command.CommandText = ADD_USERINFO;
                         command.Parameters.AddWithValue("@userid", userid);
@@ -50,18 +53,13 @@ namespace BeFit.DAL
                 {
                     MessageBox.Show(e.ToString());
                 }
-                
-
-
                 MessageBox.Show("Pomyślnie zarejestrowano.");
-
             }
         }
         private static bool IsUsernameAlreadyExist(string username)
         {
             using (var connection = DBConnection.Instance.Connection)
             {
-                string CHECK_USERNAME = $"SELECT username FROM users WHERE username=@username";
                 MySqlCommand command = new MySqlCommand(CHECK_USERNAME, connection);
                 command.CommandText = CHECK_USERNAME;
                 command.Parameters.AddWithValue("@username", username);

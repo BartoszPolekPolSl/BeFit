@@ -7,9 +7,6 @@
              xmlns:local="clr-namespace:BeFit.View"
              mc:Ignorable="d" 
              d:DesignHeight="450" d:DesignWidth="800">
-    <UserControl.DataContext>
-        <vm:SettingsViewModel/>
-    </UserControl.DataContext>
     <Grid>
         <Border Width="650"
                 Height="400"
