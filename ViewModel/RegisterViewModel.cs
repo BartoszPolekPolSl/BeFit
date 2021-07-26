@@ -10,12 +10,14 @@ namespace BeFit.ViewModel
 {
     using BaseClass;
     using BeFit.DAL;
+    using System.Security;
+
     class RegisterViewModel : ViewModel
     {
         // TODO: Data input control
 
         public string LoginArg { get; set; }
-        public string PasswordArg { get; set; }
+        public SecureString PasswordArg { get; set; }
         public string SexArg { get; set; }
         public double WeightArg { get; set; }
         public int HeightArg { get; set; }
@@ -28,7 +30,7 @@ namespace BeFit.ViewModel
         public List<String> SexSource { get; set; } = new List<String> { Model.Sex.male.ToString(), Model.Sex.female.ToString(), };
 
         private ICommand _register;
-        public ICommand Register => _register ?? (_register = new RelayCommand((p) => { RegisterSystem.register(LoginArg, PasswordArg, SexArg, WeightArg, HeightArg, AgeArg, ActivityArg, TargetArg); ; }, p => true));
+        public ICommand Register => _register ?? (_register = new RelayCommand((p) => {  RegisterSystem.register(LoginArg, PasswordArg, SexArg, WeightArg, HeightArg, AgeArg, ActivityArg, TargetArg); }, p => true));
      
     }
 }

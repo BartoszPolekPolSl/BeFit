@@ -27,6 +27,8 @@ namespace BeFit.View
         {
             InitializeComponent();
             DataContext = new SettingsViewModel(user);
+            BindingOperations.SetBinding(buttonEdit, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.EditUserInfo)), Source = DataContext });
+            BindingOperations.SetBinding(comboBoxActivity, ComboBox.ItemsSourceProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.ActivtySource)), Source = DataContext });
         }
     }
 }

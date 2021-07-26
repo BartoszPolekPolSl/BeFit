@@ -27,7 +27,7 @@ namespace BeFit.View
         {
             InitializeComponent();
             BindingOperations.SetBinding(textBoxLogin, TextBox.TextProperty, new Binding() { Path = new PropertyPath(nameof(RegisterViewModel.LoginArg)), Source = DataContext });
-            BindingOperations.SetBinding(textBoxPassword, TextBox.TextProperty, new Binding() { Path = new PropertyPath(nameof(RegisterViewModel.PasswordArg)), Source = DataContext });
+            //BindingOperations.SetBinding(passwordBoxPassword, TextBox.TextProperty, new Binding() { Path = new PropertyPath(nameof(RegisterViewModel.PasswordArg)), Source = DataContext });
             BindingOperations.SetBinding(textBoxAge, TextBox.TextProperty, new Binding() { Path = new PropertyPath(nameof(RegisterViewModel.AgeArg)), Source = DataContext });
             BindingOperations.SetBinding(textBoxHeight, TextBox.TextProperty, new Binding() { Path = new PropertyPath(nameof(RegisterViewModel.HeightArg)), Source = DataContext });
             BindingOperations.SetBinding(textBoxWeight, TextBox.TextProperty, new Binding() { Path = new PropertyPath(nameof(RegisterViewModel.WeightArg)), Source = DataContext });
@@ -44,6 +44,11 @@ namespace BeFit.View
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             changeToLoginView.Invoke();
+        }
+
+        private void passwordBoxPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            ((dynamic)this.DataContext).PasswordArg = ((PasswordBox)sender).SecurePassword;
         }
     }
 }

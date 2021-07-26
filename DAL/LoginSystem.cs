@@ -10,11 +10,14 @@ namespace BeFit.DAL
 {
     using DAL.Entities;
     using Model;
+    using System.Net;
+    using System.Security;
+
     static class LoginSystem
     {
         private const string LOGIN_USER = "SELECT u.id_user, u.username, u.password,i.sex,i.weight,i.height,i.age,i.activity,i.target FROM users u JOIN userinfo i ON u.id_user = i.id_user WHERE BINARY u.username=@login AND BINARY u.password=@password;";
 
-        public static void Login(string login, string password)
+        public static void Login(string login, SecureString password)
         {
 
             using (var connection = DBConnection.Instance.Connection)
@@ -24,7 +27,8 @@ namespace BeFit.DAL
                     MySqlCommand command = new MySqlCommand(LOGIN_USER, connection);
                     command.CommandText = LOGIN_USER;
                     command.Parameters.AddWithValue("@login",login);
-                    command.Parameters.AddWithValue("@password", password);
+                    string ps = new NetworkCredential("", password).Password;
+                    command.Parameters.AddWithValue("@password", ps);
                     connection.Open();
                     var dataReader = command.ExecuteReader();
                     if (dataReader.HasRows)

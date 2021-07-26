@@ -57,13 +57,13 @@
             <TextBlock Grid.Row="8" Grid.Column="1" TextAlignment="Center" Text="Płeć" FontFamily="Segoe UI Semibold" Margin="0,2,0,0" Grid.ColumnSpan="2" />
             <TextBlock Grid.Row="2" Grid.Column="3" TextAlignment="Center" Text="Aktywność" FontFamily="Segoe UI Semibold" Margin="0,2,0,0" />
 
-            <TextBox Grid.Row="3" Grid.Column="1" Margin="4" Grid.ColumnSpan="2" />
-            <TextBox Grid.Row="5" Grid.Column="1" Margin="4" Grid.ColumnSpan="2" />
-            <TextBox Grid.Row="7" Grid.Column="1" Margin="4" Grid.ColumnSpan="2" />
+            <TextBox x:Name="textBoxWeight" Grid.Row="3" Grid.Column="1" Margin="4" Grid.ColumnSpan="2" />
+            <TextBox x:Name="textBoxHeight" Grid.Row="5" Grid.Column="1" Margin="4" Grid.ColumnSpan="2" />
+            <TextBox x:Name="textBoxAge" Grid.Row="7" Grid.Column="1" Margin="4" Grid.ColumnSpan="2" />
             <TextBox Grid.Row="9" Grid.Column="1" Margin="4" Grid.ColumnSpan="2" />
-            <ComboBox Grid.Row="3" Grid.Column="3" Margin="4" />
+            <ComboBox x:Name="comboBoxActivity" Grid.Row="3" Grid.Column="3" Margin="4" />
 
-            <Button Content="Zmień" FontFamily="SegoeUI" FontSize="10" Grid.Row="9" Grid.Column="4" Margin="4"/>
+            <Button x:Name="buttonEdit" Content="Zmień" FontFamily="SegoeUI" FontSize="10" Grid.Row="9" Grid.Column="4" Margin="4"/>
 
             <RadioButton Content="lose" 
                              Foreground="Black" 

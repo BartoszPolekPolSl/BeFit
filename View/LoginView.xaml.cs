@@ -27,13 +27,17 @@ namespace BeFit.View
         {
             InitializeComponent();
             BindingOperations.SetBinding(textBoxLogin, TextBox.TextProperty, new Binding() { Path = new PropertyPath(nameof(LoginViewModel.LoginArg)), Source=DataContext });
-            BindingOperations.SetBinding(textBoxPassword, TextBox.TextProperty, new Binding() { Path = new PropertyPath(nameof(LoginViewModel.PasswordArg)), Source = DataContext });
             BindingOperations.SetBinding(LoginButton, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(LoginViewModel.Login)), Source = DataContext });
         }
        
         private void RegisterButton_Click(object sender, RoutedEventArgs e)
         {
             changeToRegisterView.Invoke();
+        }
+
+        private void passwordBoxPassword_PasswordChanged(object sender, RoutedEventArgs e)
+        {
+            ((dynamic)this.DataContext).PasswordArg = ((PasswordBox)sender).SecurePassword;
         }
     }
 }

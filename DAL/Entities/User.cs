@@ -2,6 +2,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 
@@ -13,7 +14,7 @@ namespace BeFit.DAL.Entities
 
         public int? Id { get;}
         public string UserName { get; set; }
-        public string Password { get; set; }
+        public SecureString Password { private get; set; }
         public string Sex { get; set; }
         public double Weight { get; set; }
         public int Height { get; set; }
@@ -21,7 +22,7 @@ namespace BeFit.DAL.Entities
         public string Activity { get; set; }
         public string Target { get; set; }
 
-        public User(string username, string password, string sex, double weight, int height, int age, string activity, string target)
+        public User(string username, SecureString password, string sex, double weight, int height, int age, string activity, string target)
         {
             Id = null;
             UserName = username;
@@ -34,7 +35,7 @@ namespace BeFit.DAL.Entities
             Target = target;
         }
 
-        public User(int id, string username, string password, string sex, double weight, int height, int age, string activity, string target)
+        public User(int id, string username, SecureString password, string sex, double weight, int height, int age, string activity, string target)
         {
             Id = id;
             UserName = username;
@@ -51,7 +52,10 @@ namespace BeFit.DAL.Entities
         {
             Id = int.Parse(reader["id_user"].ToString());
             UserName = reader["username"].ToString();
-            Password = reader["password"].ToString();
+            var str = reader["password"].ToString(); ;
+            var sc = new SecureString();
+            foreach (char c in str) sc.AppendChar(c);
+            Password = sc;
             Sex = reader["sex"].ToString();
             Weight = double.Parse(reader["weight"].ToString());
             Height = int.Parse(reader["height"].ToString());
@@ -59,5 +63,7 @@ namespace BeFit.DAL.Entities
             Activity = reader["activity"].ToString();
             Target = reader["Target"].ToString();
         }
+
+       
     }
 }
