@@ -11,6 +11,7 @@
         <vm:RegisterViewModel/>
     </UserControl.DataContext>
     <Grid>
+
         <Grid.ColumnDefinitions>
             <ColumnDefinition Width="1*"/>
             <ColumnDefinition Width="1*"/>
@@ -32,28 +33,158 @@
 
         </Grid.RowDefinitions>
 
-        <TextBox x:Name="textBoxLogin" Grid.Column="1" Margin="0,2,0,0"
+        <Image Grid.ColumnSpan="3" Margin="-284,-91,-281,-120" Source="/Recources/Images/pHq2y.png" Stretch="Fill" Grid.RowSpan="10"/>
+
+        <TextBox x:Name="textBoxLogin" Margin="80,10,0,2" Grid.Row="1"
+                 BorderBrush="{x:Null}"
+                 Background="#FFF6F6F6"
+                 Foreground="Black"
+                 FontSize="20"
                  />
 
-        <TextBox x:Name="textBoxPassword" Grid.Column="1" Margin="0,35,0,3" Grid.RowSpan="2" />
+        <TextBox x:Name="textBoxPassword" Margin="80,4,0,6" Grid.Row="2"
+                 BorderBrush="{x:Null}"
+                 Background="#FFF6F6F6"
+                 Foreground="Black"
+                  FontSize="20"/>
 
-        <TextBlock Text="Login" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,-2,0,4"/>
-        <TextBlock Grid.Row="1" Text="Haslo" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,2"/>
+        <TextBlock Text="Login" Margin="25,15,205,0"
+                 FontSize="15"
+                 Foreground="DarkGray"
+                 TextAlignment="Center"
+                 Height="30"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center" Grid.Row="1"
+                   
+                   />
+        <TextBlock Grid.Row="2" Text="Haslo"  FontSize="15"
+                 Foreground="DarkGray"
+                 TextAlignment="Center"
+                 Height="30"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center" Margin="24,15,206,0"/>
 
-        <Button x:Name="RegisterButton" Grid.Row="8" Grid.Column="1" Content="Register"/>
-        <Button Grid.Row="10" Grid.Column="1" Content="Powrót do logowania" Click="Button_Click"/>
-        <TextBlock Grid.Row="1" Text="Płeć" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,36,0,5" Grid.RowSpan="2"/>
-        <ComboBox  Grid.Row="2" Grid.Column="1" x:Name="comboBoxSex"/>
-        <TextBox x:Name="textBoxWeight" Grid.Row="3" Grid.Column="1" Margin="0,0,0,1" />
-        <TextBlock Grid.Row="3" Text="Waga" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,3"/>
-        <TextBlock Grid.Row="4" Text="Wzrost" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,3,0,0"/>
-        <TextBox x:Name="textBoxHeight" Grid.Row="4" Grid.Column="1" Margin="0,0,0,1" />
-        <TextBlock Grid.Row="5" Text="Wiek" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,3"/>
-        <TextBox x:Name="textBoxAge" Grid.Row="5" Grid.Column="1"  Margin="0,0,0,1" />
-        <TextBlock Grid.Row="6" Text="Aktywność" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,2,0,0"/>
-        <ComboBox Grid.Row="6" Grid.Column="1" x:Name="comboBoxActivity" Margin="0,2,0,35" Grid.RowSpan="2"   />
-        <TextBlock Grid.Row="7" Text="Cel" FontSize="26" TextAlignment="Center" VerticalAlignment="Center" Margin="0,0,0,2"/>
-        <ComboBox Grid.Row="7" Grid.Column="1" x:Name="comboBoxTarget"/>
+        <Button x:Name="RegisterButton" Grid.Row="6" Grid.Column="2" Content="Zarejestruj" Foreground="White" Background="#FF64CCF1"
+                FontFamily="Arial"
+                FontSize="15"
+                FontWeight="Bold" Margin="48,27,40,18" Grid.RowSpan="2">
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="14"/>
+                </Style>
+            </Button.Resources>
+
+        </Button>
+        <Button Grid.Row="8" Grid.Column="2" Content="Powrót do logowania" Click="Button_Click" Margin="48,0,40,0" 
+                Foreground="White" Background="Black"
+                FontFamily="Arial"
+                FontSize="15"
+                FontWeight="Bold"
+                
+                >
+
+            <Button.Resources>
+                <Style TargetType="Border">
+                    <Setter Property="CornerRadius" Value="14"/>
+                </Style>
+            </Button.Resources>
+        </Button>
+
+        <TextBlock Grid.Row="3" Text="Płeć" FontSize="15"
+                 Foreground="DarkGray"
+                 TextAlignment="Center"
+                 Height="30"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center" Margin="24,15,216,0"/>
+        <ComboBox Grid.Row="3" x:Name="comboBoxSex" ItemsSource="{Binding SexSource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" Margin="80,10,76,6"
+                  BorderBrush="{x:Null}"
+                 Background="#FFF6F6F6"
+                 
+                  />
+
+        <TextBox x:Name="textBoxWeight" Grid.Row="5" Margin="80,6,85,6"
+                 BorderBrush="{x:Null}"
+                 Background="#FFF6F6F6"
+                 Foreground="DarkGray"
+                  FontSize="20"/>
+        <TextBlock Grid.Row="5" Text="Waga" FontSize="15"
+                 Foreground="DarkGray"
+                 TextAlignment="Center"
+                 Height="35"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center" Margin="25,9,204,1"
+                   />
+
+        <TextBlock Grid.Row="6" Text="Wzrost" FontSize="15"
+                 Foreground="DarkGray"
+                 TextAlignment="Center"
+                 Height="35"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center" Margin="24,10,197,0"/>
+        <TextBox x:Name="textBoxHeight" Grid.Row="6" Margin="80,7,85,5" 
+                 BorderBrush="{x:Null}"
+                 Background="#FFF6F6F6"
+                 Foreground="DarkGray"
+                  FontSize="20"/>
+
+        <TextBlock Grid.Row="7" Text="Wiek" FontSize="15"
+                 Foreground="DarkGray"
+                 TextAlignment="Center"
+                 Height="35"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center" Margin="24,10,210,0"/>
+        <TextBox x:Name="textBoxAge" Grid.Row="7"  Margin="80,5,85,7" 
+                 BorderBrush="{x:Null}"
+                 Background="#FFF6F6F6"
+                 Foreground="DarkGray"
+                  FontSize="20"/>
+
+        <TextBlock Grid.Row="2" FontSize="15"
+                 Foreground="DarkGray"
+                 TextAlignment="Center"
+                 Height="35"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center" Margin="176,10,0,0" Grid.Column="1" Width="91"><Run Text="Aktywność"/><Run Text=":"/></TextBlock>
+        <ComboBox Grid.Row="2" Grid.Column="2" x:Name="comboBoxActivity" ItemsSource="{Binding Path=ActivtySource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" Margin="5,6,70,6" 
+                  BorderBrush="{x:Null}"
+                 Background="#FFF6F6F6"
+                 
+                  />
+
+        <TextBlock Grid.Row="1" Text="Twój cel:" FontSize="15"
+                 Foreground="DarkGray"
+                 TextAlignment="Center"
+                 Height="30"
+                 VerticalAlignment="Center"
+                 HorizontalAlignment="Center" Margin="194,13,0,2" Grid.Column="1" Width="73"/>
+        <ComboBox Grid.Row="1" Grid.Column="2" x:Name="comboBoxTarget" ItemsSource="{Binding TargetSource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" Margin="5,10,70,2" 
+                  BorderBrush="{x:Null}"
+                 Background="#FFF6F6F6"
+                 
+                  />
+        <TextBlock Grid.Row="5" Text="kg" FontSize="15"
+            Foreground="DarkGray"
+            TextAlignment="Center"
+            Height="35"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center" Margin="182,10,69,0"
+                   />
+        <TextBlock Grid.Row="6" Text="cm" FontSize="15"
+            Foreground="DarkGray"
+            TextAlignment="Center"
+            Height="35"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center" Margin="182,11,65,44" Grid.RowSpan="2" Width="20"
+                   />
+        <TextBlock Grid.Row="7" Text="lat" FontSize="15"
+            Foreground="DarkGray"
+            TextAlignment="Center"
+            Height="35"
+            VerticalAlignment="Center"
+            HorizontalAlignment="Center" Margin="182,11,69,44" Grid.RowSpan="2" Width="16"
+                   />
+        
+
 
 
 

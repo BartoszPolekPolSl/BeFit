@@ -13,7 +13,7 @@
         </Window.DataContext>
 
     <Grid>
-        <ContentControl Margin="50"    Content="{Binding CurrentView, Mode=TwoWay}" >
+        <ContentControl Margin="0,0,-20,-29"    Content="{Binding CurrentView, Mode=TwoWay}" >
 
 
         </ContentControl>

@@ -38,7 +38,7 @@ namespace BeFit.View
             BindingOperations.SetBinding(listBoxFavoriteProducts, ListBox.ItemsSourceProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.FavoriteProducts)), Source = DataContext });
             BindingOperations.SetBinding(btnAddFavoriteProduct, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.AddFavoriteProduct)), Source = DataContext });
             BindingOperations.SetBinding(btnRemoveFavoriteProduct, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.RemoveFavoriteProduct)), Source = DataContext });
-            BindingOperations.SetBinding(btnEditFavoriteProduct, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.EditFavoriteProduct)), Source = DataContext });
+            
         }
     }
 }
