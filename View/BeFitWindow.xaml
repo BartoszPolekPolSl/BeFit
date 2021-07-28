@@ -76,9 +76,9 @@
             </i:Interaction.Triggers>
         </ListBox>
         <TextBlock Text="{Binding EatenKcal}" Grid.Column="1"  TextAlignment="Center" Margin="162,729,157,0" />
-        <TextBlock Text="Binding Bialka" Margin="221,807,392,0" TextAlignment="Center" Grid.ColumnSpan="2" />
-        <TextBlock Text="Binding Tłuszczy" Grid.Column="1" Margin="162,807,158,0" TextAlignment="Center" />
-        <TextBlock Text="Binging węglowodanów" Grid.Column="1" Margin="423,807,332,0" TextAlignment="Center" Grid.ColumnSpan="2" />
+        <TextBlock Text="{Binding EatenProteins}" Margin="221,807,392,0" TextAlignment="Center" Grid.ColumnSpan="2" />
+        <TextBlock Text="{Binding EatenFats}" Grid.Column="1" Margin="162,807,158,0" TextAlignment="Center" />
+        <TextBlock Text="{Binding EatenCarbohydrates}" Grid.Column="1" Margin="423,807,332,0" TextAlignment="Center" Grid.ColumnSpan="2" />
 
 
 

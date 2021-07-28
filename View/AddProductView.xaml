@@ -39,8 +39,7 @@
             </Grid.RowDefinitions>
 
             <TextBox x:Name="txtBoxName" Grid.Row="3" Grid.Column="1" FontSize="16" Text="Nazwa" Grid.ColumnSpan="2" BorderBrush="{x:Null}"
-                 Background="#FFF6F6F6"
-                     
+                 Background="#FFF6F6F6"    
                      />
             <Border BorderBrush="Aqua" Grid.Column="2" Margin="65,2,2,1" Grid.Row="3" Background="#FFF6F6F6"/>
             <TextBlock Text="Nazwa" FontSize="16" RenderTransformOrigin="8.727,6.852" Grid.Column="2" Margin="69,7,6,1" Grid.Row="3"/>
@@ -66,7 +65,7 @@
                     </Style>
                 </Button.Resources>
             </Button>
-            <Button x:Name="btnEdit" Grid.Row="10" Grid.Column="4"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="33" Width="71" BorderBrush="{x:Null}"
+            <Button x:Name="btnEditFavoriteProduct" Grid.Row="10" Grid.Column="4"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="33" Width="71" BorderBrush="{x:Null}"
                     Background="#51B4FF" Content="Edytuj" Foreground="White" Margin="124,18,10,0" FontWeight="DemiBold">
 
                 <Button.Resources>

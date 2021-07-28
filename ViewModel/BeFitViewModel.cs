@@ -25,17 +25,18 @@ namespace BeFit.ViewModel
 
         #region Private
         private Model model;
-        private double eatenKcal;
         private object currentView;
-        private string currentDate; 
+        private string currentDate, eatenProteins, eatenCarbohydrates, eatenFats, eatenKcal; 
         private EatenProduct currentEatenProduct;
+        private Calculator calculator;
         #endregion
 
         #region Constructors
         public BeFitViewModel(Model model)
         {             
             this.model = model;
-            User = model.User;            
+            calculator = new Calculator(model);
+            User = model.User;
             EatenProducts = model.EatenProducts;
             FavoriteProducts = model.FavoriteProducts;
             currentEatenProduct = new EatenProduct();
@@ -43,7 +44,7 @@ namespace BeFit.ViewModel
             SettingsView = new SettingsView(User);
             CurrentView = AddProductView;
             CurrentDate = DateTime.Now.ToString();
-            EatenKcal = model.getEatenKcal();
+            updateEatenComponents();
             updateTime();
         }
         #endregion
@@ -95,7 +96,7 @@ namespace BeFit.ViewModel
             }
         }
 
-        public double EatenKcal
+        public string EatenKcal
         {
             get { return eatenKcal; }
             set
@@ -152,6 +153,36 @@ namespace BeFit.ViewModel
             {
                 currentEatenProduct.Weight = value;
                 OnPropertyChange(nameof(CurrentWeight));
+            }
+        }
+
+        public string EatenProteins
+        {
+            get { return eatenProteins; }
+            set
+            {
+                eatenProteins = value;
+                OnPropertyChange(nameof(EatenProteins));
+            }
+        }
+
+        public string EatenFats
+        {
+            get { return eatenFats; }
+            set
+            {
+                eatenFats = value;
+                OnPropertyChange(nameof(EatenFats));
+            }
+        }
+
+        public string EatenCarbohydrates
+        {
+            get { return eatenCarbohydrates; }
+            set
+            {
+                eatenCarbohydrates = value;
+                OnPropertyChange(nameof(EatenCarbohydrates));
             }
         }
 
@@ -213,7 +244,7 @@ namespace BeFit.ViewModel
             Product product = new Product(CurrentProductName, CurrentFats, CurrentCarbohydrates, CurrentProteins, CurrentKcal);
             EatenProduct eatenproduct = new EatenProduct(product, CurrentWeight);
             model.AddEatenProductDB(eatenproduct, model.User);
-            EatenKcal = model.getEatenKcal();
+            updateEatenComponents();
             SoundPlayer player = new SoundPlayer(BeFit.Properties.Resources.AddProduct);
             player.Load();
             player.Play();
@@ -223,12 +254,13 @@ namespace BeFit.ViewModel
         {
             model.EditEatenProductDB(currentEatenProduct);
             model.UpdateFavouriteProductDB();
-            EatenKcal = model.getEatenKcal();
+            updateEatenComponents();
         }
 
         private void removeEatenProduct()
         {
             model.RemoveEatenProductDB(currentEatenProduct);
+            updateEatenComponents();
         }
 
         private void changeEatenProduct(object parameter)
@@ -278,6 +310,7 @@ namespace BeFit.ViewModel
         {
             model.EditFavoriteProductDB(currentEatenProduct);
             model.UpdateEatenProductDB();
+            updateEatenComponents();
         }
 
         private void logOut()
@@ -289,6 +322,14 @@ namespace BeFit.ViewModel
             }
         }
 
+        private void updateEatenComponents()
+        {
+            EatenProteins = $"{calculator.GetEatenProteins()}/{calculator.GetProteinsTarget()}";
+            EatenFats = $"{calculator.GetEatenFats()}/{calculator.GetFatsTarget()}";
+            EatenCarbohydrates = $"{calculator.GetEatenCarbohydrates()}/{calculator.GetCarbohydratesTarget()}";
+            EatenKcal = $"{calculator.GetEatenKcal()}/{calculator.GetKcalTarget()}";
+        }
+
         private async void updateTime()
         {
             CurrentDate = DateTime.Now.ToString("G");
@@ -297,57 +338,7 @@ namespace BeFit.ViewModel
         }
 
         // TODO: move this code
-        private void getKcalTarget()
-        {
-            if (User.Sex == Sex.male.ToString())
-            {
-                UserTarget = (((9.99 * User.Weight) + (6.25 * User.Height) - (4.92 * User.Age) + 5) * getActivityDoubleValue(User.Activity)) + getTargetDoubleValue(User.Target);
-            }
-            else
-            {
-                UserTarget = (((9.99 * User.Weight) + (6.25 * User.Height) - (4.92 * User.Age) - 161) * getActivityDoubleValue(User.Activity)) + getTargetDoubleValue(User.Target);
-            }
-        }
-
-        private double getActivityDoubleValue(string activity)
-        {
-            if (activity == Activity.lack.ToString())
-            {
-                return 1.2;
-            }
-            else if(activity == Activity.little.ToString())
-            {
-                return 1.3;
-            }
-            else if (activity == Activity.medium.ToString())
-            {
-                return 1.5;
-            }
-            else if (activity == Activity.high.ToString())
-            {
-                return 1.7;
-            }
-            else
-            {
-                return 2;
-            }
-        }
-
-        private int getTargetDoubleValue(string target)
-        {
-            if (target == Target.keep.ToString())
-            {
-                return 0;
-            }
-            else if (target == Target.lose.ToString())
-            {
-                return -200;
-            }
-            else
-            {
-                return 200;
-            }
-        }
+        
         #endregion
     }
 

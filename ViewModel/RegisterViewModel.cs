@@ -17,7 +17,7 @@ namespace BeFit.ViewModel
         // TODO: Data input control
 
         public string LoginArg { get; set; }
-        public SecureString PasswordArg { get; set; }
+        public SecureString PasswordArg {private get; set; }
         public string SexArg { get; set; }
         public double WeightArg { get; set; }
         public int HeightArg { get; set; }
