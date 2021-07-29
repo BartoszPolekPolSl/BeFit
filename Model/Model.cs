@@ -44,7 +44,7 @@ namespace BeFit.Model
         {
             if (EatenProductsRepository.RemoveProductDB(eatenproduct))
             {
-                EatenProducts.Remove(eatenproduct);
+                UpdateEatenProductDB();
                 return true;
             }
             return false;
