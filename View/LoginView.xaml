@@ -27,7 +27,7 @@
                  BorderBrush="{x:Null}"
                  Background="#FFF6F6F6"
                  Foreground="DarkGray"
-                 TextAlignment="Center" Margin="268,123,263,280"
+                 TextAlignment="Left" Margin="268,123,263,280"
                  />
 
 
