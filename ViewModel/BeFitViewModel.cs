@@ -66,6 +66,7 @@ namespace BeFit.ViewModel
 
         public string Username { get { return User.UserName; } set { } }
 
+        public string FunFact { get { return model.FunFact;} }
 
         public double UserTarget { get; set; }
 

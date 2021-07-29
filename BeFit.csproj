@@ -127,6 +127,7 @@
       <Generator>MSBuild:Compile</Generator>
       <SubType>Designer</SubType>
     </ApplicationDefinition>
+    <Compile Include="DAL\FunFactsSystem.cs" />
     <Compile Include="DAL\LoginSystem.cs" />
     <Compile Include="DAL\RegisterSystem.cs" />
     <Compile Include="DAL\UserInfoSystem.cs" />

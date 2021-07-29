@@ -7,16 +7,19 @@ using System.Threading.Tasks;
 
 namespace BeFit.Model
 {
+    using DAL;
     using DAL.Entities;
     using DAL.Repositories;
     public class Model
     {
         public ObservableCollection<EatenProduct> EatenProducts { get; set; } = new ObservableCollection<EatenProduct>();
         public ObservableCollection<Product> FavoriteProducts { get; set; } = new ObservableCollection<Product>();
+        public string FunFact;
         public User User=null;
         public Model(User user)
         {
             this.User = user;
+            FunFact = FunFactsSystem.GetRandomFunFact();
             UpdateEatenProductDB();
             UpdateFavouriteProductDB();
         }

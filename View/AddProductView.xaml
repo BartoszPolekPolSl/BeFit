@@ -134,7 +134,7 @@
             <TextBlock FontSize="26" Grid.Column="1" Margin="50,52,58,0" Grid.Row="9" Grid.ColumnSpan="4" Text="Ciekawostki" FontWeight="Bold"/>
 
 
-            <TextBlock FontFamily="SegoeUI" FontSize="18" FontWeight="SemiBold" Grid.Column="1" Margin="15,0,0,0" Grid.Row="10" Grid.ColumnSpan="4" Text="Tutaj będzie specjalny bidning &#x0a;pod wskazówki dla użytkownika."/>
+            <TextBlock x:Name="textBlockFunFact" FontFamily="SegoeUI" FontSize="18" FontWeight="SemiBold" Grid.Column="1" Margin="15,85,0,19" Grid.Row="9" Grid.ColumnSpan="4" Text="Tutaj będzie specjalny bidning &#x0a;pod wskazówki dla użytkownika." TextWrapping="Wrap" Grid.RowSpan="3" />
 
 
 
