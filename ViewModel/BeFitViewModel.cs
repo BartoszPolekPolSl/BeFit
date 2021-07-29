@@ -288,7 +288,7 @@ namespace BeFit.ViewModel
             if (parameter != null)
             {
                 EatenProduct eatenproduct = (EatenProduct)parameter;
-                currentEatenProduct = eatenproduct;
+                currentEatenProduct = new EatenProduct( eatenproduct);
                 OnPropertyChange(nameof(CurrentCarbohydrates), nameof(CurrentFats), nameof(CurrentKcal), nameof(CurrentProteins), nameof(CurrentWeight), nameof(CurrentProductName));
             }
             else
