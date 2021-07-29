@@ -13,7 +13,8 @@
 
                             <TextBlock Text="{TemplateBinding Property=Content}"
                                        VerticalAlignment="Center"
-                                       Margin="50,0,0,0"/>
+                                       Margin="37,0,0,0"/>
+                            
 
                         </Grid>
                     </ControlTemplate>
@@ -26,9 +27,13 @@
 
     <Style.Triggers>
         <Trigger Property="IsChecked" Value="True">
-            <Setter Property="Background" Value="White"/>
-        </Trigger>
-    </Style.Triggers>
+                <Setter Property="Background" Value="White"/>
+            </Trigger>
+
+
+            
+        </Style.Triggers>
+
 
     </Style>
 

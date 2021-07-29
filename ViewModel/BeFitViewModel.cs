@@ -12,6 +12,7 @@ namespace BeFit.ViewModel
     using Model;
     using System.Collections.ObjectModel;
     using System.Media;
+    using System.Text.RegularExpressions;
     using System.Windows;
     using System.Windows.Controls;
     using View;
@@ -45,6 +46,7 @@ namespace BeFit.ViewModel
             CurrentView = AddProductView;
             CurrentDate = DateTime.Now.ToString();
             updateEatenComponents();
+            EatenKcal = model.getEatenKcal();
             updateTime();
         }
         #endregion
@@ -196,8 +198,6 @@ namespace BeFit.ViewModel
             }
         }
 
-
-
         #endregion
 
         #region Commands
@@ -211,7 +211,7 @@ namespace BeFit.ViewModel
         public ICommand LogOut => _logOut ?? (_logOut = new RelayCommand((p) => { logOut(); }, p => true));
 
         private ICommand _addEatenProduct;
-        public ICommand AddEatenProduct => _addEatenProduct ?? (_addEatenProduct = new RelayCommand((p) => { addEatenProduct(); }, p => true));
+        public ICommand AddEatenProduct => _addEatenProduct ?? (_addEatenProduct = new RelayCommand((p) => { addEatenProduct(); }, p => checkEatenProduct()));
 
         private ICommand _changeEatenProduct;
         public ICommand ChangeEatenProduct => _changeEatenProduct ?? (_changeEatenProduct = new RelayCommand((p) => { changeEatenProduct(p); }, p => true));      
@@ -239,8 +239,27 @@ namespace BeFit.ViewModel
         #endregion
 
         #region Methods
+
+        private bool checkEatenProduct()
+        {
+
+            if (string.IsNullOrWhiteSpace(CurrentProductName))
+            {
+                
+                return false;
+            }
+            return true;
+        }
+
+        string ToString(double c)
+        {
+
+            return $"{c}";
+        }
+
         private void addEatenProduct()
         {
+
             Product product = new Product(CurrentProductName, CurrentFats, CurrentCarbohydrates, CurrentProteins, CurrentKcal);
             EatenProduct eatenproduct = new EatenProduct(product, CurrentWeight);
             model.AddEatenProductDB(eatenproduct, model.User);
