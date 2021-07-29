@@ -76,7 +76,7 @@
         </ListBox>
         <TextBlock Text="Dodane produkty" Grid.Column="2" Margin="73,72,78,759" HorizontalAlignment="Center" FontSize="26" FontWeight="Bold" Foreground="White" />
         <TextBlock Text="{Binding EatenKcal}" Grid.Column="1"  TextAlignment="Center" Margin="162,729,157,0" FontSize="16" FontWeight="SemiBold" />
-        <TextBlock Text="{Binding EatenKcal}" Margin="221,807,392,0" TextAlignment="Center" Grid.ColumnSpan="2" FontSize="16" FontWeight="SemiBold" />
+        <TextBlock Text="{Binding EatenProteins}" Margin="221,807,392,0" TextAlignment="Center" Grid.ColumnSpan="2" FontSize="16" FontWeight="SemiBold" />
         <TextBlock Text="{Binding EatenFats}" Grid.Column="1" Margin="162,807,158,0" TextAlignment="Center" FontSize="16" FontWeight="SemiBold"/>
         <TextBlock Text="{Binding EatenCarbohydrates}" Grid.Column="1" Margin="456,807,299,0" TextAlignment="Center" Grid.ColumnSpan="2" FontSize="16" FontWeight="SemiBold" />
 
@@ -90,8 +90,8 @@
         <Image Margin="27,378,247,459" Source="/Recources/Images/setting2.png" Stretch="Fill"/>
         <Image Margin="30,438,247,399" Source="/Recources/Images/1024px-OOjs_UI_icon_logOut-ltr.svg.png" Stretch="Fill"/>
 
-        <Button  BorderBrush="{x:Null}"
-                    Background="#51B4FF" Content="Usuń" Foreground="White" FontWeight="DemiBold" FontSize="15" Margin="141,756,128,67" Grid.Column="2">
+        <Button x:Name="btnRemove" BorderBrush="{x:Null}"
+                    Background="#51B4FF" Content="Usuń" Foreground="White" FontWeight="DemiBold" FontSize="15" Margin="141,756,128,67" Grid.Column="2" Command="{Binding RemoveEatenProduct}">
 
             <Button.Resources>
                 <Style TargetType="Border">

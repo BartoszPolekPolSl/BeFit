@@ -36,6 +36,7 @@ namespace BeFit.Model
             if (EatenProductsRepository.EditProductDB(eatenproduct))
             {
                 UpdateEatenProductDB();
+                return true;
             }
             return false;
         }

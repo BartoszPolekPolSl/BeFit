@@ -6,6 +6,7 @@
              xmlns:vm="clr-namespace:BeFit.ViewModel"
              xmlns:local="clr-namespace:BeFit.View"
              mc:Ignorable="d" 
+             xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
              d:DesignHeight="450" d:DesignWidth="800">
     <UserControl.DataContext>
         <vm:RegisterViewModel/>
@@ -109,7 +110,13 @@
                  BorderBrush="{x:Null}"
                  Background="#FFF6F6F6"
                  Foreground="DarkGray"
-                  FontSize="20"/>
+                  FontSize="20">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="TextChanged">
+                    <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDigit}" CommandParameter="{Binding ElementName=textBoxWeight}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
         <TextBlock Grid.Row="5" Text="Waga" FontSize="15"
                  Foreground="DarkGray"
                  TextAlignment="Center"
@@ -128,7 +135,13 @@
                  BorderBrush="{x:Null}"
                  Background="#FFF6F6F6"
                  Foreground="DarkGray"
-                  FontSize="20"/>
+                  FontSize="20">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="TextChanged">
+                    <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDigit}" CommandParameter="{Binding ElementName=textBoxHeight}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
 
         <TextBlock Grid.Row="7" Text="Wiek" FontSize="15"
                  Foreground="DarkGray"
@@ -140,7 +153,13 @@
                  BorderBrush="{x:Null}"
                  Background="#FFF6F6F6"
                  Foreground="DarkGray"
-                  FontSize="20"/>
+                  FontSize="20">
+            <i:Interaction.Triggers>
+                <i:EventTrigger EventName="TextChanged">
+                    <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDigit}" CommandParameter="{Binding ElementName=textBoxAge}"/>
+                </i:EventTrigger>
+            </i:Interaction.Triggers>
+        </TextBox>
 
         <TextBlock Grid.Row="2" FontSize="15"
                  Foreground="DarkGray"

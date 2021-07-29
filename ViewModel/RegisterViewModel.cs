@@ -11,6 +11,7 @@ namespace BeFit.ViewModel
     using BaseClass;
     using BeFit.DAL;
     using System.Security;
+    using System.Windows.Controls;
 
     class RegisterViewModel : ViewModel
     {
@@ -31,6 +32,23 @@ namespace BeFit.ViewModel
 
         private ICommand _register;
         public ICommand Register => _register ?? (_register = new RelayCommand((p) => {  RegisterSystem.register(LoginArg, PasswordArg, SexArg, WeightArg, HeightArg, AgeArg, ActivityArg, TargetArg); }, p => true));
-     
+
+        private ICommand _checkIfTextBoxHasDigit;
+        public ICommand CheckIfTextBoxHasDigit => _checkIfTextBoxHasDigit ?? (_checkIfTextBoxHasDigit = new RelayCommand((p) => { textBoxDigitOnly(p); }, p => true));
+
+        private void textBoxDigitOnly(Object obj)
+        {
+            var textBox = (TextBox)obj;
+            if (textBox.Text != "")
+            {
+                char lastChar = textBox.Text.Last<char>();
+                if (!char.IsDigit(lastChar) && lastChar != '.')
+                {
+                    textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1, 1);
+                }
+                textBox.SelectionStart = textBox.Text.Length;
+            }
+        }
+
     }
 }

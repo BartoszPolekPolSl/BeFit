@@ -21,20 +21,21 @@ namespace BeFit.ViewModel
     {
         #region Delegates
         public delegate void UnselectListBoxIndex();
-        public UnselectListBoxIndex UnselectEatenProductsIndex;
+        public event UnselectListBoxIndex UnselectEatenProductsIndex;
         #endregion
 
         #region Private
         private Model model;
         private object currentView;
-        private string currentDate, eatenProteins, eatenCarbohydrates, eatenFats, eatenKcal; 
+        private string currentDate, eatenProteins, eatenCarbohydrates, eatenFats, eatenKcal;
         private EatenProduct currentEatenProduct;
         private Calculator calculator;
+        private SettingsViewModel settingsViewModel;
         #endregion
 
         #region Constructors
         public BeFitViewModel(Model model)
-        {             
+        {
             this.model = model;
             calculator = new Calculator(model);
             User = model.User;
@@ -43,10 +44,11 @@ namespace BeFit.ViewModel
             currentEatenProduct = new EatenProduct();
             AddProductView = new AddProductView(this);
             SettingsView = new SettingsView(User);
+            settingsViewModel = (SettingsViewModel)SettingsView.DataContext;
+            settingsViewModel.UpdateUserInfo += updateUserInfo;
             CurrentView = AddProductView;
             CurrentDate = DateTime.Now.ToString();
             updateEatenComponents();
-            EatenKcal = model.getEatenKcal();
             updateTime();
         }
         #endregion
@@ -214,7 +216,7 @@ namespace BeFit.ViewModel
         public ICommand AddEatenProduct => _addEatenProduct ?? (_addEatenProduct = new RelayCommand((p) => { addEatenProduct(); }, p => checkEatenProduct()));
 
         private ICommand _changeEatenProduct;
-        public ICommand ChangeEatenProduct => _changeEatenProduct ?? (_changeEatenProduct = new RelayCommand((p) => { changeEatenProduct(p); }, p => true));      
+        public ICommand ChangeEatenProduct => _changeEatenProduct ?? (_changeEatenProduct = new RelayCommand((p) => { changeEatenProduct(p); }, p => true));
 
         private ICommand _removeEatenProduct;
         public ICommand RemoveEatenProduct => _removeEatenProduct ?? (_removeEatenProduct = new RelayCommand((p) => { removeEatenProduct(); }, p => true));
@@ -235,6 +237,9 @@ namespace BeFit.ViewModel
         private ICommand _editFavoriteProduct;
         public ICommand EditFavoriteProduct => _editFavoriteProduct ?? (_editFavoriteProduct = new RelayCommand((p) => { editFavoriteProduct(); }, p => true));
 
+        private ICommand _checkIfTextBoxHasDigit;
+        public ICommand CheckIfTextBoxHasDigit => _checkIfTextBoxHasDigit ?? (_checkIfTextBoxHasDigit = new RelayCommand((p) => { textBoxDigitOnly(p); }, p => true));
+
 
         #endregion
 
@@ -245,16 +250,10 @@ namespace BeFit.ViewModel
 
             if (string.IsNullOrWhiteSpace(CurrentProductName))
             {
-                
+
                 return false;
             }
             return true;
-        }
-
-        string ToString(double c)
-        {
-
-            return $"{c}";
         }
 
         private void addEatenProduct()
@@ -268,7 +267,7 @@ namespace BeFit.ViewModel
             player.Load();
             player.Play();
         }
-        
+
         private void editEatenProduct()
         {
             model.EditEatenProductDB(currentEatenProduct);
@@ -288,14 +287,14 @@ namespace BeFit.ViewModel
             if (parameter != null)
             {
                 EatenProduct eatenproduct = (EatenProduct)parameter;
-                currentEatenProduct = new EatenProduct( eatenproduct);
+                currentEatenProduct = eatenproduct;
                 OnPropertyChange(nameof(CurrentCarbohydrates), nameof(CurrentFats), nameof(CurrentKcal), nameof(CurrentProteins), nameof(CurrentWeight), nameof(CurrentProductName));
             }
             else
             {
                 currentEatenProduct = new EatenProduct();
                 OnPropertyChange(nameof(CurrentCarbohydrates), nameof(CurrentFats), nameof(CurrentKcal), nameof(CurrentProteins), nameof(CurrentWeight), nameof(CurrentProductName));
-            }         
+            }
         }
 
         private void changeFavoriteProduct(object parameter)
@@ -334,7 +333,7 @@ namespace BeFit.ViewModel
 
         private void logOut()
         {
-            var result=MessageBox.Show("Czy napewno chcesz się wylogować?", "Uwaga!", MessageBoxButton.YesNo, MessageBoxImage.Question);
+            var result = MessageBox.Show("Czy napewno chcesz się wylogować?", "Uwaga!", MessageBoxButton.YesNo, MessageBoxImage.Question);
             if (result == MessageBoxResult.Yes)
             {
                 App.LogOut();
@@ -349,13 +348,40 @@ namespace BeFit.ViewModel
             EatenKcal = $"{calculator.GetEatenKcal()}/{calculator.GetKcalTarget()}";
         }
 
+        private void updateUserInfo(string sex, double weight, int height, int age, string activity, string target)
+        {
+            User.Sex = sex;
+            User.Weight = weight;
+            User.Height = height;
+            User.Age = age;
+            User.Activity = activity;
+            User.Target = target;
+            updateEatenComponents();
+        }
+
         private async void updateTime()
         {
             CurrentDate = DateTime.Now.ToString("G");
             await Task.Delay(1000);
             updateTime();
         }
-        
+
+        private void textBoxDigitOnly(Object obj)
+        {
+            var textBox = (TextBox)obj;
+            if (textBox.Text != "")
+            {
+                char lastChar = textBox.Text.Last<char>();
+                if (!char.IsDigit(lastChar) && lastChar != '.')
+                {
+                    textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1, 1);
+                }
+                textBox.SelectionStart = textBox.Text.Length;
+            }
+        }
+
+        // TODO: move this code
+
         #endregion
     }
 

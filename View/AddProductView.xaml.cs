@@ -22,19 +22,6 @@ namespace BeFit.View
     using Model;
     public partial class AddProductView : UserControl
     {
-
-        private static bool IsTextNumeric(string str)
-        {
-            System.Text.RegularExpressions.Regex reg = new System.Text.RegularExpressions.Regex("[^0-9]");
-            return reg.IsMatch(str);
-
-        }
-
-        private void NumericOnly(System.Object sender, System.Windows.Input.TextCompositionEventArgs e)
-        {
-            e.Handled = IsTextNumeric(e.Text);
-        }
-
         public AddProductView(BeFitViewModel befitVM)
         {
             InitializeComponent();
@@ -46,11 +33,12 @@ namespace BeFit.View
             BindingOperations.SetBinding(txtBoxKcal, TextBox.TextProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.CurrentKcal)), Source = DataContext });
             BindingOperations.SetBinding(txtBoxWeight, TextBox.TextProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.CurrentWeight)), Source = DataContext });
             BindingOperations.SetBinding(btnAddEatenProduct, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.AddEatenProduct)), Source = DataContext });
-            BindingOperations.SetBinding(btnRemoveEatenProduct, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.RemoveEatenProduct)), Source = DataContext });
-            BindingOperations.SetBinding(btnEditFavoriteProduct, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.EditEatenProduct)), Source = DataContext});
+            BindingOperations.SetBinding(btnEdit, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.EditEatenProduct)), Source = DataContext });
             BindingOperations.SetBinding(listBoxFavoriteProducts, ListBox.ItemsSourceProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.FavoriteProducts)), Source = DataContext });
             BindingOperations.SetBinding(btnAddFavoriteProduct, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.AddFavoriteProduct)), Source = DataContext });
-            BindingOperations.SetBinding(btnRemoveFavoriteProduct, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.RemoveFavoriteProduct)), Source = DataContext });         
+            BindingOperations.SetBinding(btnRemoveFavoriteProduct, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.RemoveFavoriteProduct)), Source = DataContext });
         }
+
+
     }
 }

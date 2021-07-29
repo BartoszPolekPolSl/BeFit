@@ -25,6 +25,7 @@ namespace BeFit.DAL
                 command.Parameters.AddWithValue("@age", age);
                 command.Parameters.AddWithValue("@activity", activity);
                 command.Parameters.AddWithValue("@target", target);
+                connection.Open();
                 var n = command.ExecuteNonQuery();
                 if (n == 1) state = true;
                 connection.Close();

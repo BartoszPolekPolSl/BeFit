@@ -24,6 +24,8 @@ namespace BeFit.View
 
     public partial class SettingsView : UserControl
     {
+
+
         public SettingsView(User user)
         {
             InitializeComponent();
@@ -32,9 +34,11 @@ namespace BeFit.View
             BindingOperations.SetBinding(txtBoxWeight, TextBox.TextProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.WeightArg)), Source = DataContext });
             BindingOperations.SetBinding(txtBoxHeight, TextBox.TextProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.HeightArg)), Source = DataContext });
             BindingOperations.SetBinding(txtBoxAge, TextBox.TextProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.AgeArg)), Source = DataContext });
-            BindingOperations.SetBinding(comboBoxSex, ComboBox.ItemsSourceProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.SexArg)), Source = DataContext });
-            BindingOperations.SetBinding(comboAcitivity, ComboBox.ItemsSourceProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.ActivityArg)), Source = DataContext });
-            BindingOperations.SetBinding(btnChange, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.UpdateUserInfo)), Source = DataContext });
+            BindingOperations.SetBinding(comboBoxSex, ComboBox.ItemsSourceProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.SexSource)), Source = DataContext });
+            BindingOperations.SetBinding(comboBoxAcitivity, ComboBox.ItemsSourceProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.ActivtySource)), Source = DataContext });
+            BindingOperations.SetBinding(comboBoxSex, ComboBox.SelectedItemProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.SexArg)), Source = DataContext });
+            BindingOperations.SetBinding(comboBoxAcitivity, ComboBox.SelectedItemProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.ActivityArg)), Source = DataContext });
+            BindingOperations.SetBinding(btnChange, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.EditUserInfo)), Source = DataContext });
         }
 
     }
