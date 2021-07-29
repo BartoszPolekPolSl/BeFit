@@ -76,9 +76,10 @@
         </ListBox>
         <TextBlock Text="Dodane produkty" Grid.Column="2" Margin="73,72,78,759" HorizontalAlignment="Center" FontSize="26" FontWeight="Bold" Foreground="White" />
         <TextBlock Text="{Binding EatenKcal}" Grid.Column="1"  TextAlignment="Center" Margin="162,729,157,0" FontSize="16" FontWeight="SemiBold" />
-        <TextBlock Text="Binding Bialka" Margin="221,807,392,0" TextAlignment="Center" Grid.ColumnSpan="2" FontSize="16" FontWeight="SemiBold" />
-        <TextBlock Text="Binding Tłuszczy" Grid.Column="1" Margin="162,807,158,0" TextAlignment="Center" FontSize="16" FontWeight="SemiBold"/>
-        <TextBlock Text="Binging węglowodanów" Grid.Column="1" Margin="456,807,299,0" TextAlignment="Center" Grid.ColumnSpan="2" FontSize="16" FontWeight="SemiBold" />
+        <TextBlock Text="{Binding EatenKcal}" Margin="221,807,392,0" TextAlignment="Center" Grid.ColumnSpan="2" FontSize="16" FontWeight="SemiBold" />
+        <TextBlock Text="{Binding EatenFats}" Grid.Column="1" Margin="162,807,158,0" TextAlignment="Center" FontSize="16" FontWeight="SemiBold"/>
+        <TextBlock Text="{Binding EatenCarbohydrates}" Grid.Column="1" Margin="456,807,299,0" TextAlignment="Center" Grid.ColumnSpan="2" FontSize="16" FontWeight="SemiBold" />
+
 
 
 

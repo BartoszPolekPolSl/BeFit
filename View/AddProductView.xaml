@@ -40,6 +40,8 @@
                 <RowDefinition Height="28*"/>
             </Grid.RowDefinitions>
 
+            <TextBox x:Name="txtBoxName" Grid.Row="3" Grid.Column="1" FontSize="16" Text="Nazwa" Grid.ColumnSpan="2" BorderBrush="{x:Null}"
+                 Background="#FFF6F6F6"    
 
             <TextBox x:Name="txtBoxName" Grid.Row="2" FontSize="12" BorderBrush="{x:Null}" FontFamily="SegoeUI"
                  Background="#FFF6F6F6" Margin="14,63,55,14" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2"
@@ -67,8 +69,11 @@
                     </Style>
                 </Button.Resources>
             </Button>
+            <!-- <Button x:Name="btnEditFavoriteProduct" Grid.Row="10" Grid.Column="4"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="33" Width="71" BorderBrush="{x:Null}"
+                    Background="#51B4FF" Content="Edytuj" Foreground="White" Margin="124,18,10,0" FontWeight="DemiBold"> -->
             <Button x:Name="btnEdit" BorderBrush="{x:Null}"
                     Background="#51B4FF" Content="Edytuj" Foreground="White"  FontWeight="DemiBold" Grid.Column="3" Margin="3,5" Grid.Row="8">
+            
 
                 <Button.Resources>
                     <Style TargetType="Border">

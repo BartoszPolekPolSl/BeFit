@@ -46,13 +46,11 @@ namespace BeFit.View
             BindingOperations.SetBinding(txtBoxKcal, TextBox.TextProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.CurrentKcal)), Source = DataContext });
             BindingOperations.SetBinding(txtBoxWeight, TextBox.TextProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.CurrentWeight)), Source = DataContext });
             BindingOperations.SetBinding(btnAddEatenProduct, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.AddEatenProduct)), Source = DataContext });
-            
-            BindingOperations.SetBinding(btnEdit, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.EditEatenProduct)), Source = DataContext});
+            BindingOperations.SetBinding(btnRemoveEatenProduct, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.RemoveEatenProduct)), Source = DataContext });
+            BindingOperations.SetBinding(btnEditFavoriteProduct, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.EditFavoriteProduct)), Source = DataContext});
             BindingOperations.SetBinding(listBoxFavoriteProducts, ListBox.ItemsSourceProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.FavoriteProducts)), Source = DataContext });
             BindingOperations.SetBinding(btnAddFavoriteProduct, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.AddFavoriteProduct)), Source = DataContext });
-            BindingOperations.SetBinding(btnRemoveFavoriteProduct, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.RemoveFavoriteProduct)), Source = DataContext });
-            
-
+            BindingOperations.SetBinding(btnRemoveFavoriteProduct, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(BeFitViewModel.RemoveFavoriteProduct)), Source = DataContext });         
         }
     }
 }

@@ -32,13 +32,14 @@
 
 
 
-        <TextBox x:Name="textBoxPassword" TextWrapping="Wrap" Text="Hasło"
+        <PasswordBox x:Name="passwordBoxPassword"
                  
                  FontSize="26"
                  BorderBrush="{x:Null}"
                  Background="#FFF6F6F6"
                  Foreground="DarkGray"
-                 TextAlignment="Center" Margin="268,205,263,198"
+                 Margin="268,205,263,198"
+                 PasswordChanged="passwordBoxPassword_PasswordChanged"
                  />
 
         <Button x:Name="LoginButton" Content="Zaloguj" Margin="268,329,414,69" Background="#FF64CCF1" BorderBrush="{x:Null}"

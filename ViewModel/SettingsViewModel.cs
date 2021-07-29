@@ -27,7 +27,9 @@ namespace BeFit.ViewModel
             this.user = user;
         }
 
-        private ICommand _updateUserInfo;
-        public ICommand UpdateUserInfo => _updateUserInfo ?? (_updateUserInfo = new RelayCommand((p) => { UserInfoSystem.EditUserInfoDB(user.Id, SexArg, WeightArg, HeightArg, AgeArg, ActivityArg, TargetArg); }, p => true));
+        public List<String> ActivtySource { get; set; } = new List<String> { Model.Activity.lack.ToString(), Model.Activity.little.ToString(), Model.Activity.medium.ToString(), Model.Activity.high.ToString(), Model.Activity.professionally.ToString() };
+
+        private ICommand _editUserInfo;
+        public ICommand EditUserInfo => _editUserInfo ?? (_editUserInfo = new RelayCommand((p) => { UserInfoSystem.EditUserInfoDB(user.Id, SexArg, WeightArg, HeightArg, AgeArg, ActivityArg, TargetArg); }, p => true));
     }
 }

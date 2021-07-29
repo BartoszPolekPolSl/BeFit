@@ -2,6 +2,8 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Net;
+using System.Security;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows;
@@ -15,7 +17,7 @@ namespace BeFit.DAL
         private const string CHECK_USERNAME = "SELECT username FROM users WHERE username=@username";
 
 
-        public static void register(string login, string password, string sex, double weight, int height, int age, string activity, string target)
+        public static void register(string login, SecureString password, string sex, double weight, int height, int age, string activity, string target)
         {
             using (var connection = DBConnection.Instance.Connection)
             {
@@ -32,7 +34,8 @@ namespace BeFit.DAL
                         var command = new MySqlCommand(REGISTER_USER, connection);
                         command.CommandText = REGISTER_USER;
                         command.Parameters.AddWithValue("@login", login);
-                        command.Parameters.AddWithValue("@password", password);
+                        string ps= new NetworkCredential("", password).Password;
+                        command.Parameters.AddWithValue("@password", ps);
                         connection.Open();
                         var dataReaderNoQuery = command.ExecuteNonQuery();
                         int userid = (int)command.LastInsertedId;      

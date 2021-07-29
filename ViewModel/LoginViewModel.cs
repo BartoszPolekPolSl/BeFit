@@ -14,6 +14,7 @@ namespace BeFit.ViewModel
     using Model;
     using BaseClass;
     using BeFit.DAL;
+    using System.Security;
 
     class LoginViewModel : ViewModel
     {
@@ -21,7 +22,7 @@ namespace BeFit.ViewModel
 
         public string LoginArg { get; set; }
  
-        public string PasswordArg { get; set; }
+        public SecureString PasswordArg {private get; set; }
  
         private ICommand _login;
         public ICommand Login => _login ?? (_login = new RelayCommand((p) => { LoginSystem.Login(LoginArg, PasswordArg); }, p => true));

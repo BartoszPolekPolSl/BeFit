@@ -42,11 +42,13 @@
                  FontSize="20"
                  />
 
-        <TextBox x:Name="textBoxPassword" Margin="80,4,0,6" Grid.Row="2"
+        <PasswordBox x:Name="passwordBoxPassword" Margin="80,4,0,6" Grid.Row="2"
                  BorderBrush="{x:Null}"
                  Background="#FFF6F6F6"
                  Foreground="Black"
-                  FontSize="20"/>
+                 FontSize="20"
+                 PasswordChanged="passwordBoxPassword_PasswordChanged"
+                     />
 
         <TextBlock Text="Login" Margin="25,15,205,0"
                  FontSize="15"
@@ -67,7 +69,8 @@
         <Button x:Name="RegisterButton" Grid.Row="6" Grid.Column="2" Content="Zarejestruj" Foreground="White" Background="#FF64CCF1"
                 FontFamily="Arial"
                 FontSize="15"
-                FontWeight="Bold" Margin="48,27,40,18" Grid.RowSpan="2">
+                FontWeight="Bold" Margin="48,27,40,18" Grid.RowSpan="2"
+                >
             <Button.Resources>
                 <Style TargetType="Border">
                     <Setter Property="CornerRadius" Value="14"/>
