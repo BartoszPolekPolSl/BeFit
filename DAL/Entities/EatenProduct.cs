@@ -68,7 +68,7 @@ namespace BeFit.DAL.Entities
 
         public override string ToString()
         {
-            return $"Nazwa:{Name},Waga:{Weight},Tłuszcze:{EatenFats},Węglowodany:{EatenCarbohydrates},Białko:{EatenProteins},KCAL:{EatenKcal}";
+            return $"{Name} Waga: {Weight}g\nBiałko: {EatenProteins}g\nWęglowodany: {EatenCarbohydrates}g\nTłuszcz: {EatenFats}g\nKCAL: {EatenKcal}";
         }
         #endregion Methods
     }

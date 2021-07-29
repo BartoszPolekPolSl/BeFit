@@ -20,13 +20,22 @@ namespace BeFit.View
     /// </summary>
     using DAL.Entities;
     using ViewModel;
- 
+    using View;
+
     public partial class SettingsView : UserControl
     {
         public SettingsView(User user)
         {
             InitializeComponent();
             DataContext = new SettingsViewModel(user);
+
+            BindingOperations.SetBinding(txtBoxWeight, TextBox.TextProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.WeightArg)), Source = DataContext });
+            BindingOperations.SetBinding(txtBoxHeight, TextBox.TextProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.HeightArg)), Source = DataContext });
+            BindingOperations.SetBinding(txtBoxAge, TextBox.TextProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.AgeArg)), Source = DataContext });
+            BindingOperations.SetBinding(comboBoxSex, ComboBox.ItemsSourceProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.SexArg)), Source = DataContext });
+            BindingOperations.SetBinding(comboAcitivity, ComboBox.ItemsSourceProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.ActivityArg)), Source = DataContext });
+            BindingOperations.SetBinding(btnChange, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.UpdateUserInfo)), Source = DataContext });
         }
+
     }
 }

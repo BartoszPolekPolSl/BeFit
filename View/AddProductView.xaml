@@ -7,20 +7,22 @@
              xmlns:local="clr-namespace:BeFit.View"
              xmlns:vm="clr-namespace:BeFit.ViewModel"
              mc:Ignorable="d" 
-             d:DesignHeight="447" d:DesignWidth="716">
+             d:DesignHeight="481" d:DesignWidth="776">
 
     <Grid>
-        <Image Margin="0,1,0,0" Source="/Recources/Images/EatingControl.png" Stretch="Fill"/>
+
+        <Image Source="/Recources/Images/addpr.png" Stretch="Fill"/>
 
         <Grid>
             <Grid.ColumnDefinitions>
-                <ColumnDefinition Width="22*"/>
-                <ColumnDefinition Width="124*"/>
-                <ColumnDefinition Width="124*"/>
-                <ColumnDefinition Width="71*"/>
-                <ColumnDefinition Width="205*"/>
-                <ColumnDefinition Width="132*"/>
-                <ColumnDefinition Width="38*"/>
+                <ColumnDefinition Width="24*"/>
+                <ColumnDefinition Width="134*"/>
+                <ColumnDefinition Width="67*"/>
+                <ColumnDefinition Width="68*"/>
+                <ColumnDefinition Width="77*"/>
+                <ColumnDefinition Width="222*"/>
+                <ColumnDefinition Width="143*"/>
+                <ColumnDefinition Width="41*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
 
@@ -38,36 +40,26 @@
                 <RowDefinition Height="28*"/>
             </Grid.RowDefinitions>
 
-            <TextBox x:Name="txtBoxName" Grid.Row="3" Grid.Column="1" FontSize="16" Text="Nazwa" Grid.ColumnSpan="2" BorderBrush="{x:Null}"
-                 Background="#FFF6F6F6"
-                     
+
+            <TextBox x:Name="txtBoxName" Grid.Row="2" FontSize="12" BorderBrush="{x:Null}" FontFamily="SegoeUI"
+                 Background="#FFF6F6F6" Margin="14,63,55,14" Grid.Column="1" Grid.ColumnSpan="2" Grid.RowSpan="2"
                      />
-            <Border BorderBrush="Aqua" Grid.Column="2" Margin="65,2,2,1" Grid.Row="3" Background="#FFF6F6F6"/>
-            <TextBlock Text="Nazwa" FontSize="16" RenderTransformOrigin="8.727,6.852" Grid.Column="2" Margin="69,7,6,1" Grid.Row="3"/>
-            <TextBox x:Name="txtBoxProteins" Grid.Row="4" Grid.Column="1" Margin="0,4,8,4" FontSize="10" Text="Białko" BorderBrush="{x:Null}"
-                 Background="#FFF6F6F6" />
-            <TextBox x:Name="txtBoxFats" Grid.Row="4" Grid.Column="2" Margin="8,4,0,4" FontSize="10" Text="Tłuszcz" BorderBrush="{x:Null}"
-                 Background="#FFF6F6F6" />
-            <TextBox x:Name="txtBoxCarbohydrates" Grid.Row="5" Grid.Column="1" Margin="0,4,8,4" FontSize="10" Text="Węglowodany" BorderBrush="{x:Null}"
-                 Background="#FFF6F6F6"/>
+            <TextBlock FontFamily="SegoeUI" FontSize="12" FontWeight="SemiBold" RenderTransformOrigin="8.727,6.852" Grid.Column="1" Margin="15,42,72,2" Grid.Row="2"><Run Text="Nazwa"/><Run Text=":"/></TextBlock>
+            <TextBox FontFamily="SegoeUI" x:Name="txtBoxProteins" Grid.Row="4" Grid.Column="1" Margin="14,1,55,7" FontSize="12" Text="Białko" BorderBrush="{x:Null}"
+                 Background="#FFF6F6F6" Grid.ColumnSpan="2" PreviewTextInput="NumericOnly"/>
+            <TextBox FontFamily="SegoeUI" x:Name="txtBoxFats" Grid.Row="6" Margin="15,21,54,2" FontSize="12" Text="Tłuszcz" BorderBrush="{x:Null}"
+                 Background="#FFF6F6F6" Grid.RowSpan="2" Grid.Column="1" Grid.ColumnSpan="2" PreviewTextInput="NumericOnly"/>
+            <TextBox FontFamily="SegoeUI" x:Name="txtBoxCarbohydrates" Grid.Row="5" Margin="15,12,54,31" FontSize="12" Text="Węglowodany" BorderBrush="{x:Null}"
+                 Background="#FFF6F6F6" Grid.Column="1" Grid.RowSpan="2" Grid.ColumnSpan="2" PreviewTextInput="NumericOnly"/>
 
-            <TextBox x:Name="txtBoxKcal" Grid.Row="5" Grid.Column="2" Margin="8,4,0,4" FontSize="10" Text="Kcal" BorderBrush="{x:Null}"
-                 Background="#FFF6F6F6"/>
+            <TextBox FontFamily="SegoeUI" x:Name="txtBoxKcal" Grid.Row="2" Grid.Column="2" Margin="30,63,49,14" FontSize="12" Text="Kcal" BorderBrush="{x:Null}"
+                 Background="#FFF6F6F6" Grid.ColumnSpan="3" Grid.RowSpan="2" PreviewTextInput="NumericOnly"/>
 
-            <TextBox x:Name="txtBoxWeight" Grid.Row="6" Grid.Column="1" Margin="0,1,0,0" FontSize="16" Grid.ColumnSpan="2" Text="Ilość" BorderBrush="{x:Null}"
-                 Background="#FFF6F6F6" />
+            <TextBox FontFamily="SegoeUI" x:Name="txtBoxWeight" Grid.Row="4" Margin="30,0,51,7" FontSize="12" Text="Ilość" BorderBrush="{x:Null}"
+                 Background="#FFF6F6F6" Grid.Column="2" Grid.ColumnSpan="3" PreviewTextInput="NumericOnly"/>
 
-            <Button x:Name="btnAddEatenProduct" Grid.Row="8" Grid.Column="2"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="33" Width="71" BorderBrush="{x:Null}"
-                    Background="#51B4FF" Content="Dodaj" Foreground="White" Margin="49,4,4,3" FontWeight="DemiBold">
-
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="9"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <Button x:Name="btnEdit" Grid.Row="10" Grid.Column="4"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="33" Width="71" BorderBrush="{x:Null}"
-                    Background="#51B4FF" Content="Edytuj" Foreground="White" Margin="124,18,10,0" FontWeight="DemiBold">
+            <Button FontFamily="SegoeUI" x:Name="btnAddEatenProduct" BorderBrush="{x:Null}"
+                    Background="#51B4FF" Content="Dodaj" Foreground="White"  FontWeight="DemiBold" Margin="3,5,2,5" Grid.Column="2" Grid.Row="8" >
 
                 <Button.Resources>
                     <Style TargetType="Border">
@@ -75,8 +67,18 @@
                     </Style>
                 </Button.Resources>
             </Button>
+            <Button x:Name="btnEdit" BorderBrush="{x:Null}"
+                    Background="#51B4FF" Content="Edytuj" Foreground="White"  FontWeight="DemiBold" Grid.Column="3" Margin="3,5" Grid.Row="8">
 
-            <ListBox x:Name="listBoxFavoriteProducts" Grid.Column="4" Margin="67,37,30,0" Grid.ColumnSpan="3" Background="Transparent" Grid.Row="2" Grid.RowSpan="8">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="9"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+
+            <ListBox x:Name="listBoxFavoriteProducts" Grid.Column="5" Margin="67,37,30,0" Grid.ColumnSpan="3" Background="Transparent" Grid.Row="2" Grid.RowSpan="8"
+                     FontSize="12" FontWeight="DemiBold" Foreground="Black" BorderBrush="{x:Null}">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="SelectionChanged">
                         <i:InvokeCommandAction Command="{Binding ChangeFavoriteProduct}" CommandParameter="{Binding ElementName=listBoxFavoriteProducts, Path=SelectedItem}"/>
@@ -84,30 +86,12 @@
                 </i:Interaction.Triggers>
             </ListBox>
 
-            <Button x:Name="btnAddFavoriteProduct" Grid.Row="8" Grid.Column="3"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="33" Width="65" Margin="6,4,0,3"
+            <Button x:Name="btnAddFavoriteProduct" 
                     BorderBrush="{x:Null}"
-                    Background="#51B4FF"
+                    Background="#51B4FF" Grid.Column="4" Margin="3,5,12,5" Grid.Row="8"
                     >
 
-                <Image Source="/Recources/Images/favourite.png" Stretch="Uniform" Height="24" Width="25"/>
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="9"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <Button x:Name="btnRemoveFavoriteProduct" Grid.Row="10" Grid.Column="5"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="33" Width="71" BorderBrush="{x:Null}"
-                    Background="#51B4FF" Content="Usuń" Foreground="White" Margin="10,18,51,0" FontWeight="DemiBold">
-
-                <Button.Resources>
-                    <Style TargetType="Border">
-                        <Setter Property="CornerRadius" Value="9"/>
-                    </Style>
-                </Button.Resources>
-            </Button>
-            <Button x:Name="btnRemoveEatenProduct" Grid.Row="10" Grid.Column="5"  HorizontalAlignment="Center" VerticalAlignment="Center" Height="33" Width="35" BorderBrush="{x:Null}"
-                    Background="#51B4FF" Content="-" Foreground="White" Margin="113,18,22,0" FontWeight="DemiBold" Grid.ColumnSpan="2" FontSize="15">
-
+                <Image Source="/Recources/Images/favourite.png" Stretch="Uniform" Height="24" Width="24"/>
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="9"/>
@@ -115,24 +99,34 @@
                 </Button.Resources>
             </Button>
 
-            <Border BorderBrush="Aqua" Grid.Column="1" Margin="50,6,10,6" Grid.Row="5" Background="#FFF6F6F6"/>
-            <Border BorderBrush="Aqua" Grid.Column="2" Margin="103,7,2,6" Grid.Row="5" Background="#FFF6F6F6"/>
-            <Border BorderBrush="Aqua" Grid.Column="2" Margin="89,6,2,6" Grid.Row="4" Background="#FFF6F6F6"/>
+            <Button x:Name="btnRemoveFavoriteProduct" BorderBrush="{x:Null}"
+                    Background="#51B4FF" Content="Usuń" Foreground="White" FontWeight="DemiBold" Grid.Column="5" Margin="178,24,100,0" Grid.Row="10" Grid.ColumnSpan="2">
 
-            <Border BorderBrush="Aqua" Grid.Column="2" Margin="70,4,2,2" Grid.Row="6" Background="#FFF6F6F6"/>
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="9"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <TextBlock FontSize="12" FontWeight="SemiBold" RenderTransformOrigin="8.727,6.852" Grid.Column="2" Margin="31,18,57,29" Grid.Row="3" Grid.RowSpan="2" Grid.ColumnSpan="2"><Run Text="Ilość"/><Run Text=":"/></TextBlock>
+            <TextBlock FontSize="12" FontWeight="SemiBold" RenderTransformOrigin="8.727,6.852" Grid.Column="2" Margin="31,42,0,33" Grid.Row="2" Grid.RowSpan="2"><Run Text="Kcal"/><Run Text=":"/></TextBlock>
+            <TextBlock FontSize="12" FontWeight="SemiBold" RenderTransformOrigin="8.727,6.852" Grid.Column="1" Margin="15,3,65,12" Grid.Row="6"><Run Text="Tłuszcz"/><Run Text=":"/></TextBlock>
+            <TextBlock FontSize="12" FontWeight="SemiBold" RenderTransformOrigin="8.727,6.852" Margin="14,18,72,29" Grid.Row="3" Grid.RowSpan="2" Grid.Column="1"><Run Text="Białko"/><Run Text=":"/></TextBlock>
+            <TextBlock FontSize="12" FontWeight="SemiBold" RenderTransformOrigin="8.727,6.852" Margin="15,23,30,20" Grid.Row="4" Grid.RowSpan="2" Grid.Column="1"><Run Text="Węglowodany"/><Run Text=":"/></TextBlock>
+            <TextBlock FontSize="26" Grid.Column="1" Margin="14,19,16,28" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2" Text="Dodaj produkt" FontWeight="Bold"/>
+            <TextBlock FontSize="26" Grid.Column="5" Margin="70,19,57,28" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Text="Ulubione" FontWeight="Bold"/>
+            <TextBlock FontSize="26" Grid.Column="1" Margin="50,52,58,0" Grid.Row="9" Grid.ColumnSpan="4" Text="Wskazówki" FontWeight="Bold"/>
 
-            <Border BorderBrush="Aqua" Grid.Column="1" Margin="84,6,10,6" Grid.Row="4" Background="#FFF6F6F6"/>
-            <TextBlock Text="Ilość" FontSize="16" RenderTransformOrigin="8.727,6.852" Grid.Column="2" Margin="84,2,4,6" Grid.Row="6"/>
-            <TextBlock Text="Kcal" FontSize="10" RenderTransformOrigin="8.727,6.852" Grid.Column="2" Margin="103,7,2,6" Grid.Row="5"/>
-            <TextBlock Text="Tłuszcz" FontSize="10" RenderTransformOrigin="8.727,6.852" Grid.Column="2" Margin="89,10,2,5" Grid.Row="4"/>
-            <TextBlock Text="Białko" FontSize="10" RenderTransformOrigin="8.727,6.852" Grid.Column="1" Margin="86,10,10,5" Grid.Row="4"/>
-            <TextBlock Text="Węglowodany" FontSize="10" RenderTransformOrigin="8.727,6.852" Grid.Column="1" Margin="50,7,10,6" Grid.Row="5"/>
+
+            <TextBlock FontFamily="SegoeUI" FontSize="18" FontWeight="SemiBold" Grid.Column="1" Margin="15,0,0,0" Grid.Row="10" Grid.ColumnSpan="4" Text="Tutaj będzie specjalny bidning &#x0a;pod wskazówki dla użytkownika."/>
 
 
 
 
 
         </Grid>
+
+
 
     </Grid>
 </UserControl>

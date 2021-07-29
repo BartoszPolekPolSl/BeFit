@@ -5,88 +5,88 @@
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              xmlns:vm="clr-namespace:BeFit.ViewModel"
              xmlns:local="clr-namespace:BeFit.View"
-             mc:Ignorable="d" 
-             d:DesignHeight="450" d:DesignWidth="800">
+             mc:Ignorable="d" d:DesignWidth="800" Height="488">
     <Grid>
-        <Border Width="650"
-                Height="400"
-                CornerRadius="10"
-                Grid.Column="2">
-
-
-            <Border.Background>
-                <LinearGradientBrush StartPoint="0,0" EndPoint="1,2">
-                    <GradientStop Color="#F0F5FB" Offset="0.0"/>
-                    <GradientStop Color="WhiteSmoke" Offset="1"/>
-                </LinearGradientBrush>
-            </Border.Background>
-            <Border.Clip>
-                <RectangleGeometry RadiusX="20" RadiusY="20" Rect="0,0,650,400"/>
-            </Border.Clip>
-
-        </Border>
-        <TextBlock Text="Ustawienia" TextAlignment="Center" Margin="323,25,307,395" FontFamily="Segoe UI Semibold" FontSize="18"/>
+        <Image Margin="0,0,0,-8" Source="/Recources/Images/settings.png" Stretch="Fill" RenderTransformOrigin="0.519,0.527"/>
+        <TextBlock Text="Ustawienia" TextAlignment="Center" Margin="0,23,0,420" FontFamily="Segoe UI Semibold" FontSize="26"/>
         <Grid>
             <Grid.ColumnDefinitions>
                 <ColumnDefinition Width="73*"/>
                 <ColumnDefinition Width="52*"/>
                 <ColumnDefinition Width="140*"/>
-                <ColumnDefinition Width="192*"/>
-                <ColumnDefinition Width="135*"/>
+                <ColumnDefinition Width="68*"/>
+                <ColumnDefinition Width="131*"/>
+                <ColumnDefinition Width="128*"/>
                 <ColumnDefinition Width="135*"/>
                 <ColumnDefinition Width="73*"/>
             </Grid.ColumnDefinitions>
             <Grid.RowDefinitions>
 
-                <RowDefinition Height="0.5*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="0.7*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="0.7*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="0.7*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="0.7*"/>
-                <RowDefinition Height="1*"/>
-                <RowDefinition Height="1*"/>
+                <RowDefinition Height="25*"/>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="45*"/>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="45*"/>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="45*"/>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="45*"/>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="55*"/>
+                <RowDefinition Height="58*"/>
+                <RowDefinition Height="61*"/>
             </Grid.RowDefinitions>
 
-            <TextBlock Grid.Row="2"  Grid.Column="1" TextAlignment="Center" Text="Waga" FontFamily="Segoe UI Semibold" Margin="0,2,0,0" Grid.ColumnSpan="2" />
-            <TextBlock Grid.Row="4" Grid.Column="1" TextAlignment="Center" Text="Wzrost" FontFamily="Segoe UI Semibold" Margin="0,2,0,0" Grid.ColumnSpan="2" />
-            <TextBlock Grid.Row="6" Grid.Column="1" TextAlignment="Center" Text="Wiek" FontFamily="Segoe UI Semibold" Margin="0,2,0,0" Grid.ColumnSpan="2" />
-            <TextBlock Grid.Row="8" Grid.Column="1" TextAlignment="Center" Text="Płeć" FontFamily="Segoe UI Semibold" Margin="0,2,0,0" Grid.ColumnSpan="2" />
-            <TextBlock Grid.Row="2" Grid.Column="3" TextAlignment="Center" Text="Aktywność" FontFamily="Segoe UI Semibold" Margin="0,2,0,0" />
+            <TextBlock Grid.Row="2"  Grid.Column="1" TextAlignment="Center" Text="Waga:" FontFamily="Segoe UI Semibold" FontSize="23" Grid.ColumnSpan="2"/>
+            <TextBlock Grid.Row="4" Grid.Column="1" TextAlignment="Center" FontFamily="Segoe UI Semibold" FontSize="23" Grid.ColumnSpan="2" ><Run Text="Wzrost"/><Run Text=":"/></TextBlock>
+            <TextBlock Grid.Row="6" Grid.Column="1" TextAlignment="Center" FontFamily="Segoe UI Semibold" FontSize="23" Grid.ColumnSpan="2" ><Run Text="Wiek"/><Run Text=":"/></TextBlock>
+            <TextBlock Grid.Row="8" Grid.Column="1" TextAlignment="Center" FontFamily="Segoe UI Semibold" FontSize="23" Grid.ColumnSpan="2" Margin="4,0,0,0" ><Run Text="Płeć"/><Run Text=":"/></TextBlock>
+            <TextBlock Grid.Row="2" Grid.Column="4" TextAlignment="Center" Text="Aktywność" FontFamily="Segoe UI Semibold" Margin="100,2,70,0" Grid.ColumnSpan="3" FontSize="23" />
 
-            <TextBox Grid.Row="3" Grid.Column="1" Margin="4" Grid.ColumnSpan="2" />
-            <TextBox Grid.Row="5" Grid.Column="1" Margin="4" Grid.ColumnSpan="2" />
-            <TextBox Grid.Row="7" Grid.Column="1" Margin="4" Grid.ColumnSpan="2" />
-            <TextBox Grid.Row="9" Grid.Column="1" Margin="4" Grid.ColumnSpan="2" />
-            <ComboBox Grid.Row="3" Grid.Column="3" Margin="4" />
+            <TextBox x:Name="txtBoxWeight" Grid.Row="3" Grid.Column="1" Margin="4" Grid.ColumnSpan="2" FontSize="12" BorderBrush="{x:Null}"
+                 Background="#FFF6F6F6" />
+            <TextBox x:Name="txtBoxHeight" Grid.Row="5" Grid.Column="1" Margin="4" Grid.ColumnSpan="2" FontSize="12" BorderBrush="{x:Null}"
+                 Background="#FFF6F6F6"/>
+            <TextBox x:Name="txtBoxAge" Grid.Row="7" Grid.Column="1" Margin="4" Grid.ColumnSpan="2" FontSize="12" BorderBrush="{x:Null}"
+                 Background="#FFF6F6F6"/>
+            <ComboBox x:Name="comboAcitivity" Grid.Row="3" Grid.Column="4" Margin="101,4,70,4" Grid.ColumnSpan="3" />
 
-            <Button Content="Zmień" FontFamily="SegoeUI" FontSize="10" Grid.Row="9" Grid.Column="4" Margin="4"/>
 
-            <RadioButton Content="lose" 
+
+            <RadioButton Content="Schudnąć" 
                              Foreground="Black" 
                              FontSize="14" 
                              HorizontalAlignment="Center"
-                             Grid.Column="5"
-                             Grid.Row="2"
-                             Style="{StaticResource EatingTableTheme}" Width="131" Margin="4,0,0,0" />
-            <RadioButton Content="keep" 
-                             Height="50" 
+                             Grid.Column="4"
+                             Grid.Row="6"
+                             Style="{StaticResource EatingTableTheme}" Width="184" Margin="100,0,110,0" Grid.ColumnSpan="3" />
+            <RadioButton Content="Utrzymać wagę" 
                              Foreground="Black" 
                              FontSize="14" 
                              HorizontalAlignment="Center"
-                             Grid.Column="5"
-                             Grid.Row="3"
-                             Style="{StaticResource EatingTableTheme}" Width="135" Margin="0,0,0,33" Grid.RowSpan="2" />
-            <RadioButton Content="gain" 
+                             
+                             Grid.Column="4"
+                             Grid.Row="7"
+                             Style="{StaticResource EatingTableTheme}" Width="184" Margin="100,0,110,7" Grid.ColumnSpan="3" />
+            <RadioButton Content="Przytyć" 
                              Foreground="Black" 
                              FontSize="14" 
                              HorizontalAlignment="Center"
-                             Grid.Column="5"
-                             Grid.Row="4"
-                             Style="{StaticResource EatingTableTheme}" Width="135" />
+                             Grid.Column="4"
+                             Grid.Row="7"
+                             Style="{StaticResource EatingTableTheme}" Width="184" Margin="100,0,110,6" Grid.ColumnSpan="3" Height="34" VerticalAlignment="Bottom" Grid.RowSpan="2" />
+            <TextBlock Grid.Row="5" Grid.Column="4" TextAlignment="Center" Text="Planuję:" FontFamily="Segoe UI Semibold" Margin="100,4,29,0" FontSize="23" Grid.ColumnSpan="2" />
+
+            <Button x:Name="btnChange" Content="Zmień" FontFamily="SegoeUI" FontSize="16" Grid.Row="11" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="120" BorderBrush="{x:Null}"
+                    Background="#51B4FF" Foreground="White" FontWeight="DemiBold" Grid.Column="4">
+                <Button.Resources>
+                    <Style TargetType="Border">
+                        <Setter Property="CornerRadius" Value="9"/>
+                    </Style>
+                </Button.Resources>
+            </Button>
+            <ComboBox x:Name="comboBoxSex" Grid.Row="9" Grid.Column="1" Grid.ColumnSpan="2" Margin="4,0,4,10" />
         </Grid>
+
     </Grid>
 </UserControl>
