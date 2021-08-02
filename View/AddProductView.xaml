@@ -49,6 +49,7 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="TextChanged">
                         <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDigit}" CommandParameter="{Binding ElementName=txtBoxProteins}"/>
+                        <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasText}" CommandParameter="{Binding ElementName=txtBoxProteins}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </TextBox>
@@ -57,6 +58,7 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="TextChanged">
                         <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDigit}" CommandParameter="{Binding ElementName=txtBoxFats}"/>
+                        <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasText}" CommandParameter="{Binding ElementName=txtBoxFats}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </TextBox>
@@ -65,6 +67,7 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="TextChanged">
                         <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDigit}" CommandParameter="{Binding ElementName=txtBoxCarbohydrates}"/>
+                        <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasText}" CommandParameter="{Binding ElementName=txtBoxCarbohydrates}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </TextBox>
@@ -74,6 +77,7 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="TextChanged">
                         <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDigit}" CommandParameter="{Binding ElementName=txtBoxKcal}"/>
+                        <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasText}" CommandParameter="{Binding ElementName=txtBoxKcal}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </TextBox>
@@ -83,6 +87,7 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="TextChanged">
                         <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDigit}" CommandParameter="{Binding ElementName=txtBoxWeight}"/>
+                        <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasText}" CommandParameter="{Binding ElementName=txtBoxWeight}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </TextBox>
@@ -146,10 +151,11 @@
             <TextBlock FontSize="12" FontWeight="SemiBold" RenderTransformOrigin="8.727,6.852" Margin="15,23,30,20" Grid.Row="4" Grid.RowSpan="2" Grid.Column="1"><Run Text="Węglowodany"/><Run Text=":"/></TextBlock>
             <TextBlock FontSize="26" Grid.Column="1" Margin="14,19,16,28" Grid.Row="1" Grid.ColumnSpan="3" Grid.RowSpan="2" Text="Dodaj produkt" FontWeight="Bold"/>
             <TextBlock FontSize="26" Grid.Column="5" Margin="70,19,57,28" Grid.Row="1" Grid.ColumnSpan="2" Grid.RowSpan="2" Text="Ulubione" FontWeight="Bold"/>
-            <TextBlock FontSize="26" Grid.Column="1" Margin="50,52,58,0" Grid.Row="9" Grid.ColumnSpan="4" Text="Ciekawostki" FontWeight="Bold"/>
+            <TextBlock FontSize="26" Grid.Column="1" Margin="50,52,32,38" Grid.Row="9" Grid.ColumnSpan="4" Text="Ciekawostki" FontWeight="Bold" Grid.RowSpan="2"/>
 
 
-            <TextBlock x:Name="textBlockFunFact" FontFamily="SegoeUI" FontSize="18" FontWeight="SemiBold" Grid.Column="1" Margin="15,85,0,19" Grid.Row="9" Grid.ColumnSpan="4" Text="Tutaj będzie specjalny bidning &#x0a;pod wskazówki dla użytkownika." TextWrapping="Wrap" Grid.RowSpan="3" />
+            <TextBlock x:Name="textBlockFunFact" FontFamily="SegoeUI" FontSize="18" FontWeight="SemiBold" Grid.Column="1" Margin="15,94,0,10" Grid.Row="9" Grid.ColumnSpan="4" Text="Tutaj będzie specjalny bidning &#x0a;pod wskazówki dla użytkownika." TextWrapping="Wrap" Grid.RowSpan="3" />
+            <TextBlock FontSize="16" Grid.Column="3" Margin="24,3,203,25" Grid.Row="2" Grid.ColumnSpan="3" Text="/100g" FontWeight="Bold"/>
 
 
 

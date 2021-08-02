@@ -31,6 +31,7 @@ namespace BeFit.ViewModel
         private EatenProduct currentEatenProduct;
         private Calculator calculator;
         private SettingsViewModel settingsViewModel;
+        private bool checkVar = false;
         #endregion
 
         #region Constructors
@@ -241,21 +242,43 @@ namespace BeFit.ViewModel
         private ICommand _checkIfTextBoxHasDigit;
         public ICommand CheckIfTextBoxHasDigit => _checkIfTextBoxHasDigit ?? (_checkIfTextBoxHasDigit = new RelayCommand((p) => { textBoxDigitOnly(p); }, p => true));
 
+        private ICommand _checkIfTextBoxHasText;
+        public ICommand CheckIfTextBoxHasText => _checkIfTextBoxHasText ?? (_checkIfTextBoxHasText = new RelayCommand((p) => { textBoxHasText(p); }, p => true));
+
 
         #endregion
 
         #region Methods
+
+
+        private void textBoxHasText(object obj)
+        {
+            var target = (TextBox)obj;
+            if (string.IsNullOrWhiteSpace(target.Text))
+            {
+                checkVar = true;
+            }
+            else
+            {
+                Console.WriteLine("else");
+                checkVar = false;
+            }
+        }
 
         private bool checkEatenProduct()
         {
 
             if (string.IsNullOrWhiteSpace(CurrentProductName))
             {
-
+                return false;
+            }
+            if (checkVar == true)
+            {
                 return false;
             }
             return true;
         }
+
 
         private void addEatenProduct()
         {
