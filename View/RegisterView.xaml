@@ -113,7 +113,7 @@
                   FontSize="20">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="TextChanged">
-                    <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDigit}" CommandParameter="{Binding ElementName=textBoxWeight}"/>
+                    <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDouble}" CommandParameter="{Binding ElementName=textBoxWeight}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </TextBox>
@@ -138,7 +138,7 @@
                   FontSize="20">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="TextChanged">
-                    <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDigit}" CommandParameter="{Binding ElementName=textBoxHeight}"/>
+                    <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDouble}" CommandParameter="{Binding ElementName=textBoxHeight}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </TextBox>
@@ -156,7 +156,7 @@
                   FontSize="20">
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="TextChanged">
-                    <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDigit}" CommandParameter="{Binding ElementName=textBoxAge}"/>
+                    <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasInt}" CommandParameter="{Binding ElementName=textBoxAge}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </TextBox>

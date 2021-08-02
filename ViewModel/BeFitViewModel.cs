@@ -31,7 +31,6 @@ namespace BeFit.ViewModel
         private EatenProduct currentEatenProduct;
         private Calculator calculator;
         private SettingsViewModel settingsViewModel;
-        private bool checkVar = false;
         #endregion
 
         #region Constructors
@@ -242,28 +241,13 @@ namespace BeFit.ViewModel
         private ICommand _checkIfTextBoxHasDigit;
         public ICommand CheckIfTextBoxHasDigit => _checkIfTextBoxHasDigit ?? (_checkIfTextBoxHasDigit = new RelayCommand((p) => { textBoxDigitOnly(p); }, p => true));
 
-        private ICommand _checkIfTextBoxHasText;
-        public ICommand CheckIfTextBoxHasText => _checkIfTextBoxHasText ?? (_checkIfTextBoxHasText = new RelayCommand((p) => { textBoxHasText(p); }, p => true));
+        private ICommand _textBoxLostFocus;
+        public ICommand TextBoxLostFocus => _textBoxLostFocus ?? (_textBoxLostFocus = new RelayCommand((p) => { lostFocus(p); }, p => true));
 
 
         #endregion
 
         #region Methods
-
-
-        private void textBoxHasText(object obj)
-        {
-            var target = (TextBox)obj;
-            if (string.IsNullOrWhiteSpace(target.Text))
-            {
-                checkVar = true;
-            }
-            else
-            {
-                Console.WriteLine("else");
-                checkVar = false;
-            }
-        }
 
         private bool checkEatenProduct()
         {
@@ -272,13 +256,17 @@ namespace BeFit.ViewModel
             {
                 return false;
             }
-            if (checkVar == true)
-            {
-                return false;
-            }
             return true;
         }
-
+        private void lostFocus(Object obj)
+        {
+            var textBox = (TextBox)obj;
+            if (textBox.Text == "" || string.IsNullOrEmpty(textBox.Text))
+            {
+                textBox.Text = 0.ToString();
+                textBox.SelectionStart = textBox.Text.Length;
+            }
+        }
 
         private void addEatenProduct()
         {

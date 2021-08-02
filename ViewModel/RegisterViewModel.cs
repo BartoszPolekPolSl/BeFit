@@ -33,10 +33,13 @@ namespace BeFit.ViewModel
         private ICommand _register;
         public ICommand Register => _register ?? (_register = new RelayCommand((p) => {  RegisterSystem.register(LoginArg, PasswordArg, SexArg, WeightArg, HeightArg, AgeArg, ActivityArg, TargetArg); }, p => true));
 
-        private ICommand _checkIfTextBoxHasDigit;
-        public ICommand CheckIfTextBoxHasDigit => _checkIfTextBoxHasDigit ?? (_checkIfTextBoxHasDigit = new RelayCommand((p) => { textBoxDigitOnly(p); }, p => true));
+        private ICommand _checkIfTextBoxHasInt;
+        public ICommand CheckIfTextBoxHasInt => _checkIfTextBoxHasInt ?? (_checkIfTextBoxHasInt = new RelayCommand((p) => { textBoxIntOnly(p); }, p => true));
 
-        private void textBoxDigitOnly(Object obj)
+        private ICommand _checkIfTextBoxHasDouble;
+        public ICommand CheckIfTextBoxHasDouble => _checkIfTextBoxHasDouble ?? (_checkIfTextBoxHasDouble = new RelayCommand((p) => { textBoxDoubleOnly(p); }, p => true));
+
+        private void textBoxDoubleOnly(Object obj)
         {
             var textBox = (TextBox)obj;
             if (textBox.Text != "")
@@ -50,5 +53,18 @@ namespace BeFit.ViewModel
             }
         }
 
+        private void textBoxIntOnly(Object obj)
+        {
+            var textBox = (TextBox)obj;
+            if (textBox.Text != "")
+            {
+                char lastChar = textBox.Text.Last<char>();
+                if (!char.IsDigit(lastChar))
+                {
+                    textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1, 1);
+                }
+                textBox.SelectionStart = textBox.Text.Length;
+            }
+        }
     }
 }

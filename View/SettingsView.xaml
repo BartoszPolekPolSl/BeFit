@@ -48,9 +48,10 @@
                  Background="#FFF6F6F6">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="TextChanged">
-                        <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDigit}" CommandParameter="{Binding ElementName=txtBoxWeight}"/>
-                        <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasText}" CommandParameter="{Binding ElementName=txtBoxWeight}"/>
-                        
+                        <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDouble}" CommandParameter="{Binding ElementName=txtBoxWeight}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="LostFocus">
+                        <i:InvokeCommandAction Command="{Binding TextBoxLostFocus}" CommandParameter="{Binding ElementName=txtBoxWeight}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </TextBox>
@@ -58,8 +59,10 @@
                  Background="#FFF6F6F6">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="TextChanged">
-                        <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDigit}" CommandParameter="{Binding ElementName=txtBoxHeight}"/>
-                        <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasText}" CommandParameter="{Binding ElementName=txtBoxHeight}"/>
+                        <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDouble}" CommandParameter="{Binding ElementName=txtBoxHeight}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="LostFocus">
+                        <i:InvokeCommandAction Command="{Binding TextBoxLostFocus}" CommandParameter="{Binding ElementName=txtBoxHeight}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </TextBox>
@@ -67,8 +70,10 @@
                  Background="#FFF6F6F6">
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="TextChanged">
-                        <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDigit}" CommandParameter="{Binding ElementName=txtBoxAge}"/>
-                        <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasText}" CommandParameter="{Binding ElementName=txtBoxAge}"/>
+                        <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasInt}" CommandParameter="{Binding ElementName=txtBoxAge}"/>
+                    </i:EventTrigger>
+                    <i:EventTrigger EventName="LostFocus">
+                        <i:InvokeCommandAction Command="{Binding TextBoxLostFocus}" CommandParameter="{Binding ElementName=txtBoxAge}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </TextBox>

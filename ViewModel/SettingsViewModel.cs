@@ -16,7 +16,6 @@ namespace BeFit.ViewModel
     {
         public delegate void UpdateUserInfoDelegate(string sex, double weight, int height, int age, string adctivity, string target);
         public event UpdateUserInfoDelegate UpdateUserInfo;
-        private bool checkVar = false;
 
 
         public string SexArg { get; set; }
@@ -37,16 +36,48 @@ namespace BeFit.ViewModel
         public List<String> SexSource { get; set; } = new List<String> { Model.Sex.male.ToString() , Model.Sex.female.ToString()};
 
         private ICommand _editUserInfo;
-        public ICommand EditUserInfo => _editUserInfo ?? (_editUserInfo = new RelayCommand((p) => { editUserInfo(); }, p => checkVar));
+        public ICommand EditUserInfo => _editUserInfo ?? (_editUserInfo = new RelayCommand((p) => { editUserInfo(); }, p => true));
 
         private ICommand _checkedTargetRadioBtn;
         public ICommand CheckedTargetRadioBtn => _checkedTargetRadioBtn ?? (_checkedTargetRadioBtn = new RelayCommand((p) => { whichTargetRadioBtnChecked(p); }, p => true));
 
-        private ICommand _checkIfTextBoxHasDigit;
-        public ICommand CheckIfTextBoxHasDigit => _checkIfTextBoxHasDigit ?? (_checkIfTextBoxHasDigit = new RelayCommand((p) => { textBoxDigitOnly(p); }, p => true));
 
-        private ICommand _checkIfTextBoxHasText;
-        public ICommand CheckIfTextBoxHasText => _checkIfTextBoxHasText ?? (_checkIfTextBoxHasText = new RelayCommand((p) => { textBoxHasText(p); }, p => true));
+        private ICommand _textBoxLostFocus;
+        public ICommand TextBoxLostFocus => _textBoxLostFocus ?? (_textBoxLostFocus = new RelayCommand((p) => { lostFocus(p); }, p => true));
+
+        private ICommand _checkIfTextBoxHasInt;
+        public ICommand CheckIfTextBoxHasInt => _checkIfTextBoxHasInt ?? (_checkIfTextBoxHasInt = new RelayCommand((p) => { textBoxIntOnly(p); }, p => true));
+
+        private ICommand _checkIfTextBoxHasDouble;
+        public ICommand CheckIfTextBoxHasDouble => _checkIfTextBoxHasDouble ?? (_checkIfTextBoxHasDouble = new RelayCommand((p) => { textBoxDoubleOnly(p); }, p => true));
+
+        private void textBoxDoubleOnly(Object obj)
+        {
+            var textBox = (TextBox)obj;
+            if (textBox.Text != "")
+            {
+                char lastChar = textBox.Text.Last<char>();
+                if (!char.IsDigit(lastChar) && lastChar != '.')
+                {
+                    textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1, 1);
+                }
+                textBox.SelectionStart = textBox.Text.Length;
+            }
+        }
+
+        private void textBoxIntOnly(Object obj)
+        {
+            var textBox = (TextBox)obj;
+            if (textBox.Text != "")
+            {
+                char lastChar = textBox.Text.Last<char>();
+                if (!char.IsDigit(lastChar))
+                {
+                    textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1, 1);
+                }
+                textBox.SelectionStart = textBox.Text.Length;
+            }
+        }
 
         private void editUserInfo()
         {
@@ -54,19 +85,16 @@ namespace BeFit.ViewModel
             UpdateUserInfo.Invoke(SexArg, WeightArg, HeightArg, AgeArg, ActivityArg, TargetArg);
         }
 
-        private void textBoxHasText(object obj)
+        private void lostFocus(Object obj)
         {
-            var target = (TextBox)obj;
-            if (string.IsNullOrWhiteSpace(target.Text))
+            var textBox = (TextBox)obj;
+            if (textBox.Text == "" || string.IsNullOrEmpty(textBox.Text))
             {
-                checkVar = false;
-            }
-            else
-            {
-                Console.WriteLine("else");
-                checkVar = true;
+                textBox.Text = 0.ToString();
+                textBox.SelectionStart = textBox.Text.Length;
             }
         }
+
 
 
         private void whichTargetRadioBtnChecked(object obj)
@@ -92,7 +120,7 @@ namespace BeFit.ViewModel
             if (textBox.Text != "")
             {
                 char lastChar = textBox.Text.Last<char>();
-                if (!char.IsDigit(lastChar) && lastChar != '.')
+                if (!char.IsDigit(lastChar))
                 {
                     textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1, 1);
                 }

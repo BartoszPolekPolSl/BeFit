@@ -66,7 +66,7 @@
             </StackPanel>
 
         </Grid>
-        <TextBlock Text="Witaj ponownie," Grid.Column="1" Margin="39,72,475,689" FontSize="36" FontFamily="SegoeUI" FontWeight="SemiBold"/>
+        <TextBlock Text="Dzień dobry," Grid.Column="1" Margin="39,72,475,689" FontSize="36" FontFamily="SegoeUI" FontWeight="SemiBold"/>
         <TextBlock x:Name="txtBlockDate" Grid.Column="2" Text="{Binding CurrentDate}" FontFamily="Segoe UI Semibold" FontSize="26" TextAlignment="Center" Margin="0,20,0,0"/>
         <ListBox x:Name="listboxEatenProducts" FontSize="12" FontWeight="DemiBold" Foreground="White" Grid.Column="2"  Margin="60,117,65,137" HorizontalAlignment="Center" VerticalAlignment="Center" Height="617" Width="240" ItemsSource="{Binding EatenProducts}" Background="Transparent">
             <i:Interaction.Triggers>
@@ -100,7 +100,7 @@
                 </Style>
             </Button.Resources>
         </Button>
-        <TextBlock Text="{Binding Username}" Grid.Column="1" Margin="318,72,116,689" FontSize="36" FontFamily="SegoeUI" FontWeight="SemiBold"/>
+        <TextBlock Text="{Binding Username}" Grid.Column="1" Margin="289,72,145,689" FontSize="36" FontFamily="SegoeUI" FontWeight="SemiBold"/>
 
     </Grid>
 </Window>
