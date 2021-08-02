@@ -81,51 +81,8 @@
 
 
 
-            <RadioButton Content="Chcę schudnąć"
-                         x:Name="rBtnLose"
-                             Foreground="Black" 
-                             FontSize="14" 
-                             HorizontalAlignment="Center"
-                             Grid.Column="4"
-                             Grid.Row="6"
-                             Style="{StaticResource EatingTableTheme}" Width="184" Margin="100,0,110,0" Grid.ColumnSpan="3" 
-                             GroupName="Target">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Checked">
-                        <i:InvokeCommandAction Command="{Binding CheckedTargetRadioBtn}" CommandParameter="{Binding ElementName=rBtnLose, Path=Content}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </RadioButton>
-            <RadioButton Content="Chce utrzymać wagę"
-                         x:Name="rBtnKeep"
-                             Foreground="Black" 
-                             FontSize="14" 
-                             HorizontalAlignment="Center"                          
-                             Grid.Column="4"
-                             Grid.Row="7"
-                             Style="{StaticResource EatingTableTheme}" Width="184" Margin="100,0,110,7" Grid.ColumnSpan="3"
-                             GroupName="Target">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Checked">
-                        <i:InvokeCommandAction Command="{Binding CheckedTargetRadioBtn}" CommandParameter="{Binding ElementName=rBtnKeep, Path=Content}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </RadioButton>
-            <RadioButton Content="Chcę nabrać masy" 
-                         x:Name="rBtnGain"
-                             Foreground="Black" 
-                             FontSize="14" 
-                             HorizontalAlignment="Center"
-                             Grid.Column="4"
-                             Grid.Row="7"
-                             Style="{StaticResource EatingTableTheme}" Width="184" Margin="100,0,110,6" Grid.ColumnSpan="3" Height="34" VerticalAlignment="Bottom" Grid.RowSpan="2"
-                             GroupName="Target">
-                <i:Interaction.Triggers>
-                    <i:EventTrigger EventName="Checked">
-                        <i:InvokeCommandAction Command="{Binding CheckedTargetRadioBtn}" CommandParameter="{Binding ElementName=rBtnGain, Path=Content}"/>
-                    </i:EventTrigger>
-                </i:Interaction.Triggers>
-            </RadioButton>
+            <ComboBox   x:Name="comboBoxTarget" Grid.Row="6" Grid.Column="4" Margin="101,4,70,0" Grid.ColumnSpan="3" />
+
 
             <TextBlock Grid.Row="5" Grid.Column="4" TextAlignment="Center" Text="Planuję:" FontFamily="Segoe UI Semibold" Margin="100,4,29,0" FontSize="23" Grid.ColumnSpan="2" />
 

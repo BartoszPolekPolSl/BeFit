@@ -58,6 +58,10 @@ namespace BeFit.Model
         {
             double target = 0;
             target = Math.Round(GetKcalTarget() * 0.2 / 4, 1);
+            if (target < 0)
+            {
+                target = 0;
+            }
             return target;
         }
 
@@ -65,6 +69,10 @@ namespace BeFit.Model
         {
             double target = 0;
             target = Math.Round(GetKcalTarget() * 0.5 / 4, 1);
+            if (target < 0)
+            {
+                target = 0;
+            }
             return target;
         }
 
@@ -72,6 +80,10 @@ namespace BeFit.Model
         {
             double target = 0;
             target = Math.Round(GetKcalTarget() * 0.25 / 9, 1);
+            if (target < 0)
+            {
+                target = 0;
+            }
             return target;
         }
 
@@ -81,10 +93,18 @@ namespace BeFit.Model
             if (model.User.Sex == Sex.male.ToString())
             {
                 target = Math.Round((((9.99 * model.User.Weight) + (6.25 * model.User.Height) - (4.92 * model.User.Age) + 5) * getActivityDoubleValue(model.User.Activity)) + getTargetDoubleValue(model.User.Target), 1);
+                if (target < 0)
+                {
+                    target = 0;
+                }
             }
             else
             {
                 target = Math.Round((((9.99 * model.User.Weight) + (6.25 * model.User.Height) - (4.92 * model.User.Age) - 161) * getActivityDoubleValue(model.User.Activity)) + getTargetDoubleValue(model.User.Target), 1);
+                if (target < 0)
+                {
+                    target = 0;
+                }
             }
             return target;
         }

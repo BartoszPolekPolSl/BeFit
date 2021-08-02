@@ -32,13 +32,28 @@ namespace BeFit.ViewModel
         public List<String> SexSource { get; set; } = new List<String> { "Kobieta", "Mężczyzna" };
 
         private ICommand _register;
-        public ICommand Register => _register ?? (_register = new RelayCommand((p) => {  RegisterSystem.register(LoginArg, PasswordArg, TranslateEnums.TranslteSex(SexArg),WeightArg, HeightArg, AgeArg, TranslateEnums.TranslteActivity(ActivityArg), TranslateEnums.TranslteTarget(TargetArg)); }, p => true));
+        public ICommand Register => _register ?? (_register = new RelayCommand((p) => { register(); }, p => checkIfLoginAndPasswordIsNotEmpty()));
 
         private ICommand _checkIfTextBoxHasInt;
         public ICommand CheckIfTextBoxHasInt => _checkIfTextBoxHasInt ?? (_checkIfTextBoxHasInt = new RelayCommand((p) => { textBoxIntOnly(p); }, p => true));
 
         private ICommand _checkIfTextBoxHasDouble;
         public ICommand CheckIfTextBoxHasDouble => _checkIfTextBoxHasDouble ?? (_checkIfTextBoxHasDouble = new RelayCommand((p) => { textBoxDoubleOnly(p); }, p => true));
+
+        private ICommand _textBoxLostFocus;
+        public ICommand TextBoxLostFocus => _textBoxLostFocus ?? (_textBoxLostFocus = new RelayCommand((p) => { lostFocus(p); }, p => true));
+
+        private void register()
+        {
+            if(!RegisterSystem.register(LoginArg, PasswordArg, TranslateEnums.TranslteSex(SexArg), WeightArg, HeightArg, AgeArg, TranslateEnums.TranslteActivity(ActivityArg), TranslateEnums.TranslteTarget(TargetArg)))
+            {
+                MessageBox.Show("Nazwa użytkownika jest już zajęta", "Uwaga!", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+            else
+            {
+                MessageBox.Show("Pomyślnie zarejestrowano!","", MessageBoxButton.OK, MessageBoxImage.Information);
+            }
+        }
 
         private void textBoxDoubleOnly(Object obj)
         {
@@ -64,6 +79,28 @@ namespace BeFit.ViewModel
                 {
                     textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1, 1);
                 }
+                textBox.SelectionStart = textBox.Text.Length;
+            }
+        }
+
+        private bool checkIfLoginAndPasswordIsNotEmpty()
+        {
+            if(LoginArg==null || PasswordArg == null || LoginArg=="" || PasswordArg.Length==0)
+            {
+                return false;
+            }
+            else
+            {
+                return true;
+            }
+        }
+
+        private void lostFocus(Object obj)
+        {
+            var textBox = (TextBox)obj;
+            if (textBox.Text == "" || string.IsNullOrEmpty(textBox.Text))
+            {
+                textBox.Text = 0.ToString();
                 textBox.SelectionStart = textBox.Text.Length;
             }
         }

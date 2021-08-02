@@ -137,7 +137,6 @@
     <Compile Include="Model\Target.cs" />
     <Compile Include="Model\TranslateEnums.cs" />
     <Compile Include="ViewModel\MainLoginRegisterViewModel.cs" />
-    <Compile Include="ViewModel\MainViewModel.cs" />
     <Compile Include="ViewModel\RegisterViewModel.cs" />
     <Compile Include="ViewModel\SettingsViewModel.cs" />
     <Compile Include="View\AddProductView.xaml.cs">

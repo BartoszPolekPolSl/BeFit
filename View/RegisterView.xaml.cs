@@ -38,7 +38,9 @@ namespace BeFit.View
             BindingOperations.SetBinding(comboBoxActivity, ComboBox.SelectedItemProperty, new Binding() { Path = new PropertyPath(nameof(RegisterViewModel.ActivityArg)), Source = DataContext });
             BindingOperations.SetBinding(comboBoxSex, ComboBox.SelectedItemProperty, new Binding() { Path = new PropertyPath(nameof(RegisterViewModel.SexArg)), Source = DataContext });
             BindingOperations.SetBinding(RegisterButton, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(RegisterViewModel.Register)), Source = DataContext });
-
+            comboBoxActivity.SelectedIndex = 0;
+            comboBoxTarget.SelectedIndex = 0;
+            comboBoxSex.SelectedIndex = 0;
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

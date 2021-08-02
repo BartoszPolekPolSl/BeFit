@@ -38,7 +38,12 @@ namespace BeFit.View
             BindingOperations.SetBinding(comboBoxAcitivity, ComboBox.ItemsSourceProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.ActivtySource)), Source = DataContext });
             BindingOperations.SetBinding(comboBoxSex, ComboBox.SelectedItemProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.SexArg)), Source = DataContext });
             BindingOperations.SetBinding(comboBoxAcitivity, ComboBox.SelectedItemProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.ActivityArg)), Source = DataContext });
+            BindingOperations.SetBinding(comboBoxTarget, ComboBox.SelectedItemProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.TargetArg)), Source = DataContext });
+            BindingOperations.SetBinding(comboBoxTarget, ComboBox.ItemsSourceProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.TargetSource)), Source = DataContext });
             BindingOperations.SetBinding(btnChange, Button.CommandProperty, new Binding() { Path = new PropertyPath(nameof(SettingsViewModel.EditUserInfo)), Source = DataContext });
+            comboBoxAcitivity.SelectedIndex = ((SettingsViewModel)DataContext).SetActivity();
+            comboBoxSex.SelectedIndex= ((SettingsViewModel)DataContext).SetSex();
+            comboBoxTarget.SelectedIndex = ((SettingsViewModel)DataContext).SetTarget();
         }
 
     }

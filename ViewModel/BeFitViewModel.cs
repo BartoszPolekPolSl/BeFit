@@ -214,7 +214,7 @@ namespace BeFit.ViewModel
         public ICommand LogOut => _logOut ?? (_logOut = new RelayCommand((p) => { logOut(); }, p => true));
 
         private ICommand _addEatenProduct;
-        public ICommand AddEatenProduct => _addEatenProduct ?? (_addEatenProduct = new RelayCommand((p) => { addEatenProduct(); }, p => checkEatenProduct()));
+        public ICommand AddEatenProduct => _addEatenProduct ?? (_addEatenProduct = new RelayCommand((p) => { addEatenProduct(); }, p => checkEatenProductName()));
 
         private ICommand _changeEatenProduct;
         public ICommand ChangeEatenProduct => _changeEatenProduct ?? (_changeEatenProduct = new RelayCommand((p) => { changeEatenProduct(p); }, p => true));
@@ -227,7 +227,6 @@ namespace BeFit.ViewModel
 
         private ICommand _addFavoriteProduct;
         public ICommand AddFavoriteProduct => _addFavoriteProduct ?? (_addFavoriteProduct = new RelayCommand((p) => { addFavoriteProduct(); }, p => true));
-
 
         private ICommand _changeFavoriteProduct;
         public ICommand ChangeFavoriteProduct => _changeFavoriteProduct ?? (_changeFavoriteProduct = new RelayCommand((p) => { changeFavoriteProduct(p); }, p => true));
@@ -248,25 +247,6 @@ namespace BeFit.ViewModel
         #endregion
 
         #region Methods
-
-        private bool checkEatenProduct()
-        {
-
-            if (string.IsNullOrWhiteSpace(CurrentProductName))
-            {
-                return false;
-            }
-            return true;
-        }
-        private void lostFocus(Object obj)
-        {
-            var textBox = (TextBox)obj;
-            if (textBox.Text == "" || string.IsNullOrEmpty(textBox.Text))
-            {
-                textBox.Text = 0.ToString();
-                textBox.SelectionStart = textBox.Text.Length;
-            }
-        }
 
         private void addEatenProduct()
         {
@@ -378,6 +358,26 @@ namespace BeFit.ViewModel
             updateTime();
         }
 
+        private bool checkEatenProductName()
+        {
+
+            if (string.IsNullOrWhiteSpace(CurrentProductName))
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private void lostFocus(Object obj)
+        {
+            var textBox = (TextBox)obj;
+            if (textBox.Text == "" || string.IsNullOrEmpty(textBox.Text))
+            {
+                textBox.Text = 0.ToString();
+                textBox.SelectionStart = textBox.Text.Length;
+            }
+        }
+
         private void textBoxDigitOnly(Object obj)
         {
             var textBox = (TextBox)obj;
@@ -387,13 +387,11 @@ namespace BeFit.ViewModel
                 if (!char.IsDigit(lastChar) && lastChar != '.')
                 {
                     textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1, 1);
-                    textBox.ToolTip = "Wprowadzone dane mogą być tylko liczbą, jeżeli chcesz wpisać liczbą niecałkowitą, wpisz ją za pomocą '.'";
                 }
                 textBox.SelectionStart = textBox.Text.Length;
             }
         }
 
-        // TODO: move this code
 
         #endregion
     }

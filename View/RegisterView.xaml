@@ -103,7 +103,6 @@
         <ComboBox Grid.Row="3" x:Name="comboBoxSex" ItemsSource="{Binding SexSource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" Margin="80,10,76,6"
                   BorderBrush="{x:Null}"
                  Background="#FFF6F6F6"
-                 
                   />
 
         <TextBox x:Name="textBoxWeight" Grid.Row="5" Margin="80,6,85,6"
@@ -114,6 +113,9 @@
             <i:Interaction.Triggers>
                 <i:EventTrigger EventName="TextChanged">
                     <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDouble}" CommandParameter="{Binding ElementName=textBoxWeight}"/>
+                </i:EventTrigger>
+                <i:EventTrigger EventName="LostFocus">
+                    <i:InvokeCommandAction Command="{Binding TextBoxLostFocus}" CommandParameter="{Binding ElementName=textBoxWeight}"/>
                 </i:EventTrigger>
             </i:Interaction.Triggers>
         </TextBox>
@@ -140,6 +142,9 @@
                 <i:EventTrigger EventName="TextChanged">
                     <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDouble}" CommandParameter="{Binding ElementName=textBoxHeight}"/>
                 </i:EventTrigger>
+                <i:EventTrigger EventName="LostFocus">
+                    <i:InvokeCommandAction Command="{Binding TextBoxLostFocus}" CommandParameter="{Binding ElementName=textBoxHeight}"/>
+                </i:EventTrigger>
             </i:Interaction.Triggers>
         </TextBox>
 
@@ -158,6 +163,9 @@
                 <i:EventTrigger EventName="TextChanged">
                     <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasInt}" CommandParameter="{Binding ElementName=textBoxAge}"/>
                 </i:EventTrigger>
+                <i:EventTrigger EventName="LostFocus">
+                    <i:InvokeCommandAction Command="{Binding TextBoxLostFocus}" CommandParameter="{Binding ElementName=textBoxAge}"/>
+                </i:EventTrigger>
             </i:Interaction.Triggers>
         </TextBox>
 
@@ -170,7 +178,6 @@
         <ComboBox Grid.Row="2" Grid.Column="2" x:Name="comboBoxActivity" ItemsSource="{Binding Path=ActivtySource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" Margin="5,6,70,6" 
                   BorderBrush="{x:Null}"
                  Background="#FFF6F6F6"
-                 
                   />
 
         <TextBlock Grid.Row="1" Text="Twój cel:" FontSize="15"
@@ -182,7 +189,6 @@
         <ComboBox Grid.Row="1" Grid.Column="2" x:Name="comboBoxTarget" ItemsSource="{Binding TargetSource, RelativeSource={RelativeSource AncestorType={x:Type UserControl}}}" Margin="5,10,70,2" 
                   BorderBrush="{x:Null}"
                  Background="#FFF6F6F6"
-                 
                   />
         <TextBlock Grid.Row="5" Text="kg" FontSize="15"
             Foreground="DarkGray"
