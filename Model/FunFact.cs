@@ -6,12 +6,7 @@ using System.Threading.Tasks;
 
 namespace BeFit.Model
 {
-    public enum Activity
+    class FunFact
     {
-        brak,
-        mało,
-        średnio,
-        dużo,
-        profesjonalnie
     }
 }

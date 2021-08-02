@@ -49,6 +49,8 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="TextChanged">
                         <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDigit}" CommandParameter="{Binding ElementName=txtBoxWeight}"/>
+                        <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasText}" CommandParameter="{Binding ElementName=txtBoxWeight}"/>
+                        
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </TextBox>
@@ -57,6 +59,7 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="TextChanged">
                         <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDigit}" CommandParameter="{Binding ElementName=txtBoxHeight}"/>
+                        <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasText}" CommandParameter="{Binding ElementName=txtBoxHeight}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </TextBox>
@@ -65,6 +68,7 @@
                 <i:Interaction.Triggers>
                     <i:EventTrigger EventName="TextChanged">
                         <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasDigit}" CommandParameter="{Binding ElementName=txtBoxAge}"/>
+                        <i:InvokeCommandAction Command="{Binding CheckIfTextBoxHasText}" CommandParameter="{Binding ElementName=txtBoxAge}"/>
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </TextBox>
@@ -121,7 +125,9 @@
             <TextBlock Grid.Row="5" Grid.Column="4" TextAlignment="Center" Text="Planuję:" FontFamily="Segoe UI Semibold" Margin="100,4,29,0" FontSize="23" Grid.ColumnSpan="2" />
 
             <Button x:Name="btnChange" Content="Zmień" FontFamily="SegoeUI" FontSize="16" Grid.Row="11" HorizontalAlignment="Center" VerticalAlignment="Center" Height="40" Width="120" BorderBrush="{x:Null}"
-                    Background="#51B4FF" Foreground="White" FontWeight="DemiBold" Grid.Column="4">
+                    Background="#51B4FF" Foreground="White" FontWeight="DemiBold" Grid.Column="4"
+                    
+                    >
                 <Button.Resources>
                     <Style TargetType="Border">
                         <Setter Property="CornerRadius" Value="9"/>

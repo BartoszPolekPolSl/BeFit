@@ -26,7 +26,7 @@ namespace BeFit.ViewModel
         public string ActivityArg { get; set; }
         public string TargetArg { get; set; }
 
-        public List<String> ActivtySource { get; set; } = new List<String> { Model.Activity.lack.ToString(), Model.Activity.little.ToString(), Model.Activity.medium.ToString(), Model.Activity.high.ToString(), Model.Activity.professionally.ToString() };
+        public List<String> ActivtySource { get; set; } = new List<String> { Model.Activity.brak.ToString(), Model.Activity.mało.ToString(), Model.Activity.średnio.ToString(), Model.Activity.dużo.ToString(), Model.Activity.profesjonalnie.ToString() };
         public List<String> TargetSource { get; set; } = new List<String> { Model.Target.lose.ToString(), Model.Target.keep.ToString(), Model.Target.gain.ToString() };
         public List<String> SexSource { get; set; } = new List<String> { Model.Sex.male.ToString(), Model.Sex.female.ToString(), };
 
