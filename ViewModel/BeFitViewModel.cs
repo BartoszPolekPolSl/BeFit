@@ -376,6 +376,7 @@ namespace BeFit.ViewModel
                 if (!char.IsDigit(lastChar) && lastChar != '.')
                 {
                     textBox.Text = textBox.Text.Remove(textBox.Text.Length - 1, 1);
+                    textBox.ToolTip = "Wprowadzone dane mogą być tylko liczbą, jeżeli chcesz wpisać liczbą niecałkowitą, wpisz ją za pomocą '.'";
                 }
                 textBox.SelectionStart = textBox.Text.Length;
             }

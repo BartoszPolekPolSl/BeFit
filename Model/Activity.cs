@@ -12,6 +12,7 @@ namespace BeFit.Model
         little,
         medium,
         high,
-        professionally
+        professionally,        
     }
+    
 }
