@@ -93,19 +93,19 @@ namespace BeFit.Model
 
         private double getActivityDoubleValue(string activity)
         {
-            if (activity == Activity.brak.ToString())
+            if (activity == Activity.lack.ToString())
             {
                 return 1.2;
             }
-            else if (activity == Activity.mało.ToString())
+            else if (activity == Activity.little.ToString())
             {
                 return 1.3;
             }
-            else if (activity == Activity.średnio.ToString())
+            else if (activity == Activity.medium.ToString())
             {
                 return 1.5;
             }
-            else if (activity == Activity.dużo.ToString())
+            else if (activity == Activity.high.ToString())
             {
                 return 1.7;
             }

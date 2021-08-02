@@ -8,6 +8,7 @@ using System.Windows;
 
 namespace BeFit.ViewModel
 {
+    using Model;
     using BaseClass;
     using BeFit.DAL;
     using System.Security;
@@ -26,12 +27,12 @@ namespace BeFit.ViewModel
         public string ActivityArg { get; set; }
         public string TargetArg { get; set; }
 
-        public List<String> ActivtySource { get; set; } = new List<String> { Model.Activity.brak.ToString(), Model.Activity.mało.ToString(), Model.Activity.średnio.ToString(), Model.Activity.dużo.ToString(), Model.Activity.profesjonalnie.ToString() };
-        public List<String> TargetSource { get; set; } = new List<String> { Model.Target.lose.ToString(), Model.Target.keep.ToString(), Model.Target.gain.ToString() };
-        public List<String> SexSource { get; set; } = new List<String> { Model.Sex.male.ToString(), Model.Sex.female.ToString(), };
+        public List<String> ActivtySource { get; set; } = new List<String> { "Brak aktywności, praca siedząca", "Niska aktywność (praca siedząca i 1-2 treningi w tygodniu)", "Średnia aktywność (praca siedząca i treningi 3-4 razy w tygodniu)", "Wysoka aktywność (praca fizyczna i 3-4 treningi w tygodniu)", "Zawodowi sportowcy"};
+        public List<String> TargetSource { get; set; } = new List<String> { "Chcę schudnąć", "Chcę utrzymać wagę", "Chcę nabrać masy" };
+        public List<String> SexSource { get; set; } = new List<String> { "Kobieta", "Mężczyzna" };
 
         private ICommand _register;
-        public ICommand Register => _register ?? (_register = new RelayCommand((p) => {  RegisterSystem.register(LoginArg, PasswordArg, SexArg, WeightArg, HeightArg, AgeArg, ActivityArg, TargetArg); }, p => true));
+        public ICommand Register => _register ?? (_register = new RelayCommand((p) => {  RegisterSystem.register(LoginArg, PasswordArg, TranslateEnums.TranslteSex(SexArg),WeightArg, HeightArg, AgeArg, TranslateEnums.TranslteActivity(ActivityArg), TranslateEnums.TranslteTarget(TargetArg)); }, p => true));
 
         private ICommand _checkIfTextBoxHasInt;
         public ICommand CheckIfTextBoxHasInt => _checkIfTextBoxHasInt ?? (_checkIfTextBoxHasInt = new RelayCommand((p) => { textBoxIntOnly(p); }, p => true));

@@ -81,7 +81,7 @@
 
 
 
-            <RadioButton Content="Schudnąć"
+            <RadioButton Content="Chcę schudnąć"
                          x:Name="rBtnLose"
                              Foreground="Black" 
                              FontSize="14" 
@@ -96,7 +96,7 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </RadioButton>
-            <RadioButton Content="Utrzymać wagę"
+            <RadioButton Content="Chce utrzymać wagę"
                          x:Name="rBtnKeep"
                              Foreground="Black" 
                              FontSize="14" 
@@ -111,7 +111,7 @@
                     </i:EventTrigger>
                 </i:Interaction.Triggers>
             </RadioButton>
-            <RadioButton Content="Przytyć" 
+            <RadioButton Content="Chcę nabrać masy" 
                          x:Name="rBtnGain"
                              Foreground="Black" 
                              FontSize="14" 

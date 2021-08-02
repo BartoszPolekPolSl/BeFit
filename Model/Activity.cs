@@ -8,10 +8,11 @@ namespace BeFit.Model
 {
     public enum Activity
     {
-        brak,
-        mało,
-        średnio,
-        dużo,
-        profesjonalnie
+        lack,
+        little,
+        medium,
+        high,
+        professionally,        
     }
+    
 }

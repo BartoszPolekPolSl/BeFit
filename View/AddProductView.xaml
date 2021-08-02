@@ -41,7 +41,7 @@
             </Grid.RowDefinitions>
 
             <TextBox x:Name="txtBoxName" Grid.Row="2" Grid.Column="1" FontSize="16" Text="Nazwa" Grid.ColumnSpan="2" BorderBrush="{x:Null}"
-                 Background="#FFF6F6F6" Margin="15,63,55,14" Grid.RowSpan="2"/>
+                 Background="#FFF6F6F6" Margin="15,63,55,14" Grid.RowSpan="2" />
 
             <TextBlock FontFamily="SegoeUI" FontSize="12" FontWeight="SemiBold" RenderTransformOrigin="8.727,6.852" Grid.Column="1" Margin="15,42,72,2" Grid.Row="2"><Run Text="Nazwa"/><Run Text=":"/></TextBlock>
             <TextBox FontFamily="SegoeUI" x:Name="txtBoxProteins" Grid.Row="4" Grid.Column="1" Margin="14,1,55,7" FontSize="12" Text="Białko" BorderBrush="{x:Null}"

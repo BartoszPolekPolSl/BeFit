@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace BeFit.ViewModel
 {
+    using Model;
     using BeFit.DAL;
     using BeFit.DAL.Entities;
     using BeFit.ViewModel.BaseClass;
@@ -32,8 +33,8 @@ namespace BeFit.ViewModel
             this.user = user;
         }
 
-        public List<String> ActivtySource { get; set; } = new List<String> { Model.Activity.brak.ToString(), Model.Activity.mało.ToString(), Model.Activity.średnio.ToString(), Model.Activity.dużo.ToString(), Model.Activity.profesjonalnie.ToString() };
-        public List<String> SexSource { get; set; } = new List<String> { Model.Sex.male.ToString() , Model.Sex.female.ToString()};
+        public List<String> ActivtySource { get; set; } = new List<String> { "Brak aktywności, praca siedząca", "Niska aktywność (praca siedząca i 1-2 treningi w tygodniu)", "Średnia aktywność (praca siedząca i treningi 3-4 razy w tygodniu)", "Wysoka aktywność (praca fizyczna i 3-4 treningi w tygodniu)", "Zawodowi sportowcy" };
+        public List<String> SexSource { get; set; } = new List<String> { "Kobieta", "Mężczyzna" };
 
         private ICommand _editUserInfo;
         public ICommand EditUserInfo => _editUserInfo ?? (_editUserInfo = new RelayCommand((p) => { editUserInfo(); }, p => true));
@@ -81,8 +82,8 @@ namespace BeFit.ViewModel
 
         private void editUserInfo()
         {
-            UserInfoSystem.EditUserInfoDB(user.Id, SexArg, WeightArg, HeightArg, AgeArg, ActivityArg, TargetArg);
-            UpdateUserInfo.Invoke(SexArg, WeightArg, HeightArg, AgeArg, ActivityArg, TargetArg);
+            UserInfoSystem.EditUserInfoDB(user.Id, TranslateEnums.TranslteSex(SexArg), WeightArg, HeightArg, AgeArg, TranslateEnums.TranslteActivity(ActivityArg), TranslateEnums.TranslteTarget(TargetArg));
+            UpdateUserInfo.Invoke(TranslateEnums.TranslteSex(SexArg), WeightArg, HeightArg, AgeArg, TranslateEnums.TranslteActivity(ActivityArg), TranslateEnums.TranslteTarget(TargetArg));
         }
 
         private void lostFocus(Object obj)
@@ -100,17 +101,17 @@ namespace BeFit.ViewModel
         private void whichTargetRadioBtnChecked(object obj)
         {
             string target = (string)obj;
-            if (target == "Schudnąć")
+            if (target == "Chcę schudnąć")
             {
-                TargetArg = Model.Target.lose.ToString();
+                TargetArg = "Chcę schudnąć";
             }
-            else if (target == "Utrzymać wagę")
+            else if (target == "Chcę utrzymać wagę")
             {
-                TargetArg = Model.Target.keep.ToString();
+                TargetArg = "Chcę utrzymać wagę";
             }
             else
             {
-                TargetArg = Model.Target.gain.ToString();
+                TargetArg = "Chcę utrzymać wagę";
             }
         }
 
